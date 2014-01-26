@@ -146,7 +146,7 @@
         
         [labelTotal release];
         
-        
+          
         
         arrayTitle = [[NSArray alloc]initWithObjects:@"全部订单",@"地址簿",@"收藏夹",@"电子优惠券",@"找回密码", nil];
         tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f,  50 + 20, 280.0f, 6* 40) isNeedUpdate:NO];
