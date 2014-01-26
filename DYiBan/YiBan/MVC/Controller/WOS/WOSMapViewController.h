@@ -8,7 +8,10 @@
 
 #import "DYBBaseViewController.h"
 #import "MapViewController.h"
-@interface WOSMapViewController : DYBBaseViewController<MapViewControllerDidSelectDelegate>
+@interface WOSMapViewController : DYBBaseViewController<MapViewControllerDidSelectDelegate>{
+    
+    int iType;
+}
 @property (nonatomic,assign) int iType; //地图类型；
 @property (nonatomic,retain) NSDictionary *dictMap;
 @end
