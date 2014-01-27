@@ -70,9 +70,10 @@
 
     }
     else if ([signal is:[DragonViewController CREATE_VIEWS]]) {
+        [self.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, self.view.frame.size.height + 120)];
         
-        
-       scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, .0f, 320, self.view.frame.size.height )];
+       scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight- 44, 320, self.view.frame.size.height+ 44 - self.headHeight + 44)];
+        [scrollView setBackgroundColor:[UIColor colorWithRed:61.0f/255 green:61.0f/255  blue:61.0f/255  alpha:1.0f]];
         [self.view addSubview:scrollView];
         RELEASE(scrollView);
         

@@ -100,7 +100,7 @@ static WOSGoodFoodViewController *shareStance = nil;
 
         
         
-        tbleView = [[DragonUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 + 30, 320,self.view.frame.size.height - 74 ) isNeedUpdate:YES];
+        tbleView = [[DragonUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight + 30, 320,self.view.frame.size.height - 74 ) isNeedUpdate:YES];
 //        tableView setTableViewType:
         [tbleView setTableViewType:DTableViewSlime];
         [tbleView setBackgroundColor:ColorBG];
@@ -141,7 +141,7 @@ static WOSGoodFoodViewController *shareStance = nil;
 
 -(void)creatRightTopView{
 
-    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 160.0f, 30)];
+    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 160.0f, 30)];
     [btnTop addTarget:self action:@selector(showORHideDownView) forControlEvents:UIControlEventTouchUpInside];
     [btnTop setBackgroundColor:[UIColor colorWithRed:26/255.0f green:26/255.0f blue:26/255.0f alpha:1.0f]];
     [self.view addSubview:btnTop];
@@ -170,7 +170,7 @@ static WOSGoodFoodViewController *shareStance = nil;
     return;
     
     if (!downView) {
-        downView = [[WOSGoodFoodDownView alloc]initWithFrame:CGRectMake(0.0f, 44.0f + 30, 320.0, 200.0f)];
+        downView = [[WOSGoodFoodDownView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight + 30, 320.0, 200.0f)];
         
         [self.view addSubview:downView];
         RELEASE(downView);
@@ -212,7 +212,7 @@ static WOSGoodFoodViewController *shareStance = nil;
 
 -(void)creatLeftTopView{
     
-    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(160.0f, 44.0f, 160.0f, 30)];
+    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(160.0f, self.headHeight, 160.0f, 30)];
     [btnTop addTarget:self action:@selector(sortPrice) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnTop];
     [btnTop setBackgroundColor:[UIColor colorWithRed:26/255.0f green:26/255.0f blue:26/255.0f alpha:1.0f]];

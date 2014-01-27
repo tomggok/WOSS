@@ -26,8 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    int t;
-    int ii;
+   
 	// Do any additional setup after loading the view.
 }
 
