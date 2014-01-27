@@ -159,7 +159,7 @@ static leftViewController *share = nil;
         tbDataBank.sectionHeaderHeight = 0;
         isOpen = NO;
         
-        tbDataBank = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, 44, 320.0f, CGRectGetHeight(self.view.frame) - 100)];
+        tbDataBank = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, CGRectGetHeight(self.view.frame) - 100)];
         [self.view addSubview:tbDataBank];
         [tbDataBank setBackgroundColor:ColorBG];
         [tbDataBank setSeparatorColor:[UIColor clearColor]];
