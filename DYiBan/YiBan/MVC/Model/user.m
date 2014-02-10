@@ -1,6 +1,6 @@
 //
 //  user.m
-//  magic
+//  Magic
 //
 //  Created by 周 哲 on 12-11-1.
 //

@@ -1,6 +1,6 @@
 //
 //  MainViewController.h
-//  magic
+//  Magic
 //
 //  Created by 周 哲 on 12-10-29.
 //

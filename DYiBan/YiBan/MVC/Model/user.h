@@ -1,6 +1,6 @@
 //
 //  user.h
-//  magic
+//  Magic
 //
 //  Created by 周 哲 on 12-11-1.
 //
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 //#import "Jastor.h"
 #import "album.h"
-@interface user : DragonJSONReflection
+@interface user : MagicJSONReflection
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *userid;
 @property (retain, nonatomic) NSString *name;/*昵称*/

@@ -188,10 +188,10 @@ int SkipCaffHead(char* buf){
     //    NSLog(@"fileVersion:%d,fileFlags:%d.",mFileVersion, mFileFlags);
     
     //desc free data
-    u32 magics[3] = {0x64657363,0x66726565,0x64617461};
+    u32 Magics[3] = {0x64657363,0x66726565,0x64617461};
     for (int i=0; i<3; ++i) {
         u32 mChunkType = readUint32(buf);buf+=4;
-        if (magics[i]!=mChunkType) {
+        if (Magics[i]!=mChunkType) {
             return 0;
         }
         

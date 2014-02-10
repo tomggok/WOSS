@@ -1,6 +1,6 @@
 //
 //  reqlist.h
-//  magic
+//  Magic
 //
 //  Created by 周 哲 on 12-11-3.
 //
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 //#import "Jastor.h"
 #import "user.h"
-@interface reqlist : DragonJSONReflection
+@interface reqlist : MagicJSONReflection
 @property(assign,nonatomic)int id;
 @property(assign,nonatomic)int time;
 @property(retain,nonatomic)NSString * content;
