@@ -382,11 +382,6 @@ DEF_SIGNAL(BTNTWO);
     [imageView1 setBackgroundColor:[UIColor grayColor]];
     [view addSubview:imageView1];
     RELEASE(imageView1);
-    
-    [view setFrame:CGRectMake(CGRectGetMinX(view.frame), CGRectGetMinY(view.frame), CGRectGetWidth(view.frame), CGRectGetMinY(imageView1.frame) + CGRectGetHeight(imageView1.frame))];
-    NSString *striingName = [[NSString alloc]init];
-    [striingName setValue:@"just" forKey:@"wosMapViewController"];
-    [];
 }
 
 -(void)doTapMap{
