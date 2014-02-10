@@ -109,6 +109,7 @@ DEF_SIGNAL(TABBARDIDSELCT)//选中
     {
         if (self.tabBar.frame.origin.y == self.frame.size.height)
         {
+            CHANGEFRAMEORIGIN(self.tabBar.frame, self.tabBar.frame.origin.x, self.tabBar.frame.origin.y + _barHeight);
             return;
         }
     }else

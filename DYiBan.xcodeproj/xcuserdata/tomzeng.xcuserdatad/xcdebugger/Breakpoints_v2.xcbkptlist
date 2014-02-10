@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "399456162.385069"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "@implementation DragonUITabBarView"
             landmarkType = "3">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "399456162.385069"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-removeAllVCView"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "399456162.385069"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-removeViewControllerAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "399456162.385069"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "-setSelectedIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1408,11 +1408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "403963166.989438"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-displayViewAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1909,7 +1909,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-headViewHeight"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1941,7 +1941,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "-baseView"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2432,11 +2432,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "400417885.558867"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-addVCView:imgArr:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2448,11 +2448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "400417898.28274"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-setSelectedIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2464,11 +2464,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "403963166.989438"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-insertViewController:withImageDic:atIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2480,11 +2480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/Framework/MVC/View/Dragon_UITabBarView.m"
-            timestampString = "403963166.989438"
+            timestampString = "412480327.910083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-displayViewAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2750,13 +2750,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[SDWebImageManager imageDownloader:didUpdatePartialImage:]"
                   moduleName = "DYiBan"
-                  urlString = "file://localhost/Users/tomzeng/%E7%99%BE%E5%BA%A6%E4%BA%91%E5%90%8C%E6%AD%A5%E7%9B%98/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90/DYiBan/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
-                  timestampString = "412399892.600286"
+                  urlString = "file://localhost/Users/tomzeng/Pictures/DYiBan/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
+                  timestampString = "412495443.612529"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "330"
                   endingLineNumber = "330"
-                  offsetFromSymbolStart = "39">
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2764,13 +2764,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[SDWebImageManager imageDownloader:didUpdatePartialImage:]"
                   moduleName = "DYiBan"
-                  urlString = "file://localhost/Users/tomzeng/%E7%99%BE%E5%BA%A6%E4%BA%91%E5%90%8C%E6%AD%A5%E7%9B%98/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90/DYiBan/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
-                  timestampString = "412399892.600585"
+                  urlString = "file://localhost/Users/tomzeng/Pictures/DYiBan/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
+                  timestampString = "412495443.612721"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "330"
                   endingLineNumber = "330"
-                  offsetFromSymbolStart = "688">
+                  offsetFromSymbolStart = "796">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -6826,13 +6826,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[DYBDataBankShareViewController handleViewSignal_DYBDtaBankSearchView:]"
                   moduleName = "DYiBan"
-                  urlString = "file://localhost/Users/tomzeng/%E7%99%BE%E5%BA%A6%E4%BA%91%E5%90%8C%E6%AD%A5%E7%9B%98/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90/DYiBan/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
-                  timestampString = "412399892.612277"
+                  urlString = "file://localhost/Users/tomzeng/Pictures/DYiBan/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
+                  timestampString = "412495443.624609"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
                   endingLineNumber = "391"
-                  offsetFromSymbolStart = "1657">
+                  offsetFromSymbolStart = "1896">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -6840,13 +6840,13 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[DYBDataBankShareViewController handleViewSignal_DYBDtaBankSearchView:]"
                   moduleName = "DYiBan"
-                  urlString = "file://localhost/Users/tomzeng/%E7%99%BE%E5%BA%A6%E4%BA%91%E5%90%8C%E6%AD%A5%E7%9B%98/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90/DYiBan/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
-                  timestampString = "412399892.61251"
+                  urlString = "file://localhost/Users/tomzeng/Pictures/DYiBan/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
+                  timestampString = "412495443.624849"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
                   endingLineNumber = "391"
-                  offsetFromSymbolStart = "1901">
+                  offsetFromSymbolStart = "2162">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -10122,11 +10122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSHomeViewController.m"
-            timestampString = "407925491.351512"
+            timestampString = "412494527.177565"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-handleViewSignal_DragonViewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -10143,7 +10143,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
             endingLineNumber = "185"
-            landmarkName = "-sortPrice"
+            landmarkName = "-showORHideDownView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10159,7 +10159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "-showORHideDownView"
+            landmarkName = "-handleViewSignal_DragonViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10206,9 +10206,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-creat:"
-            landmarkType = "5">
+            endingLineNumber = "120">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10223,7 +10221,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "-handleViewSignal_DragonUITableView:"
+            landmarkName = "-sortPrice"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10246,31 +10244,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DYiBan/YiBan/MVC/View/WOS/WOSGoodFoodListCell.m"
-            timestampString = "408274267.049669"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSHomeViewController.m"
+            timestampString = "412494220.163971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "-initWithStyle:reuseIdentifier:"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-handleViewSignal_DragonViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
-            timestampString = "409031933.049335"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSHomeViewController.m"
+            timestampString = "412494240.130812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-handleViewSignal_DragonViewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -10281,13 +10279,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
-            timestampString = "409031936.818135"
+            filePath = "DYiBan/YiBan/MVC/WOS/old/Controller/LLSplitViewController.m"
+            timestampString = "412494810.056378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-handleViewSignal_DragonViewController:"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-animationDidStop:finished:context:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/WOS/old/Controller/LLSplitViewController.m"
+            timestampString = "412494813.468606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "-showViewController:animated:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/WOS/old/Controller/LLSplitViewController.m"
+            timestampString = "412494817.697174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "+getmainController"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/WOS/old/Controller/LLSplitViewController.m"
+            timestampString = "412494853.924995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
