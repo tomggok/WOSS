@@ -75,7 +75,7 @@
         [self.view insertSubview:viewBG atIndex:0];
         RELEASE(viewBG);
         
-        btnLogin = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 320/2,20)];
+        btnLogin = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320/2,20)];
         [btnLogin setBackgroundColor:[UIColor blackColor]];
         [btnLogin setTitle:@"登陆" forState:UIControlStateNormal];
         [btnLogin setTitleColor:ColorTextYellow forState:UIControlStateNormal];
@@ -89,7 +89,7 @@
         [viewBG addSubview:imageViewMid];
         RELEASE(imageViewMid);
         
-        btnResgin = [[UIButton alloc]initWithFrame:CGRectMake(320/2+1 , 44.0f, 320/2,20)];
+        btnResgin = [[UIButton alloc]initWithFrame:CGRectMake(320/2+1 , self.headHeight, 320/2,20)];
         [btnResgin setBackgroundColor:[UIColor blackColor]];
         [btnResgin setTitle:@"注册" forState:UIControlStateNormal];
         [btnResgin setTag:11];
