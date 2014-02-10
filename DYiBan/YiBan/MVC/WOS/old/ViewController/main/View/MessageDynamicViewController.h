@@ -1,6 +1,6 @@
 //
 //  MessageDynamicViewController.h
-//  magic
+//  Magic
 //
 //  Created by tom zeng on 12-11-3.
 //

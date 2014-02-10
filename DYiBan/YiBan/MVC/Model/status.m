@@ -1,6 +1,6 @@
 //
 //  status.m
-//  magic
+//  Magic
 //
 //  Created by tom zeng on 12-11-10.
 //

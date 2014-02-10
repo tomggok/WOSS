@@ -21,8 +21,8 @@
 @interface WOShopDetailViewController (){
 
     UIScrollView *viewBG;
-    DragonUIButton *btn1;
-    DragonUIButton *btn2;
+    MagicUIButton *btn1;
+    MagicUIButton *btn2;
 }
 
 @end
@@ -53,11 +53,11 @@ DEF_SIGNAL(BTNTWO);
     // Dispose of any resources that can be recreated.
 }
 
--(void)handleViewSignal_DragonViewController:(DragonViewSignal *)signal{
+-(void)handleViewSignal_MagicViewController:(MagicViewSignal *)signal{
     
     DLogInfo(@"name -- %@",signal.name);
     
-    if ([signal is:[DragonViewController LAYOUT_VIEWS]])
+    if ([signal is:[MagicViewController LAYOUT_VIEWS]])
     {
         //        [self.rightButton setHidden:YES];
         [self.headview setTitle:@"餐厅详情"];
@@ -69,14 +69,14 @@ DEF_SIGNAL(BTNTWO);
          [self.view setBackgroundColor: ColorBG];
         
     }
-    else if ([signal is:[DragonViewController CREATE_VIEWS]]) {
+    else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         [self.rightButton setHidden:YES];
         
         
         
         
-        DragonRequest *request = [DYBHttpMethod wosKitchenInfo_kitchenIndex:[_dictInfo objectForKey:@"kitchenIndex"] userIndex:SHARED.userId hotFoodCount:@"4" sAlert:YES receive:self];
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_kitchenIndex:[_dictInfo objectForKey:@"kitchenIndex"] userIndex:SHARED.userId hotFoodCount:@"4" sAlert:YES receive:self];
         [request setTag:3];
         
         
@@ -85,14 +85,14 @@ DEF_SIGNAL(BTNTWO);
     }
    
     
-    else if ([signal is:[DragonViewController WILL_APPEAR]]) {
+    else if ([signal is:[MagicViewController WILL_APPEAR]]) {
         
         DLogInfo(@"rrr");
         
         if (!btn1) {
             
             UIImage *iamge = [UIImage imageNamed:@"22_22"];
-            btn1 = [[DragonUIButton alloc]initWithFrame:CGRectMake(245.0f,(44 - iamge.size.height/2)/2,iamge.size.width/2, iamge.size.height/2 )];
+            btn1 = [[MagicUIButton alloc]initWithFrame:CGRectMake(245.0f,(self.headHeight - iamge.size.height/2)/2,iamge.size.width/2, iamge.size.height/2 )];
             [btn1 addSignal:[WOShopDetailViewController BTNONE] forControlEvents:UIControlEventTouchUpInside];
             [btn1 addTarget:self action:@selector(doCollent) forControlEvents:UIControlEventTouchUpInside];
             [btn1 setImage:iamge forState:UIControlStateNormal];
@@ -104,7 +104,7 @@ DEF_SIGNAL(BTNTWO);
         
         if (!btn2) {
              UIImage *iamge = [UIImage imageNamed:@"22_08"];
-            btn2 = [[DragonUIButton alloc]initWithFrame:CGRectMake(285.0f,(44 - iamge.size.height/2)/2,iamge.size.width/2, iamge.size.height/2  )];
+            btn2 = [[MagicUIButton alloc]initWithFrame:CGRectMake(285.0f,(self.headHeight - iamge.size.height/2)/2,iamge.size.width/2, iamge.size.height/2  )];
             [btn2 addSignal:[WOShopDetailViewController BTNTWO] forControlEvents:UIControlEventTouchUpInside];
             [btn2 addTarget:self action:@selector(doShare) forControlEvents:UIControlEventTouchUpInside];
             [btn2 setImage:iamge forState:UIControlStateNormal];
@@ -115,7 +115,7 @@ DEF_SIGNAL(BTNTWO);
         }
         
 
-    } else if ([signal is:[DragonViewController DID_DISAPPEAR]]){
+    } else if ([signal is:[MagicViewController DID_DISAPPEAR]]){
         
         
     }
@@ -125,7 +125,7 @@ DEF_SIGNAL(BTNTWO);
 
 -(void)doCollent{
 
-    DragonRequest *request = [DYBHttpMethod wosKitchenInfo_favorite_userIndex:SHARED.userId kitchenIndex:[_dictInfo objectForKey:@"kitchenIndex"] sAlert:YES receive:self];
+    MagicRequest *request = [DYBHttpMethod wosKitchenInfo_favorite_userIndex:SHARED.userId kitchenIndex:[_dictInfo objectForKey:@"kitchenIndex"] sAlert:YES receive:self];
     [request setTag:2];
 
 }
@@ -141,13 +141,13 @@ DEF_SIGNAL(BTNTWO);
 
 
     
-    UIScrollView *scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, self.view.frame.size.height - 44)];
+    UIScrollView *scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, self.view.frame.size.height - self.headHeight)];
     [scrollview setUserInteractionEnabled:YES];
     [self.view addSubview:scrollview];
     RELEASE(scrollview);
     [scrollview setContentSize:CGSizeMake(320.0f, 524)];
     
-    viewBG = [[UIScrollView alloc]initWithFrame:CGRectMake(10.0f, 44 + 10, 300.0f, self.view.frame.size.height - 44)];
+    viewBG = [[UIScrollView alloc]initWithFrame:CGRectMake(10.0f, self.headHeight + 10, 300.0f, self.view.frame.size.height - self.headHeight + 10)];
     [viewBG setBackgroundColor:[UIColor whiteColor]];
     [scrollview addSubview:viewBG];
     RELEASE(viewBG);
@@ -282,7 +282,7 @@ DEF_SIGNAL(BTNTWO);
     [viewBG setFrame:CGRectMake(10.0f, viewBG.frame.origin.y, 300, CGRectGetMidY(textView.frame) + CGRectGetHeight(textView.frame) + 20)];
     
     UIImage *image2 = [UIImage imageNamed:@"031"];
-    UIButton *btnAction = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(viewBG.frame) +30 + 44,image2.size.width/2, image1.size.height/2)];
+    UIButton *btnAction = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(viewBG.frame) +30 + self.headHeight ,image2.size.width/2, image1.size.height/2)];
     //        [btnAction setBackgroundColor:[UIColor yellowColor]];
     [btnAction setImage:image1 forState:UIControlStateNormal];
     [scrollview addSubview:btnAction];
@@ -292,7 +292,7 @@ DEF_SIGNAL(BTNTWO);
     [self addlabel_title:@"立即点餐" frame:btnAction.frame view:btnAction];
     
     
-    UIButton *btnPL = [[UIButton alloc]initWithFrame:CGRectMake(170.0f, + CGRectGetHeight(viewBG.frame) +30 + 44, image2.size.width/2, image2.size.height/2)];
+    UIButton *btnPL = [[UIButton alloc]initWithFrame:CGRectMake(170.0f, + CGRectGetHeight(viewBG.frame) +30 + self.headHeight, image2.size.width/2, image2.size.height/2)];
     [btnPL setBackgroundColor:[UIColor clearColor]];
     [btnPL setImage:image2 forState:UIControlStateNormal];
     [btnPL addTarget:self action:@selector(doComment) forControlEvents:UIControlEventTouchUpInside];
@@ -323,7 +323,7 @@ DEF_SIGNAL(BTNTWO);
 
 -(void)creatCell:(int)indexRow info:(NSString *)dict{
 
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 70 + indexRow * 40 + 10 - 44, 320.0f, 40)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 70 + indexRow * 40 + 10 - self.headHeight, 320.0f, 40)];
     [view setBackgroundColor:[UIColor clearColor]];
     [viewBG addSubview:view];
     RELEASE(view);
@@ -361,7 +361,7 @@ DEF_SIGNAL(BTNTWO);
     if (indexRow != 0) {
         
         UIImage *image = [UIImage imageNamed:@"01_04"];
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(280.0f, (44 - image.size.width/2)/2, image.size.width/2, image.size.height/2)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(280.0f, (self.headHeight - image.size.width/2)/2, image.size.width/2, image.size.height/2)];
         [imageView setImage:image];
         [view addSubview:imageView];
         RELEASE(imageView);
@@ -382,9 +382,6 @@ DEF_SIGNAL(BTNTWO);
     [imageView1 setBackgroundColor:[UIColor grayColor]];
     [view addSubview:imageView1];
     RELEASE(imageView1);
-    
-    [view setFrame:CGRectMake(CGRectGetMinX(view.frame), CGRectGetMinY(view.frame), CGRectGetWidth(view.frame), CGRectGetMinY(imageView1.frame) + CGRectGetHeight(imageView1.frame))];
-
 }
 
 -(void)doTapMap{
@@ -402,7 +399,7 @@ DEF_SIGNAL(BTNTWO);
 
 -(void)creatPicBar:(int)num{
 
-    UIView *viewBg = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 70 + 3 * 40 + 10 - 44, 300, 44)];
+    UIView *viewBg = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 70 + 3 * 40 + 10 - self.headHeight, 300, self.headHeight)];
     [viewBG addSubview:viewBg];
     [viewBg release];
     
@@ -459,7 +456,7 @@ DEF_SIGNAL(BTNTWO);
 
 }
 
--(void)handleViewSignal_WOShopDetailViewController:(DragonViewSignal *)signal{
+-(void)handleViewSignal_WOShopDetailViewController:(MagicViewSignal *)signal{
 
     if ([signal is:[WOShopDetailViewController BTNONE]]) {
         DLogInfo(@"DDDD");
@@ -471,7 +468,7 @@ DEF_SIGNAL(BTNTWO);
 
 }
 #pragma mark - back button signal
-- (void)handleViewSignal_DYBBaseViewController:(DragonViewSignal *)signal
+- (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
 {
     if ([signal is:[DYBBaseViewController BACKBUTTON]])
     {
@@ -486,7 +483,7 @@ DEF_SIGNAL(BTNTWO);
 
 
 #pragma mark- 只接受HTTP信号
-- (void)handleRequest:(DragonRequest *)request receiveObj:(id)receiveObj
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
 {
     if ([request succeed])
     {
@@ -501,12 +498,12 @@ DEF_SIGNAL(BTNTWO);
                 if (!result) {
                     
                     _dictInfo = dict;
-                   [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:DRAGONPOPALERTVIEWINDICATOR];
+                   [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
                     
                 }else{
                     NSString *strMSG = [dict objectForKey:@"message"];
                     
-                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:DRAGONPOPALERTVIEWINDICATOR];
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
                     
                     
                 }
@@ -528,7 +525,7 @@ DEF_SIGNAL(BTNTWO);
                 else{
                     NSString *strMSG = [dict objectForKey:@"message"];
                     
-                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:DRAGONPOPALERTVIEWINDICATOR];
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
                     
                     
                 }
@@ -538,7 +535,7 @@ DEF_SIGNAL(BTNTWO);
             NSDictionary *dict = [request.responseString JSONValue];
             NSString *strMSG = [dict objectForKey:@"message"];
             
-            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:DRAGONPOPALERTVIEWINDICATOR];
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
             
             
         }

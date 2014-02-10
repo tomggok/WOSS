@@ -1,6 +1,6 @@
 //
 //  JsonResponse.h
-//  magic
+//  Magic
 //
 //  Created by 周 哲 on 12-11-1.
 //
@@ -10,7 +10,7 @@
 //#import "Jastor.h"
 
 //服务器返回的json数据格式封装成的对象
-@interface JsonResponse : DragonJSONReflection
+@interface JsonResponse : MagicJSONReflection
 
 @property (assign,nonatomic) int response;
 @property (retain ,nonatomic) NSString *message;

@@ -1,6 +1,6 @@
 //
 //  tags.h
-//  magic
+//  Magic
 //
 //  Created by tom zeng on 12-11-10.
 //
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 //#import "Jastor.h"
-@interface tags : DragonJSONReflection
+@interface tags : MagicJSONReflection
 @property(nonatomic,assign)int id;//标签
 @property(nonatomic,retain)NSString *color;//颜色 1--12
 @property(nonatomic,retain)NSString*content;//内容

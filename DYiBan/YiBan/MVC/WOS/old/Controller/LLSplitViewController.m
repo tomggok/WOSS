@@ -71,7 +71,7 @@
 //	{
 		[self.view addSubview:_controllerHome.view];
 //        CGRect rect = [Static iphone5Frame];
-		_controllerHome.view.frame = CGRectMake(0, -20, 320, self.view.frame.size.height);
+		_controllerHome.view.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
     
          // 添加阴影
          _controllerHome.view.layer.shadowPath =[UIBezierPath bezierPathWithRect:_controllerHome.view.bounds].CGPath;
@@ -240,7 +240,7 @@
     
     if (!_controllerHome) {
         UINavigationController *s = [[UINavigationController alloc] initWithRootViewController:controller_];
-        [s setNavigationBarHidden:NO];
+        [s setNavigationBarHidden:YES];
         self.controllerHome = s; //设置 navigation 可以使用push
         //        if (![AppDelegate sharedAppDelegate].nc) {
         //            [AppDelegate sharedAppDelegate].nc = [[UINavigationController alloc] initWithRootViewController:self];
