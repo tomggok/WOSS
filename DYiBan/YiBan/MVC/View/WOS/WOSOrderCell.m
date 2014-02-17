@@ -42,7 +42,7 @@ DEF_SIGNAL(DOORDER)
 //    RELEASE(imageHaveAdd);
     _dictInfo = dict;
     UILabel *labelName = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100.0f, 15.0f)];
-    [labelName setTextColor:[UIColor whiteColor]];
+    [labelName setTextColor:[UIColor blackColor]];
     [labelName setBackgroundColor:[UIColor clearColor]];
     [labelName setText:[dict objectForKey:@"foodName"]];
     [labelName sizeToFit];

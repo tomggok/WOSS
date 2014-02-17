@@ -545,7 +545,7 @@ DEF_SIGNAL(BTNTWO);
 
 - (void)dealloc
 {
-    RELEASE(_dictInfo);
+//    RELEASE(_dictInfo);
     [super dealloc];
 }
 @end

@@ -1963,7 +1963,7 @@
     [dict setValue:starLevel  forKey:@"starLevel"];
     [dict setValue:comment  forKey:@"comment"];
     
-    [dict setValue:@"food/list.do" forKey:INTERFACEDOACTION];
+    [dict setValue:@"comment/kitchen/add.do" forKey:INTERFACEDOACTION];
     return dict;
     
 }
@@ -1986,6 +1986,55 @@
     [dict setValue:userIndex  forKey:@"userIndex"];
     [dict setValue:kitchenIndex  forKey:@"kitchenIndex"];
     [dict setValue:@"me/deals.do" forKey:INTERFACEDOACTION];
+    return dict;
+}
+
+//order/add.do
++ (NSMutableDictionary *)wosKitchenInfo_orderadd_userIndex:(NSString *)userIndex kitchenIndex:(NSString *)kitchenIndex userAddrIndex:(NSString *)userAddrIndex persons:(NSString *)persons remarks:(NSString *)remarks dealsIndexs:(NSString *)dealsIndexs foodIndexs:(NSString *)foodIndexs countIndexs:(NSString *)countIndexs{
+    
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:userIndex  forKey:@"userIndex"];
+    [dict setValue:kitchenIndex  forKey:@"kitchenIndex"];
+    [dict setValue:userIndex  forKey:@"userAddrIndex"];
+    [dict setValue:persons  forKey:@"persons"];
+    [dict setValue:remarks  forKey:@"remarks"];
+    [dict setValue:dealsIndexs  forKey:@"dealsIndexs"];
+    [dict setValue:foodIndexs  forKey:@"foodIndexs"];
+    [dict setValue:countIndexs  forKey:@"countIndexs"];
+    [dict setValue:@"order/add.do" forKey:INTERFACEDOACTION];
+    return dict;
+}
+
++ (NSMutableDictionary *)wosKitchenInfo_addrList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count{
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:page   forKey:@"page"];
+    [dict setValue:userIndex  forKey:@"userIndex"];
+    [dict setValue:count   forKey:@"count"];
+    [dict setValue:@"address/list.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+}
+
++ (NSMutableDictionary *)wosKitchenInfo_addrAdd_userIndex:(NSString *)userIndex receiverAddress:(NSString *)receiverAddress receiverName:(NSString *)receiverName receiverPhoneNo:(NSString *)receiverPhoneNo{
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:receiverAddress   forKey:@"receiverAddress"];
+    [dict setValue:userIndex  forKey:@"userIndex"];
+    [dict setValue:receiverPhoneNo   forKey:@"receiverPhoneNo"];
+    [dict setValue:receiverName   forKey:@"receiverName"];
+    [dict setValue:@"address/add.do" forKey:INTERFACEDOACTION];
+    return dict;
+    
+}
+
++ (NSMutableDictionary *)wosKitchenInfo_favoriteList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count{
+   
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:page   forKey:@"page"];
+    [dict setValue:userIndex  forKey:@"userIndex"];
+    [dict setValue:count   forKey:@"count"];
+    [dict setValue:@"favorite/list.do" forKey:INTERFACEDOACTION];
     return dict;
 }
 

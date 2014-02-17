@@ -188,7 +188,7 @@
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
-                    
+                    [self.drNavigationController popViewControllerAnimated:YES];
                     
                    
                     

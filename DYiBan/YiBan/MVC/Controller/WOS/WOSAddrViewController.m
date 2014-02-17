@@ -9,10 +9,15 @@
 #import "WOSAddrViewController.h"
 #import "WOSAddrCell.h"
 #import "WOSAddAddrViewController.h"
-
+#import "JSONKit.h"
+#import "JSON.h"
 
 @interface WOSAddrViewController ()
+{
+    NSMutableArray *arrayAddrList;
+    MagicUITableView *tableView1;
 
+}
 @end
 
 @implementation WOSAddrViewController
@@ -47,6 +52,12 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         [self.view setBackgroundColor:[UIColor clearColor]];
+        NSLog(@"useid -- %@",SHARED.userId);
+        
+//        arrayAddrList = [[NSMutableArray alloc]init];
+        
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_addrList_userIndex:SHARED.userId page:@"0" count:@"3" sAlert:YES receive:self];
+        [request setTag:3];
         
         
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
@@ -57,13 +68,13 @@
         
        
         
-        MagicUITableView *tableView = [[MagicUITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
-        [tableView setBackgroundColor:[UIColor clearColor]];
-        [tableView setSeparatorColor:[UIColor clearColor]];
-        [self.view addSubview:tableView];
-        RELEASE(tableView);
+        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
+        [tableView1 setBackgroundColor:[UIColor clearColor]];
+        [tableView1 setSeparatorColor:[UIColor clearColor]];
+        [self.view addSubview:tableView1];
+        RELEASE(tableView1);
         
-        UIButton *btnBack = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(tableView.frame) + CGRectGetMinY(tableView.frame) + 20, 300, 44)];
+        UIButton *btnBack = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(tableView1.frame) + CGRectGetMinY(tableView1.frame) + 20, 300, 44)];
         [btnBack addTarget:self action:@selector(addNewAddr) forControlEvents:UIControlEventTouchUpInside];
         [btnBack setBackgroundColor:[UIColor clearColor]];
          [self.view addSubview:btnBack];
@@ -109,7 +120,7 @@
     
     if ([signal is:[MagicUITableView TABLENUMROWINSEC]])//numberOfRowsInSection
     {
-        NSNumber *s = [NSNumber numberWithInteger:5];
+        NSNumber *s = [NSNumber numberWithInteger:arrayAddrList.count];
         [signal setReturnValue:s];
         
     }else if ([signal is:[MagicUITableView TABLENUMOFSEC]])//numberOfSectionsInTableView
@@ -143,12 +154,12 @@
     {
         NSDictionary *dict = (NSDictionary *)[signal object];
         NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
-        //        UITableView *tableView = [dict objectForKey:@"tableView"];
         
         WOSAddrCell *cell = [[WOSAddrCell alloc]init];
         [cell setBackgroundColor:[UIColor colorWithRed:46/255 green:46/255 blue:46/255 alpha:1.0f]];
-
+        [cell creatCell:[arrayAddrList objectAtIndex:indexPath.row]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
         [signal setReturnValue:cell];
         
         
@@ -205,5 +216,67 @@
     
     [super dealloc];
 }
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+        //        JsonResponse *response = (JsonResponse *)receiveObj;
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+//                    _dictInfo = dict;
+//                    [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    arrayAddrList = [[NSMutableArray alloc]initWithArray:[dict objectForKey:@"userAddressList"]];
+//                    [self creatView:dict];
+                    [tableView1 reloadData];
+                    //                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];
+                    //                    [btn setTag:10];
+                    //                    [self doChange:btn];
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
 
 @end

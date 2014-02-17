@@ -446,5 +446,13 @@
 
 + (MagicRequest *)wosKitchenInfo_medeals_userIndex:(NSString *)userIndex kitchenIndex:(NSString *)kitchenIndex sAlert:(BOOL)isAlert receive:(id)receive;
 
++ (MagicRequest *)wosKitchenInfo_orderadd_userIndex:(NSString *)userIndex kitchenIndex:(NSString *)kitchenIndex userAddrIndex:(NSString *)userAddrIndex persons:(NSString *)persons remarks:(NSString *)remarks dealsIndexs:(NSString *)dealsIndexs foodIndexs:(NSString *)foodIndexs countIndexs:(NSString *)countIndexs sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosKitchenInfo_addrList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosKitchenInfo_addrAdd_userIndex:(NSString *)userIndex receiverAddress:(NSString *)receiverAddress receiverName:(NSString *)receiverName receiverPhoneNo:(NSString *)receiverPhoneNo sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosKitchenInfo_favoriteList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
+
 
 @end

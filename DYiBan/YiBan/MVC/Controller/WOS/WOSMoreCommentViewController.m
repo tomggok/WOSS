@@ -72,7 +72,7 @@
         [request setTag:2];
 
         
-        tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 + 40, 320.0f, self.view.frame.size.height - 44 - 40) isNeedUpdate:NO];
+        tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight + 40, 320.0f, self.view.frame.size.height -  self.headHeight - 40) isNeedUpdate:NO];
         [tbDataBank1.footerView setHidden:YES];
         [tbDataBank1.headerView setHidden:YES];
         [tbDataBank1 setTableViewType:DTableViewSlime];
@@ -249,7 +249,7 @@
 
 -(void)creatBar{
     
-    UIView *view  = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 40)];
+    UIView *view  = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, 40)];
     [view setTag:90];
     [view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:view];

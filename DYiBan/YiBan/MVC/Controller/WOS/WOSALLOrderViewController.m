@@ -73,7 +73,7 @@
         MagicRequest *request = [DYBHttpMethod wosKitchenInfo_foodlist:[_dictInfo objectForKey:@"kitchenIndex"]sAlert:YES receive:self];
         [request setTag:3];
         
-        UIView *viewBG = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 44, 320.0f, self.view.frame.size.height - 44)];
+        UIView *viewBG = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, self.view.frame.size.height - self.headHeight)];
         [viewBG setBackgroundColor:[UIColor blackColor]];
         [self.view addSubview:viewBG];
         RELEASE(viewBG);
@@ -82,7 +82,7 @@
         UIImage *image = [UIImage imageNamed:@"menu_inactive"];
        
         
-        tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(image.size.width/2, 44, 320.0f - 50, self.view.frame.size.height -44  ) isNeedUpdate:YES];
+        tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(image.size.width/2, self.headHeight, 320.0f - 50, self.view.frame.size.height - self.headHeight  ) isNeedUpdate:YES];
         [tbDataBank1 setBackgroundColor:[UIColor blackColor]];
         [self.view addSubview:tbDataBank1];
                [tbDataBank1 setSeparatorColor:[UIColor colorWithRed:78.0f/255 green:78.0f/255 blue:78.0f/255 alpha:1.0f]];
@@ -271,7 +271,7 @@ static NSString *cellName = @"cellName";
         
         float offset = image.size.height/2;
         
-        UIButton *btnHome = [[UIButton alloc]initWithFrame:CGRectMake(.0f, 44 + 3 + offset * i, image.size.width/2, image.size.height/2)];
+        UIButton *btnHome = [[UIButton alloc]initWithFrame:CGRectMake(.0f, self.headHeight + 3 + offset * i, image.size.width/2, image.size.height/2)];
         [btnHome setImage:image forState:UIControlStateNormal];
         [btnHome setImage:[UIImage imageNamed:@"menu_active"] forState:UIControlStateSelected];
         [btnHome setTag:100 + i];
@@ -336,7 +336,7 @@ static NSString *cellName = @"cellName";
                     
                     UIImage *image = [UIImage imageNamed:@"menu_inactive"];
                     
-                    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 44.0f, image.size.width/2, self.view.frame.size.height - 44)];
+                    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, image.size.width/2, self.view.frame.size.height - self.headHeight)];
                     [rightView setBackgroundColor:[UIColor colorWithRed:46.0f/255 green:46.0f/255 blue:46.0f/255 alpha:1.0f]];
                     [self.view addSubview:rightView];
                     RELEASE(rightView);
