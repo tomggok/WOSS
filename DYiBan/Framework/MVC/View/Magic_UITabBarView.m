@@ -135,7 +135,7 @@ DEF_SIGNAL(TABBARDIDSELCT)//选中
     {
         if (isHidden)
         {
-            CHANGEFRAMEORIGIN(self.tabBar.frame, self.tabBar.frame.origin.x, self.tabBar.frame.origin.y + _barHeight);
+            CHANGEFRAMEORIGIN(self.tabBar.frame, self.tabBar.frame.origin.x, self.tabBar.frame.origin.y + 1000);
         }else
         {
             CHANGEFRAMEORIGIN(self.tabBar.frame, self.tabBar.frame.origin.x, self.tabBar.frame.origin.y - _barHeight);

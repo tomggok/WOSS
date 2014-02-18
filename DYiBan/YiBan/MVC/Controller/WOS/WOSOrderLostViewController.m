@@ -66,7 +66,7 @@
         
         for (int i = 0; i< 3; i ++) {
             
-            UIButton *btn1 = [[UIButton alloc]initWithFrame:CGRectMake(0.0f + i*320/3 + i*1, 44.0f, 320/3, 30)];
+            UIButton *btn1 = [[UIButton alloc]initWithFrame:CGRectMake(0.0f + i*320/3 + i*1, self.headHeight, 320/3, 30)];
             [btn1 setTitle:@"处理中" forState:UIControlStateNormal];
             [btn1 setTitleColor:ColorGryWhite forState:UIControlStateNormal];
             switch (i) {
@@ -78,7 +78,7 @@
                     [btn1 setTitle:@"配送中" forState:UIControlStateNormal];
                     break;
                 case 2:
-                    [btn1 setFrame:CGRectMake(0.0f + i*320/3 + i *0.5 , 44.0f, 320/3, 30)];
+                    [btn1 setFrame:CGRectMake(0.0f + i*320/3 + i *0.5 , self.headHeight, 320/3, 30)];
                     [btn1 setTitle:@"已送到" forState:UIControlStateNormal];
                     break;
                     
@@ -101,7 +101,7 @@
         
         
              
-        tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f,  50 + 24, 320.0f, self.view.frame.size.height - 44) isNeedUpdate:YES];
+        tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f,  self.headHeight + 30, 320.0f, self.view.frame.size.height - self.headHeight - 30) isNeedUpdate:YES];
         
         [tbDataBank1 setSeparatorColor:[UIColor clearColor]];
         [tbDataBank1 setTableViewType:DTableViewSlime];

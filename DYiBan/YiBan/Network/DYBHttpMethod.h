@@ -454,5 +454,8 @@
 
 + (MagicRequest *)wosKitchenInfo_favoriteList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
 
++ (MagicRequest *)wosKitchenInfo_activityList_count:(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
 
+
++ (MagicRequest *)wosKitchenInfo_orderList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count status :(NSString *)status sAlert:(BOOL)isAlert receive:(id)receive;
 @end

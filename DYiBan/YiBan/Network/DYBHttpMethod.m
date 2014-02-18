@@ -1602,7 +1602,6 @@
     MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
     return dre;
 
-
 }
 
 
@@ -1628,6 +1627,24 @@
 + (MagicRequest *)wosKitchenInfo_favoriteList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive{
 
     NSMutableDictionary *dict = [DYBHttpInterface wosKitchenInfo_favoriteList_userIndex:userIndex page:page count:count];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+
+}
+
++ (MagicRequest *)wosKitchenInfo_activityList_count:(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive{
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosKitchenInfo_activityList_count:count];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+
+}
+
++ (MagicRequest *)wosKitchenInfo_orderList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count status :(NSString *)status sAlert:(BOOL)isAlert receive:(id)receive {
+    
+    NSMutableDictionary *dict = [DYBHttpInterface wosKitchenInfo_orderList_userIndex:userIndex page:page count:count status:status];
     DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
     MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
     return dre;

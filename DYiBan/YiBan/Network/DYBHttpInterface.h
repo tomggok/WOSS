@@ -472,4 +472,10 @@
 //favorite/list.do
 + (NSMutableDictionary *)wosKitchenInfo_favoriteList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count;
 
+//activity/list.do
++ (NSMutableDictionary *)wosKitchenInfo_activityList_count:(NSString *)count;
+
+//order/list.do
++ (NSMutableDictionary *)wosKitchenInfo_orderList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count status :(NSString *)status ;
+
 @end

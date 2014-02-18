@@ -16,9 +16,13 @@
 #import "WOSThinkYouLikeViewController.h"
 #import "WOSFindFoodViewController.h"
 
+#import "JSONKit.h"
+#import "JSON.h"
+
 @interface WOSHomeViewController (){
     SGFocusImageFrame *bannerView;
     UIScrollView *scrollView;
+    NSMutableArray *arrayResult;
 }
 
 @end
@@ -71,6 +75,9 @@
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         [self.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, self.view.frame.size.height + 120)];
+        
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_activityList_count:@"4" sAlert:YES receive:self];
+        [request setTag:3];
         
        scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight- 44, 320, self.view.frame.size.height+ 44 - self.headHeight + 44)];
         [scrollView setBackgroundColor:[UIColor colorWithRed:61.0f/255 green:61.0f/255  blue:61.0f/255  alpha:1.0f]];
@@ -177,7 +184,7 @@
 -(void)creatBanner{
     
     //添加最后一张图 用于循环
-    int length = 4;
+    int length = arrayResult.count;
     NSMutableArray *tempArray = [NSMutableArray array];
     for (int i = 0 ; i < length; i++)
     {
@@ -294,22 +301,73 @@
 //        DYBUITabbarViewController *dync = [DYBUITabbarViewController sharedInstace];
 //        [dync scrollMainView:1];
     }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
-        //        DYBPublishViewController *vc = [[DYBPublishViewController alloc] init:nil activeid:nil bActive:NO];
-        //        [self.drNavigationController pushViewController:vc animated:YES];
-        //        RELEASE(vc);
-        
         
         WOSPersonInfoViewController *person = [[WOSPersonInfoViewController alloc]init];
         [self.drNavigationController pushViewController:person animated:YES];
         RELEASE(person);
         
-//        WOSALLOrderViewController *allOrder = [[WOSALLOrderViewController alloc]init];
-//        [self.drNavigationController pushViewController:allOrder animated:YES];
-//        RELEASE(allOrder);
         
     }
     
 }
+
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+        
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            arrayResult  = [[NSMutableArray alloc]initWithArray:[dict objectForKey:@"activityList"]];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+//                    [tableView1 reloadData];
+                    
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
+
+
 
 - (void)dealloc
 {

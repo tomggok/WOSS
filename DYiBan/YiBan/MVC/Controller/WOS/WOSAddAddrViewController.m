@@ -202,8 +202,6 @@
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
-//                    _dictInfo = dict;
-//                    [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
                     
                 }else{
                     NSString *strMSG = [dict objectForKey:@"message"];
@@ -221,11 +219,6 @@
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
-                    
-//                    [self creatView:dict];
-                    //                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];
-                    //                    [btn setTag:10];
-                    //                    [self doChange:btn];
                     [self.drNavigationController popViewControllerAnimated:YES];
                 }
                 else{

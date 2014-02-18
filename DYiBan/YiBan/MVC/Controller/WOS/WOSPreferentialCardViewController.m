@@ -55,7 +55,7 @@
         
         [self.view setBackgroundColor:[UIColor clearColor]];
         
-        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_medeals_userIndex:SHARED.userId kitchenIndex:nil sAlert:YES receive:self];
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_medeals_userIndex:SHARED.userId kitchenIndex:@"1" sAlert:YES receive:self];
         [request setTag:3];
         
         tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];

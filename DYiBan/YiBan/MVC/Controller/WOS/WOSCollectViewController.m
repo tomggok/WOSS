@@ -131,6 +131,7 @@
         NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
         
         WOShopDetailViewController *shop = [[WOShopDetailViewController alloc]init];
+        shop.dictInfo = [arrayResult objectAtIndex:indexPath.row];
         [self.drNavigationController pushViewController:shop animated:YES];
         RELEASE(shop);
         

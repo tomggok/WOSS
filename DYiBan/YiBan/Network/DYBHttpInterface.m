@@ -2038,4 +2038,27 @@
     return dict;
 }
 
++ (NSMutableDictionary *)wosKitchenInfo_activityList_count:(NSString *)count{
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:count forKey:@"count"];
+    [dict setValue:@"activity/list.do" forKey:INTERFACEDOACTION];
+    return dict;
+    
+}
+
+
++ (NSMutableDictionary *)wosKitchenInfo_orderList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count status :(NSString *)status{
+
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:page   forKey:@"page"];
+    [dict setValue:userIndex  forKey:@"userIndex"];
+    [dict setValue:count   forKey:@"count"];
+    [dict setValue:status   forKey:@"status"];
+    [dict setValue:@"order/list.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+
+}
 @end
