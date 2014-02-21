@@ -15,7 +15,7 @@
 #import "WOSMapViewController.h"
 #import "WOSThinkYouLikeViewController.h"
 #import "WOSFindFoodViewController.h"
-
+#import "WOSActivityDetailViewController.h"
 #import "JSONKit.h"
 #import "JSON.h"
 
@@ -88,10 +88,12 @@
         
         [self.view setBackgroundColor:[UIColor clearColor]];
         
-        [self creatBanner];
+//        [self creatBanner];
+        
+         UIImage *image = [UIImage imageNamed:@"flash.png"];
         
         UIImage *imageGoodFood = [UIImage imageNamed:@"list.png"];
-        UIButton *btnGoodFood = [[UIButton alloc]initWithFrame:CGRectMake((320 - imageGoodFood.size.width/2)/2, CGRectGetHeight(bannerView.frame) + CGRectGetMinY(bannerView.frame) + 5 , imageGoodFood.size.width/2, imageGoodFood.size.height/2)];
+        UIButton *btnGoodFood = [[UIButton alloc]initWithFrame:CGRectMake((320 - imageGoodFood.size.width/2)/2, 45 + image.size.height/2 , imageGoodFood.size.width/2, imageGoodFood.size.height/2)];
 //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
         [btnGoodFood addTarget:self action:@selector(goodFood) forControlEvents:UIControlEventTouchUpInside];
         [btnGoodFood setImage:imageGoodFood forState:UIControlStateNormal];
@@ -193,51 +195,52 @@
     }
     
     NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
-    if (length > 1)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:length-1];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:-1] autorelease];
-        [itemArray addObject:item];
-    }
-    for (int i = 0; i < length; i++)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:i];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:i] autorelease];
-        [itemArray addObject:item];
-        
-    }
-    //添加第一张图 用于循环
-    if (length >1)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:0];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:length] autorelease];
-        [itemArray addObject:item];
-    }
-    
+//    if (length > 1)
+//    {
+//        NSDictionary *dict = [tempArray objectAtIndex:length-1];
+//        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:-1] autorelease];
+//        [itemArray addObject:item];
+//    }
+//    for (int i = 0; i < length; i++)
+//    {
+//        NSDictionary *dict = [tempArray objectAtIndex:i];
+//        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:i] autorelease];
+//        [itemArray addObject:item];
+//        
+//    }
+//    //添加第一张图 用于循环
+//    if (length >1)
+//    {
+//        NSDictionary *dict = [tempArray objectAtIndex:0];
+//        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:length] autorelease];
+//        [itemArray addObject:item];
+//    }
+//
 //    [arrayResultTitle];
     NSMutableArray *arrayResultTitle = [[NSMutableArray alloc]init];
-    [arrayResultTitle addObject:@"eee"];
-    [arrayResultTitle addObject:@"4444"];
-    [arrayResultTitle addObject:@"3333"];
-    [arrayResultTitle addObject:@"6666"];
+
     
     
     NSMutableArray *arrayImage = [[NSMutableArray alloc]init];
-    [arrayImage addObject:@"flash.png"];
-    [arrayImage addObject:@"flash.png"];
-    [arrayImage addObject:@"flash.png"];
-    [arrayImage addObject:@"flash.png"];
+    
+    for (int i = 0; i < arrayResult.count; i ++) {
+        [arrayResultTitle addObject:@"6666"];
+        [arrayImage addObject:[DYBShareinstaceDelegate addIPImage:[[arrayResult objectAtIndex:i] objectForKey:@"imgUrl"]]];
+
+    }
+
     
     UIImage *image = [UIImage imageNamed:@"flash.png"];
     
     bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake((320-  image.size.width/2)/2, 44 + 5, image.size.width/2, image.size.height/2) delegate:self imageItems:itemArray isAuto:NO arrayStringTotal:arrayResultTitle arrayImage:arrayImage];
 //    [bannerView setCenter:CGPointMake(160.0f, 100)];
 //    [bannerView setArrayImage:arrayImage];
-    [bannerView scrollToIndex:0];
+    bannerView.delegate = self;
+    [bannerView scrollToIndex:1];
     [scrollView addSubview:bannerView];
     [bannerView release];
     RELEASE(arrayImage);
-    
+    RELEASE(arrayResultTitle);
 }
 -(void)goodPrice{
 
@@ -345,7 +348,7 @@
                 if (!result) {
                     
 //                    [tableView1 reloadData];
-                    
+                    [self creatBanner];
                 }
                 else{
                     NSString *strMSG = [dict objectForKey:@"message"];
@@ -367,7 +370,14 @@
 }
 
 
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index{
 
+    WOSActivityDetailViewController *detail = [[WOSActivityDetailViewController alloc]init];
+    detail.dictInfo  = [arrayResult objectAtIndex:index];
+    [self.drNavigationController pushViewController:detail animated:YES];
+    RELEASE(detail);
+
+}
 
 - (void)dealloc
 {

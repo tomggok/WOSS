@@ -516,4 +516,11 @@ static DYBShareinstaceDelegate *sharedInstace = nil;
     return @"无";
 }
 
++(NSString *)addIPImage:(NSString *)string{
+    
+    NSString *ip = @"http://118.244.202.47";
+    return [ip stringByAppendingString:string];
+
+}
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B513F81A18B73C33005F85C0 /* WOSActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */; };
 		B5143ED9186BC552007677E3 /* WOSGoodPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5143ED8186BC552007677E3 /* WOSGoodPriceCell.m */; };
 		B51A12241855BC85006D8F71 /* WOSGoodFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A12231855BC85006D8F71 /* WOSGoodFoodListCell.m */; };
 		B51A12271855C5EB006D8F71 /* WOShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A12261855C5EB006D8F71 /* WOShopDetailViewController.m */; };
@@ -1265,6 +1266,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B513F81818B73C33005F85C0 /* WOSActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSActivityDetailViewController.h; sourceTree = "<group>"; };
+		B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSActivityDetailViewController.m; sourceTree = "<group>"; };
 		B5143ED7186BC552007677E3 /* WOSGoodPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSGoodPriceCell.h; sourceTree = "<group>"; };
 		B5143ED8186BC552007677E3 /* WOSGoodPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSGoodPriceCell.m; sourceTree = "<group>"; };
 		B51A12221855BC84006D8F71 /* WOSGoodFoodListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSGoodFoodListCell.h; sourceTree = "<group>"; };
@@ -3190,6 +3193,8 @@
 				B559A1841894E54200B6522A /* WOSFindFoodViewController.m */,
 				B5F7FF2C18B20E9800BBA6B7 /* WOSSandMSGViewController.h */,
 				B5F7FF2D18B20E9800BBA6B7 /* WOSSandMSGViewController.m */,
+				B513F81818B73C33005F85C0 /* WOSActivityDetailViewController.h */,
+				B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */,
 			);
 			path = WOS;
 			sourceTree = "<group>";
@@ -7015,6 +7020,7 @@
 				B5C662F118A89BFF00C5A26C /* Magic_UIPopAlertView.m in Sources */,
 				B5F7FF2E18B20E9800BBA6B7 /* WOSSandMSGViewController.m in Sources */,
 				B58CB1EA1829CF6B00F73D66 /* DYBCustomLabel.m in Sources */,
+				B513F81A18B73C33005F85C0 /* WOSActivityDetailViewController.m in Sources */,
 				B58CB1EB1829CF6B00F73D66 /* DYBDataBankShareChooseView.m in Sources */,
 				B5C662A018A89BFF00C5A26C /* NSString+MD5Addition.m in Sources */,
 				B58CB1EC1829CF6B00F73D66 /* DYBFaceView.m in Sources */,

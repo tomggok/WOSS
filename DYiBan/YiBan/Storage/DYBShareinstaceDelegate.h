@@ -78,5 +78,5 @@
 
 //设置共享类型
 +(NSString *)getPermType:(int)type;
-
++(NSString *)addIPImage:(NSString *)string;
 @end

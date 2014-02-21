@@ -11,6 +11,9 @@
 #import "WOSGoodFoodListCell.h"
 #import "WOSOrderListCell.h"
 #import "WOSOrderDetailViewController.h"
+#import "JSONKit.h"
+#import "JSON.h"
+
 
 
 @interface WOSOrderLostViewController (){
@@ -100,7 +103,15 @@
         [self.view setBackgroundColor:[UIColor clearColor]];
         
         
-             
+        
+//        wosKitchenInfo_orderList_userIndex
+        
+        
+        
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_orderList_userIndex:SHARED.userId page:@"0" count:@"2" status:@"1" sAlert:YES receive:self];
+        [request setTag:3];
+        
+        
         tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f,  self.headHeight + 30, 320.0f, self.view.frame.size.height - self.headHeight - 30) isNeedUpdate:YES];
         
         [tbDataBank1 setSeparatorColor:[UIColor clearColor]];
@@ -302,6 +313,77 @@
         
     }
     
+}
+
+
+
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    
+    if ([request succeed])
+    {
+        //        JsonResponse *response = (JsonResponse *)receiveObj;
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+//            if (dict) {
+//                BOOL result = [[dict objectForKey:@"result"] boolValue];
+//                if (!result) {
+//                    
+//                    
+//                    self.DB.FROM(USERMODLE)
+//                    .SET(@"userInfo", request.responseString)
+//                    .SET(@"userIndex",[dict objectForKey:@"userIndex"])
+//                    .INSERT();
+//                    
+//                    SHARED.userId = [dict objectForKey:@"userIndex"]; //设置userid 全局变量
+//                    
+//                    DYBUITabbarViewController *vc = [[DYBUITabbarViewController sharedInstace] init:self];
+//                    
+//                    [self.drNavigationController pushViewController:vc animated:YES];
+//                    
+//                }else{
+//                    NSString *strMSG = [dict objectForKey:@"message"];
+//                    
+//                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+//                    
+//                    
+//                }
+//            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+//                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];
+//                    [btn setTag:10];
+//                    [self doChange:btn];
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
 }
 
 

@@ -477,5 +477,7 @@
 
 //order/list.do
 + (NSMutableDictionary *)wosKitchenInfo_orderList_userIndex:(NSString *)userIndex page:(NSString *)page count:(NSString *)count status :(NSString *)status ;
+///activity/info.do
++ (NSMutableDictionary *)wosKitchenInfo_activityInfo_Index:(NSString *)index ;
 
 @end

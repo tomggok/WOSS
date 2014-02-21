@@ -2061,4 +2061,13 @@
 
 
 }
++ (NSMutableDictionary *)wosKitchenInfo_activityInfo_Index:(NSString *)index{
+    
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:index   forKey:@"activityIndex"];
+    [dict setValue:@"activity/info.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+
+}
 @end

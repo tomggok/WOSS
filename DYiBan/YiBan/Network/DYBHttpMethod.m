@@ -1650,6 +1650,15 @@
     return dre;
 
 }
+
++ (MagicRequest *)wosKitchenInfo_activityInfo_Index:(NSString *)index  sAlert:(BOOL)isAlert receive:(id)receive {
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosKitchenInfo_activityInfo_Index:index];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+    
+}
 @end
 
 
