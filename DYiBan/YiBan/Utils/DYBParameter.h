@@ -35,9 +35,10 @@
 //#define    DenJun               @"http://221.130.201.102/mobile/index/index"
 #define    TESTDATABANK         @"http://221.130.201.102:89/api/YiBan/index_dev.php"
 
-#define    WOSLOCALHOST         @"http://10.21.138.30:8080/ios/"
+#define    WOSLOCALHOST         @"http://118.244.202.47/iphone/"
 
-/////////////////////接口
+/////////////////////接口 http://118.244.202.47:8080/ios/me/login.do?nickName%3D1%26passwd%3D1
+
 #undef INTERFACEDOACTION
 #define INTERFACEDOACTION   @"interfacedoaction"
 
