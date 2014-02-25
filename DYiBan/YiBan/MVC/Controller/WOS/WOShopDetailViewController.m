@@ -16,14 +16,14 @@
 #import "MapViewController.h"
 #import "JSONKit.h"
 #import "JSON.h"
-
+#import "WOSActivityDetailViewController.h"
 
 @interface WOShopDetailViewController (){
 
     UIScrollView *viewBG;
     MagicUIButton *btn1;
     MagicUIButton *btn2;
-    NSDictionary *dictInfo;
+    NSDictionary *dictResult;
 }
 
 @end
@@ -416,6 +416,11 @@ DEF_SIGNAL(BTNTWO);
         case 102:
         {
         
+            WOSActivityDetailViewController *activity = [[WOSActivityDetailViewController alloc]init];
+            activity.dictInfo = dictResult;
+            [self.drNavigationController pushViewController:activity animated:YES];
+            RELEASE(activity);
+            
         }
             break;
 
@@ -560,7 +565,7 @@ DEF_SIGNAL(BTNTWO);
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
-                    dictInfo = [[NSDictionary alloc]initWithDictionary:dict];
+                    dictResult = [[NSDictionary alloc]initWithDictionary:dict];
                     
                      [self creatView:dict];
 //                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];
