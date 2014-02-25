@@ -8,6 +8,10 @@
 
 #import "WOSOrderLastViewController.h"
 #import "WOSCalculateOrder.h"
+#import "JSONKit.h"
+#import "JSON.h"
+
+
 @interface WOSOrderLastViewController (){
     UIScrollView *viewBG1;
     UIView *viewBG;
@@ -183,9 +187,10 @@
 
 -(void)doOK{
 
-    UIAlertView *aler = [[UIAlertView alloc]initWithTitle:@"提示" message:@"提交成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [aler show];
-    [aler release];
+
+    
+    MagicRequest *request = [DYBHttpMethod wosKitchenInfo_orderadd_userIndex:SHARED.userId  kitchenIndex:[_dictInfo objectForKey:@"kitchenIndex"] userAddrIndex:[NSString stringWithFormat:@"1"] persons:[NSString stringWithFormat:@"2"] remarks:[NSString stringWithFormat:@"eeeee"] dealsIndexs:nil foodIndexs:[NSString stringWithFormat:@"1"] countIndexs:@"1" sAlert:YES receive:self];
+    [request setTag:3];
 
 }
 
@@ -227,6 +232,69 @@
     RELEASE(label1);
     
 }
+
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+        //        JsonResponse *response = (JsonResponse *)receiveObj;
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+//                    _dictInfo = dict;
+//                    [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    
+//                    [self creatView:dict];
+                    //                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];
+                    //                    [btn setTag:10];
+                    //                    [self doChange:btn];
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
+
 
 - (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
 {

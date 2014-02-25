@@ -9,6 +9,11 @@
 #import "WOSAddAddrViewController.h"
 #import "DYBInputView.h"
 #import "CALayer+Custom.h"
+#import "JSONKit.h"
+#import "JSON.h"
+
+
+
 @interface WOSAddAddrViewController (){
 
     DYBInputView *_phoneInputName;
@@ -137,7 +142,9 @@
 }
 -(void)addOK{
 
-
+    MagicRequest *request = [DYBHttpMethod wosKitchenInfo_addrAdd_userIndex:SHARED.userId receiverAddress:_phoneInputAddr.nameField.text receiverName:_phoneInputName.nameField.text receiverPhoneNo:_phoneInputNum.nameField.text sAlert:YES receive:self];
+    [request setTag:3];
+    
 
 }
 
@@ -179,6 +186,60 @@
     
 }
 
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+        //        JsonResponse *response = (JsonResponse *)receiveObj;
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    [self.drNavigationController popViewControllerAnimated:YES];
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
 
 
 - (void)dealloc

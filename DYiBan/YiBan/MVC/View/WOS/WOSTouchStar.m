@@ -44,7 +44,7 @@
     
     UIButton *btn = (UIButton *)sender;
     int tag = btn.tag;
-    numStar = tag - 10;
+    numStar = tag - 10 + 1;
     
     for (int i = 10;  i<= tag; i++) {
         UIButton *btnChange = (UIButton *)[self viewWithTag:i];

@@ -97,7 +97,7 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20.0f, 44.0f + 10, 280, 300)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20.0f, self.headHeight + 10, 280, 300)];
         UIImage *imageNew = [[UIImage imageNamed:@"text_area"] resizableImageWithCapInsets:UIEdgeInsetsMake(10.5, 10.5 , 10.5,10.5)];
         [imageView setImage:imageNew];
         [self.view addSubview:imageView];
@@ -108,7 +108,7 @@
                 
         [self.view setBackgroundColor:[UIColor clearColor]];
                 
-        UIView *viewBG = [[UIView alloc]initWithFrame:CGRectMake(20.0f, 44.0f + 10, 280, 300)];
+        UIView *viewBG = [[UIView alloc]initWithFrame:CGRectMake(20.0f, self.headHeight + 10, 280, 300)];
         
         [viewBG setBackgroundColor:[UIColor clearColor]];
         

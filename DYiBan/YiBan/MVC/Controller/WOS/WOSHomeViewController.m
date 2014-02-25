@@ -15,10 +15,14 @@
 #import "WOSMapViewController.h"
 #import "WOSThinkYouLikeViewController.h"
 #import "WOSFindFoodViewController.h"
+#import "WOSActivityDetailViewController.h"
+#import "JSONKit.h"
+#import "JSON.h"
 
 @interface WOSHomeViewController (){
     SGFocusImageFrame *bannerView;
     UIScrollView *scrollView;
+    NSMutableArray *arrayResult;
 }
 
 @end
@@ -72,6 +76,9 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         [self.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, self.view.frame.size.height + 120)];
         
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_activityList_count:@"4" sAlert:YES receive:self];
+        [request setTag:3];
+        
        scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight- 44, 320, self.view.frame.size.height+ 44 - self.headHeight + 44)];
         [scrollView setBackgroundColor:[UIColor colorWithRed:61.0f/255 green:61.0f/255  blue:61.0f/255  alpha:1.0f]];
         [self.view addSubview:scrollView];
@@ -81,10 +88,12 @@
         
         [self.view setBackgroundColor:[UIColor clearColor]];
         
-        [self creatBanner];
+//        [self creatBanner];
+        
+         UIImage *image = [UIImage imageNamed:@"flash.png"];
         
         UIImage *imageGoodFood = [UIImage imageNamed:@"list.png"];
-        UIButton *btnGoodFood = [[UIButton alloc]initWithFrame:CGRectMake((320 - imageGoodFood.size.width/2)/2, CGRectGetHeight(bannerView.frame) + CGRectGetMinY(bannerView.frame) + 5 , imageGoodFood.size.width/2, imageGoodFood.size.height/2)];
+        UIButton *btnGoodFood = [[UIButton alloc]initWithFrame:CGRectMake((320 - imageGoodFood.size.width/2)/2, 45 + image.size.height/2 , imageGoodFood.size.width/2, imageGoodFood.size.height/2)];
 //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
         [btnGoodFood addTarget:self action:@selector(goodFood) forControlEvents:UIControlEventTouchUpInside];
         [btnGoodFood setImage:imageGoodFood forState:UIControlStateNormal];
@@ -177,7 +186,7 @@
 -(void)creatBanner{
     
     //添加最后一张图 用于循环
-    int length = 4;
+    int length = arrayResult.count;
     NSMutableArray *tempArray = [NSMutableArray array];
     for (int i = 0 ; i < length; i++)
     {
@@ -186,51 +195,52 @@
     }
     
     NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
-    if (length > 1)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:length-1];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:-1] autorelease];
-        [itemArray addObject:item];
-    }
-    for (int i = 0; i < length; i++)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:i];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:i] autorelease];
-        [itemArray addObject:item];
-        
-    }
-    //添加第一张图 用于循环
-    if (length >1)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:0];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:length] autorelease];
-        [itemArray addObject:item];
-    }
-    
+//    if (length > 1)
+//    {
+//        NSDictionary *dict = [tempArray objectAtIndex:length-1];
+//        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:-1] autorelease];
+//        [itemArray addObject:item];
+//    }
+//    for (int i = 0; i < length; i++)
+//    {
+//        NSDictionary *dict = [tempArray objectAtIndex:i];
+//        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:i] autorelease];
+//        [itemArray addObject:item];
+//        
+//    }
+//    //添加第一张图 用于循环
+//    if (length >1)
+//    {
+//        NSDictionary *dict = [tempArray objectAtIndex:0];
+//        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:length] autorelease];
+//        [itemArray addObject:item];
+//    }
+//
 //    [arrayResultTitle];
     NSMutableArray *arrayResultTitle = [[NSMutableArray alloc]init];
-    [arrayResultTitle addObject:@"eee"];
-    [arrayResultTitle addObject:@"4444"];
-    [arrayResultTitle addObject:@"3333"];
-    [arrayResultTitle addObject:@"6666"];
+
     
     
     NSMutableArray *arrayImage = [[NSMutableArray alloc]init];
-    [arrayImage addObject:@"flash.png"];
-    [arrayImage addObject:@"flash.png"];
-    [arrayImage addObject:@"flash.png"];
-    [arrayImage addObject:@"flash.png"];
+    
+    for (int i = 0; i < arrayResult.count; i ++) {
+        [arrayResultTitle addObject:@"6666"];
+        [arrayImage addObject:[DYBShareinstaceDelegate addIPImage:[[arrayResult objectAtIndex:i] objectForKey:@"imgUrl"]]];
+
+    }
+
     
     UIImage *image = [UIImage imageNamed:@"flash.png"];
     
     bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake((320-  image.size.width/2)/2, 44 + 5, image.size.width/2, image.size.height/2) delegate:self imageItems:itemArray isAuto:NO arrayStringTotal:arrayResultTitle arrayImage:arrayImage];
 //    [bannerView setCenter:CGPointMake(160.0f, 100)];
 //    [bannerView setArrayImage:arrayImage];
-    [bannerView scrollToIndex:0];
+    bannerView.delegate = self;
+    [bannerView scrollToIndex:1];
     [scrollView addSubview:bannerView];
     [bannerView release];
     RELEASE(arrayImage);
-    
+    RELEASE(arrayResultTitle);
 }
 -(void)goodPrice{
 
@@ -294,21 +304,79 @@
 //        DYBUITabbarViewController *dync = [DYBUITabbarViewController sharedInstace];
 //        [dync scrollMainView:1];
     }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
-        //        DYBPublishViewController *vc = [[DYBPublishViewController alloc] init:nil activeid:nil bActive:NO];
-        //        [self.drNavigationController pushViewController:vc animated:YES];
-        //        RELEASE(vc);
-        
         
         WOSPersonInfoViewController *person = [[WOSPersonInfoViewController alloc]init];
         [self.drNavigationController pushViewController:person animated:YES];
         RELEASE(person);
         
-//        WOSALLOrderViewController *allOrder = [[WOSALLOrderViewController alloc]init];
-//        [self.drNavigationController pushViewController:allOrder animated:YES];
-//        RELEASE(allOrder);
         
     }
     
+}
+
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+        
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            arrayResult  = [[NSMutableArray alloc]initWithArray:[dict objectForKey:@"activityList"]];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+//                    [tableView1 reloadData];
+                    [self creatBanner];
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
+
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index{
+
+    WOSActivityDetailViewController *detail = [[WOSActivityDetailViewController alloc]init];
+    detail.dictInfo  = [arrayResult objectAtIndex:index];
+    [self.drNavigationController pushViewController:detail animated:YES];
+    RELEASE(detail);
+
 }
 
 - (void)dealloc

@@ -64,7 +64,7 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         
-        UIView *viewBG = [[UIView alloc]initWithFrame:CGRectMake(10.0f, 44 + 10.0f, 300.0f, CGRectGetHeight(self.view.frame) - 44 - 10 -10 - 20)];
+        UIView *viewBG = [[UIView alloc]initWithFrame:CGRectMake(10.0f, self.headHeight + 10.0f, 300.0f, CGRectGetHeight(self.view.frame) - self.headHeight - 10 -10 - 20)];
         [viewBG setBackgroundColor:[UIColor whiteColor]];
         [self.view addSubview:viewBG];
         RELEASE(viewBG);

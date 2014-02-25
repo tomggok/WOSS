@@ -9,10 +9,14 @@
 #import "WOSCollectViewController.h"
 #import "WOSGoodFoodListCell.h"
 #import "WOShopDetailViewController.h"
+#import "JSONKit.h"
+#import "JSON.h"
 
 
-
-@interface WOSCollectViewController ()
+@interface WOSCollectViewController (){
+    NSMutableArray *arrayResult;
+    MagicUITableView *tableView1 ;
+}
 
 @end
 
@@ -47,12 +51,16 @@
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
+    
         
-        MagicUITableView *tableView = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 , 320,self.view.frame.size.height - 44)];
-        [tableView setBackgroundColor:ColorBG];
-        [tableView setSeparatorColor:[UIColor clearColor]];
-        [self.view addSubview:tableView];
-        RELEASE(tableView);        
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_favoriteList_userIndex:SHARED.userId page:@"0" count:@"3" sAlert:YES receive:self];
+        [request setTag:3];
+        
+        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 , 320,self.view.frame.size.height - 44)];
+        [tableView1 setBackgroundColor:ColorBG];
+        [tableView1 setSeparatorColor:[UIColor clearColor]];
+        [self.view addSubview:tableView1];
+        RELEASE(tableView1);
     }
     
     
@@ -71,7 +79,7 @@
     
     if ([signal is:[MagicUITableView TABLENUMROWINSEC]])//numberOfRowsInSection
     {
-        NSNumber *s = [NSNumber numberWithInteger:5];
+        NSNumber *s = [NSNumber numberWithInteger:arrayResult.count];
         [signal setReturnValue:s];
         
     }else if ([signal is:[MagicUITableView TABLENUMOFSEC]])//numberOfSectionsInTableView
@@ -107,8 +115,9 @@
         NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
         //        UITableView *tableView = [dict objectForKey:@"tableView"];
         
-        WOSGoodFoodListCell *cell = [[WOSGoodFoodListCell alloc]initRow:indexPath.row];
+        WOSGoodFoodListCell *cell = [[WOSGoodFoodListCell alloc]initRow:[arrayResult objectAtIndex:indexPath.row]];
         cell.row = indexPath.row;
+        
         [cell setBackgroundColor:ColorBG];
     
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -122,6 +131,7 @@
         NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
         
         WOShopDetailViewController *shop = [[WOShopDetailViewController alloc]init];
+        shop.dictInfo = [arrayResult objectAtIndex:indexPath.row];
         [self.drNavigationController pushViewController:shop animated:YES];
         RELEASE(shop);
         
@@ -172,5 +182,61 @@
     
     [super dealloc];
 }
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            arrayResult  = [[NSMutableArray alloc]initWithArray:[dict objectForKey:@"kitchenList"]];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    [tableView1 reloadData];
+
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
+
 
 @end

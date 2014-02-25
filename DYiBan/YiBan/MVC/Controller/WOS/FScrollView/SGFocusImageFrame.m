@@ -10,6 +10,7 @@
 #import "SGFocusImageItem.h"
 #import <objc/runtime.h>
 #define ITEM_WIDTH 304
+#import "UIImageView+WebCache.h"
 //#import "lab"
 //#import "FMessageViewController.h"
 #define rightDirection 1
@@ -75,6 +76,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     {
         _arrayString = array;
          _arrayImage = arrayImg;
+        [_arrayImage retain];
         NSMutableArray *imageItems = [NSMutableArray arrayWithArray:items];
         objc_setAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY, imageItems, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         _isAutoPlay = isAuto;
@@ -94,6 +96,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     objc_setAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     _scrollView.delegate = nil;
     [_scrollView release];
+       [_arrayImage release];
     [_pageControl release];
     [super dealloc];
 }
@@ -105,19 +108,13 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     _scrollView.scrollsToTop = NO;
-    float space = 0;
-    CGSize size = CGSizeMake(280, 0);
-    //    _pageControl = [[GPSimplePageView alloc] initWithFrame:CGRectMake(self.bounds.size.width *.5 - size.width *.5, self.bounds.size.height - size.height, size.width, size.height)];
+
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height -16, 320, 10)];
     _pageControl.userInteractionEnabled = NO;
     [self addSubview:_scrollView];
     [self addSubview:_pageControl];
     
-    /*
-     _scrollView.layer.cornerRadius = 10;
-     _scrollView.layer.borderWidth = 1 ;
-     _scrollView.layer.borderColor = [[UIColor lightGrayColor ] CGColor];
-     */
+
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
     
@@ -130,35 +127,32 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureRecognizer:)];
     tapGestureRecognize.delegate = self;
     [_scrollView addGestureRecognizer:tapGestureRecognize];
-    tapGestureRecognize.numberOfTapsRequired = 1;    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * (_arrayString.count+ 1), _scrollView.frame.size.height);
+    tapGestureRecognize.numberOfTapsRequired = 1;
+    
     
     for (int i = 0; i < _arrayString.count; i++) {
-//        SGFocusImageItem *item = [imageItems objectAtIndex:i];
+
         
-        
-        UILabel *imageView = [[UILabel alloc] initWithFrame:CGRectMake((i + 1) * _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
-        //加载图片
-        
-        
-        
-//        if (i == 3) {
-//            [imageView setBackgroundColor:[UIColor yellowColor]];
-//        }
+        UILabel *imageView = [[UILabel alloc] initWithFrame:CGRectMake((i ) * _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+
         [imageView setText:[_arrayString objectAtIndex:i]];
         
         imageView.backgroundColor = i%2?[UIColor redColor]:[UIColor blueColor];
         
         
-        UIImageView *imageViewSure = [[UIImageView alloc]initWithFrame:CGRectMake((i + 1) * _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+        UIImageView *imageViewSure = [[UIImageView alloc]initWithFrame:CGRectMake((i +0) * _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+        [imageViewSure setBackgroundColor:[UIColor redColor]];
         [imageViewSure setImage:[UIImage imageNamed:[_arrayImage objectAtIndex:i]]];
+        [imageViewSure setImageWithURL:[NSURL URLWithString:[_arrayImage objectAtIndex:i]]];
+        [imageViewSure setFrame:CGRectMake((i +0) * _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
         [_scrollView addSubview:imageViewSure];
         [imageViewSure release];
-//        [_scrollView addSubview:imageView];
-//        [imageView release];
+
     }
     [tapGestureRecognize release];
     if ([imageItems count]>1)
     {
+       
         [_scrollView setContentOffset:CGPointMake(ITEM_WIDTH, 0) animated:NO] ;
         if (_isAutoPlay)
         {
@@ -168,21 +162,22 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     }
     
     _page = 0;
-    
+     [_scrollView setContentSize:CGSizeMake(ITEM_WIDTH * _arrayImage.count, CGRectGetHeight(_scrollView.frame))];
    [NSTimer scheduledTimerWithTimeInterval:20.0f target:self selector:@selector(changeView) userInfo:nil repeats:YES];
     //objc_setAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [_scrollView setBackgroundColor:[UIColor clearColor]];
+    
+    [_scrollView setContentOffset:CGPointMake(-100, 0) animated:NO] ;
 }
 
 
 
 -(void)changeView
 {
-    //修改页码
-    NSLog(@"fffff");
+
     if (_page == 0) {
         switchDirection = rightDirection;
-    }else if(_page == 4){
+    }else if(_page == _arrayImage.count - 1){
         switchDirection = leftDirection;
     }
     if (switchDirection == rightDirection) {
@@ -199,14 +194,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
             
         }
     }
-    
-    //page++;
-    //    //判断是否大于上线
-    //    if (page==imageNameArr.count) {
-    //        //重置页码
-    //        page=0;
-    //    }
-    //设置滚动到第几页
+
     NSLog(@"page --- %d",_page);
     [_scrollView setContentOffset:CGPointMake(ITEM_WIDTH*_page, 0) animated:YES];
     
@@ -237,17 +225,13 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     NSLog(@"ttttttt");
     
     NSLog(@"%s", __FUNCTION__);
-//    NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
     int page = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
+    DLogInfo(@"page -- ? %d",page);
     if (gestureRecognizer.numberOfTouches == 1) {
         
-//        SGFocusImageItem *item = [imageItems objectAtIndex:page];
-//        if ([self.delegate respondsToSelector:@selector(foucusImageFrame:didSelectItem:)]) {
-//            [self.delegate foucusImageFrame:self didSelectItem:item];
-//        }
         if ([self.delegate respondsToSelector:@selector(foucusImageFrame:currentItem:)])
         {
-            [self.delegate foucusImageFrame:self currentItem:page-1];
+            [self.delegate foucusImageFrame:self currentItem:page];
         }
     }
 }
@@ -264,7 +248,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
 {
     float targetX = scrollView.contentOffset.x;
     NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
-    if ([imageItems count]>=3)
+    if ([imageItems count]>3)
     {
         if (targetX >= ITEM_WIDTH * ([imageItems count] -1)) {
             targetX = ITEM_WIDTH;
@@ -339,4 +323,5 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     [self scrollViewDidScroll:_scrollView];
     
 }
+
 @end
