@@ -36,11 +36,6 @@
 #define    TESTDATABANK         @"http://221.130.201.102:89/api/YiBan/index_dev.php"
 
 #define    WOSLOCALHOST         @"http://118.244.202.47/iphone/"
-<<<<<<< HEAD
-
-/////////////////////接口 http://118.244.202.47:8080/ios/me/login.do?nickName%3D1%26passwd%3D1
-=======
->>>>>>> 58dbfa6bc11673fee74e9ef423fe1ba00e972ca9
 
 #undef INTERFACEDOACTION
 #define INTERFACEDOACTION   @"interfacedoaction"

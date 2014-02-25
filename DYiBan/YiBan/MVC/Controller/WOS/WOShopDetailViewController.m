@@ -23,6 +23,7 @@
     UIScrollView *viewBG;
     MagicUIButton *btn1;
     MagicUIButton *btn2;
+    NSDictionary *dictInfo;
 }
 
 @end
@@ -323,11 +324,22 @@ DEF_SIGNAL(BTNTWO);
 
 -(void)creatCell:(int)indexRow info:(NSString *)dict{
 
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 70 + indexRow * 40 + 10 - self.headHeight, 320.0f, 40)];
+    UIButton *view = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, 70 + indexRow * 40 + 10 - self.headHeight, 320.0f, 40)];
     [view setBackgroundColor:[UIColor clearColor]];
+    [view setTag:100 + indexRow];
+    [view addTarget:self action:@selector(doTapBtn:) forControlEvents:UIControlEventTouchUpInside];
     [viewBG addSubview:view];
     RELEASE(view);
-
+    
+    
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doTap)];
+//    [tap setNumberOfTapsRequired:1];
+//    [tap setNumberOfTouchesRequired:1];
+//    [view addGestureRecognizer:tap];
+//    RELEASE(tap);
+    
+    
     UIImage *image = nil;
     
     
@@ -346,6 +358,7 @@ DEF_SIGNAL(BTNTWO);
     }
     
     UIImageView *imageVIewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(5.0f, (40 - image.size.height/2)/2, image.size.width/2, image.size.height/2)];
+    [imageVIewIcon setUserInteractionEnabled:YES];
     [imageVIewIcon setImage:image];
     [imageVIewIcon setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:imageVIewIcon];
@@ -383,6 +396,36 @@ DEF_SIGNAL(BTNTWO);
     [view addSubview:imageView1];
     RELEASE(imageView1);
 }
+
+-(void)doTapBtn:(id)sender{
+
+    UIButton *btn = (UIButton *)sender;
+    switch (btn.tag) {
+        case 100:
+        {
+        
+        }
+            break;
+        case 101:
+        {
+        
+        
+        }
+            break;
+
+        case 102:
+        {
+        
+        }
+            break;
+
+            
+        default:
+            break;
+    }
+
+}
+
 
 -(void)doTapMap{
 
@@ -513,9 +556,11 @@ DEF_SIGNAL(BTNTWO);
             NSDictionary *dict = [request.responseString JSONValue];
             
             if (dict) {
+                
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
+                    dictInfo = [[NSDictionary alloc]initWithDictionary:dict];
                     
                      [self creatView:dict];
 //                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];

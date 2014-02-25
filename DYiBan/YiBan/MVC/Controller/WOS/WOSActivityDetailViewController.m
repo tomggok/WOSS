@@ -58,7 +58,7 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         [self.view setBackgroundColor:[UIColor clearColor]];
-        dicInfo = [[NSDictionary alloc]init];
+//        dicInfo = [[NSDictionary alloc]init];
         
         MagicRequest *request = [DYBHttpMethod wosKitchenInfo_activityInfo_Index:[dictInfo objectForKey:@"activityIndex"] sAlert:YES receive:self];
         [request setTag:3];
@@ -169,7 +169,7 @@
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
-                    dictInfo = dict;
+//                    dictInfo = dict;
                     
                     [self creatView:dict];
                 }
