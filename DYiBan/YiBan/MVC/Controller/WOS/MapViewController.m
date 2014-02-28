@@ -26,11 +26,12 @@
 @implementation MapViewController
 
 @synthesize mapView=_mapView;
-
+@synthesize dictInfo = _dictInfo;
 @synthesize delegate;
 
 - (void)dealloc
 {
+    [_dictInfo release];
     [_mapView release];
     [_annotationList release];
     [super dealloc];
@@ -64,15 +65,23 @@
 {
     for (NSDictionary *dic in list) {
         
-        CLLocationDegrees latitude=[[dic objectForKey:@"latitude"] doubleValue];
-        CLLocationDegrees longitude=[[dic objectForKey:@"longitude"] doubleValue];
-        CLLocationCoordinate2D location=CLLocationCoordinate2DMake(latitude, longitude);
+        
+        
+      
+        NSString *strJINWEI = [dic objectForKey:@"gps"];
+        NSArray *arrayStr = [strJINWEI componentsSeparatedByString:@","];
+
+        
+        CLLocationDegrees latitude=[[arrayStr objectAtIndex:0] doubleValue];
+        CLLocationDegrees longitude=[[arrayStr objectAtIndex:1] doubleValue];
+        CLLocationCoordinate2D location=CLLocationCoordinate2DMake(longitude, latitude);
         
         MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(location,span ,span );
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:region];
         [_mapView setRegion:adjustedRegion animated:YES];
         
-        BasicMapAnnotation *  annotation=[[[BasicMapAnnotation alloc] initWithLatitude:latitude andLongitude:longitude]  autorelease];
+        BasicMapAnnotation *  annotation=[[[BasicMapAnnotation alloc] initWithLatitude:longitude andLongitude:latitude]  autorelease];
+        annotation.dictInfo = dic;
         [_mapView   addAnnotation:annotation];
     }
     
@@ -98,6 +107,9 @@
         [mapView setCenterCoordinate:_calloutAnnotation.coordinate animated:YES];
 	}
     else{
+        
+//        view.annotation
+        
         if([delegate respondsToSelector:@selector(customMKMapViewDidSelectedWithInfo:)]){
             [delegate customMKMapViewDidSelectedWithInfo:@"点击至之后你要在这干点啥"];
         }
@@ -107,9 +119,13 @@
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
     if (_calloutAnnotation&& ![view isKindOfClass:[CallOutAnnotationVifew class]]) {
         if (_calloutAnnotation.coordinate.latitude == view.annotation.coordinate.latitude&&
-            _calloutAnnotation.coordinate.longitude == view.annotation.coordinate.longitude) {
-            [mapView removeAnnotation:_calloutAnnotation];
-            _calloutAnnotation = nil;
+            _calloutAnnotation.coordinate.longitude == view.annotation.coordinate.longitude)
+        {
+            CalloutMapAnnotation *oldAnnotation = _calloutAnnotation; //saving it to be removed from the map later
+            _calloutAnnotation = nil; //setting to nil to know that we aren't showing a callout anymore
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [mapView removeAnnotation:oldAnnotation]; //removing the annotation a bit later
+            });
         }
     }
 }
@@ -122,8 +138,10 @@
             annotationView = [[[CallOutAnnotationVifew alloc] initWithAnnotation:annotation reuseIdentifier:@"CalloutView"] autorelease];
 //            JingDianMapCell  *cell = [[[NSBundle mainBundle] loadNibNamed:@"JingDianMapCell" owner:self options:nil] objectAtIndex:0];
             JingDianMapCell *cell = [[JingDianMapCell alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 70.0f, 30)];
+            BasicMapAnnotation *rr = (BasicMapAnnotation *)annotation;
+            annotationView.dictInfo = rr.dictInfo;
             [annotationView.contentView addSubview:cell];
-            
+            RELEASE(cell);
         }
         return annotationView;
 	} else if ([annotation isKindOfClass:[BasicMapAnnotation class]]) {

@@ -1659,6 +1659,28 @@
     return dre;
     
 }
+
+
+
++ (MagicRequest *)wosMapList_userIndex:(NSString *)userIndex gps:(NSString *)gps radius :(NSString *)radius type :(NSString *)type sAlert:(BOOL)isAlert receive:(id)receive{
+
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosMapList_userIndex:userIndex gps:gps radius:radius type:type];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+    
+}
+
+
+
+
+
+
+
+
+
+
 @end
 
 

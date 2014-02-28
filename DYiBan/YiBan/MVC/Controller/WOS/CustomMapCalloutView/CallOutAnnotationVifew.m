@@ -20,10 +20,12 @@
 
 @implementation CallOutAnnotationVifew
 @synthesize contentView;
+@synthesize dictInfo = _dictInfo;
 
 - (void)dealloc
 {
     self.contentView = nil;
+    RELEASE(_dictInfo);
     [super dealloc];
 }
 

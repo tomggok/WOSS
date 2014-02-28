@@ -18,7 +18,7 @@
     id<MapViewControllerDidSelectDelegate> delegate;
 }
 @property(nonatomic,retain)IBOutlet MKMapView *mapView;
-
+@property (nonatomic,retain)NSDictionary *dictInfo;
 @property(nonatomic,assign)id<MapViewControllerDidSelectDelegate> delegate;
 
 - (void)resetAnnitations:(NSArray *)data;

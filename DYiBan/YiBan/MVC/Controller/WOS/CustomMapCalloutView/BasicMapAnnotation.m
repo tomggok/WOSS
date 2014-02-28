@@ -12,6 +12,7 @@
 @synthesize latitude = _latitude;
 @synthesize longitude = _longitude;
 @synthesize title = _title;
+@synthesize dictInfo = _dictInfo;
 
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude {

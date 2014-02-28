@@ -47,7 +47,7 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         UIImage *imageCHUAN = [UIImage imageNamed:@"chuan"];
-        UIButton *btnCHUAN = [[UIButton alloc]initWithFrame:CGRectMake(20.0f, 44 + 20, imageCHUAN.size.width/2, imageCHUAN.size.height/2)];
+        UIButton *btnCHUAN = [[UIButton alloc]initWithFrame:CGRectMake(20.0f, self.headHeight + 20, imageCHUAN.size.width/2, imageCHUAN.size.height/2)];
         [btnCHUAN addTarget:self action:@selector(CHUAN) forControlEvents:UIControlEventTouchUpInside];
         [btnCHUAN setImage:imageCHUAN forState:UIControlStateNormal];
         [self.view addSubview:btnCHUAN];
@@ -55,7 +55,7 @@
         
         
         UIImage *imageAO = [UIImage imageNamed:@"ao"];
-        UIButton *btnAO = [[UIButton alloc]initWithFrame:CGRectMake(20.0f + imageCHUAN.size.width/2 + 10, 44 + 20, imageAO.size.width/2, imageAO.size.height/2)];
+        UIButton *btnAO = [[UIButton alloc]initWithFrame:CGRectMake(20.0f + imageCHUAN.size.width/2 + 10, self.headHeight + 20, imageAO.size.width/2, imageAO.size.height/2)];
         [btnAO addTarget:self action:@selector(AO) forControlEvents:UIControlEventTouchUpInside];
         [btnAO setImage:imageAO forState:UIControlStateNormal];
         [self.view addSubview:btnAO];
@@ -64,14 +64,14 @@
         
         
         UIImage *imageMIAN = [UIImage imageNamed:@"mianbao"];
-        UIButton *btnMIAN = [[UIButton alloc]initWithFrame:CGRectMake(20.0f, 44 + 10 + imageAO.size.height/2 + 20, imageCHUAN.size.width/2, imageCHUAN.size.height/2)];
+        UIButton *btnMIAN = [[UIButton alloc]initWithFrame:CGRectMake(20.0f, self.headHeight + 10 + imageAO.size.height/2 + 20, imageCHUAN.size.width/2, imageCHUAN.size.height/2)];
         [btnMIAN addTarget:self action:@selector(MIAN) forControlEvents:UIControlEventTouchUpInside];
         [btnMIAN setImage:imageMIAN forState:UIControlStateNormal];
         [self.view addSubview:btnMIAN];
         [btnMIAN release];
         
         UIImage *imagePISA = [UIImage imageNamed:@"pisa"];
-        UIButton *btnPISA = [[UIButton alloc]initWithFrame:CGRectMake(22.0f + imageCHUAN.size.width/2 + 10, 44 + 20 + imageAO.size.height/2 + 10, imagePISA.size.width/2, imagePISA.size.height/2)];
+        UIButton *btnPISA = [[UIButton alloc]initWithFrame:CGRectMake(22.0f + imageCHUAN.size.width/2 + 10, self.headHeight + 20 + imageAO.size.height/2 + 10, imagePISA.size.width/2, imagePISA.size.height/2)];
         [btnPISA addTarget:self action:@selector(PISA) forControlEvents:UIControlEventTouchUpInside];
         [btnPISA setImage:imagePISA forState:UIControlStateNormal];
         [self.view addSubview:btnPISA];
@@ -80,7 +80,7 @@
         
         
         UIImage *imageQUAN = [UIImage imageNamed:@"meisdaquan"];
-        UIButton *btnQUAN = [[UIButton alloc]initWithFrame:CGRectMake(20.0f , 44 + 10 + imagePISA.size.height + 30, imageQUAN.size.width/2 + 5, imageQUAN.size.height/2 + 0)];
+        UIButton *btnQUAN = [[UIButton alloc]initWithFrame:CGRectMake(20.0f , self.headHeight + 10 + imagePISA.size.height + 30, imageQUAN.size.width/2 + 5, imageQUAN.size.height/2 + 0)];
         [btnQUAN addTarget:self action:@selector(QUAN) forControlEvents:UIControlEventTouchUpInside];
         [btnQUAN setImage:imageQUAN forState:UIControlStateNormal];
         [self.view addSubview:btnQUAN];

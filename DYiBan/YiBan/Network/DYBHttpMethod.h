@@ -462,4 +462,6 @@
 
 + (MagicRequest *)wosKitchenInfo_activityInfo_Index:(NSString *)index  sAlert:(BOOL)isAlert receive:(id)receive;
 
+
++ (MagicRequest *)wosMapList_userIndex:(NSString *)userIndex gps:(NSString *)gps radius :(NSString *)radius type :(NSString *)type sAlert:(BOOL)isAlert receive:(id)receive;
 @end

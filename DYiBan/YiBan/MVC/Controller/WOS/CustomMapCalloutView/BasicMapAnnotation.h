@@ -8,6 +8,7 @@
 }
 
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic,retain) NSDictionary *dictInfo;
 
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude;

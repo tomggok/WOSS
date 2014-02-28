@@ -480,4 +480,7 @@
 ///activity/info.do
 + (NSMutableDictionary *)wosKitchenInfo_activityInfo_Index:(NSString *)index ;
 
+//map/list.do
+
++ (NSMutableDictionary *)wosMapList_userIndex:(NSString *)userIndex gps:(NSString *)gps radius :(NSString *)radius type :(NSString *)type ;
 @end

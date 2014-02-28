@@ -2070,4 +2070,17 @@
 
 
 }
+
++ (NSMutableDictionary *)wosMapList_userIndex:(NSString *)userIndex gps:(NSString *)gps radius :(NSString *)radius type :(NSString *)type{
+
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:userIndex   forKey:@"userIndex"];
+    [dict setValue:gps   forKey:@"gps"];
+    [dict setValue:radius   forKey:@"radius"];
+    [dict setValue:type   forKey:@"type"];
+    [dict setValue:@"map/list.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+}
 @end

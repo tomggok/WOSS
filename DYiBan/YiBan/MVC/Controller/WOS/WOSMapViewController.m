@@ -8,6 +8,10 @@
 
 #import "WOSMapViewController.h"
 #import "MapViewController.h"
+#import "JSONKit.h"
+#import "JSON.h"
+#import "WOShopDetailViewController.h"
+
 @interface WOSMapViewController ()
 
 @end
@@ -54,46 +58,36 @@
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
-        
-        if (iType == 3) {
-            
-            
-            NSArray *array = [NSArray arrayWithObjects:_dictMap, nil];
+//        
+//        if (iType == 3) {
+//            
+//            
+//            NSArray *array = [NSArray arrayWithObjects:_dictMap, nil];
+//
+//            MapViewController*   _mapViewController = [[MapViewController alloc] init];
+//            _mapViewController.delegate = self;
+//            [self.view addSubview:_mapViewController.view];
+//            [_mapViewController.view setFrame:CGRectMake(0.0f, self.headHeight  , 320.0f, self.view.bounds.size.height - self.headHeight)];
+//            [_mapViewController resetAnnitations:array];
+//            
+//            return;
+//            
+//        }
 
-            MapViewController*   _mapViewController = [[MapViewController alloc] init];
-            _mapViewController.delegate = self;
-            [self.view addSubview:_mapViewController.view];
-            [_mapViewController.view setFrame:CGRectMake(0.0f, 0.0f  , 320.0f, self.view.bounds.size.height - 44)];
-            [_mapViewController resetAnnitations:array];
-            
-            return;
-            
-        }
-
-        
-        NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:@"30.281843",@"latitude",@"120.102193",@"longitude",nil];
-        
-        NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:@"30.290144",@"latitude",@"120.146696‎",@"longitude",nil];
-        
-        NSDictionary *dic3=[NSDictionary dictionaryWithObjectsAndKeys:@"30.248076",@"latitude",@"120.164162‎",@"longitude",nil];
-        
-        NSDictionary *dic4=[NSDictionary dictionaryWithObjectsAndKeys:@"30.425622",@"latitude",@"120.299605",@"longitude",nil];
-        
-        NSArray *array = [NSArray arrayWithObjects:dic1,dic2,dic3,dic4, nil];
         
        
         
         
                
-        MapViewController*   _mapViewController = [[MapViewController alloc] init];
-        _mapViewController.delegate = self;
-        [self.view addSubview:_mapViewController.view];
-        [_mapViewController.view setFrame:CGRectMake(0.0f, 44.0f - 15 , 320.0f, self.view.bounds.size.height - 44)];
-        [_mapViewController resetAnnitations:array];
+//        MapViewController*   _mapViewController = [[MapViewController alloc] init];
+//        _mapViewController.delegate = self;
+//        [self.view addSubview:_mapViewController.view];
+//        [_mapViewController.view setFrame:CGRectMake(0.0f, self.headHeight - 34 , 320.0f, self.view.bounds.size.height - self.headHeight)];
+//        [_mapViewController resetAnnitations:array];
         
         for (int i = 0; i< 3; i ++) {
             
-            UIButton *btn1 = [[UIButton alloc]initWithFrame:CGRectMake(0.0f + i*320/3 + i*1, 44.0f, 320/3, 30)];
+            UIButton *btn1 = [[UIButton alloc]initWithFrame:CGRectMake(0.0f + i*320/3 + i*1, self.headHeight, 320/3, 30)];
             //            [btn1 setTitle:@"处理中" forState:UIControlStateNormal];
             [btn1.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [btn1 setTitleColor:ColorGryWhite forState:UIControlStateNormal];
@@ -112,7 +106,7 @@
                     }
                     break;
                 case 2:
-                    [btn1 setFrame:CGRectMake(0.0f + i*320/3 + i *0.5 , 44.0f, 320/3, 30)];
+                    [btn1 setFrame:CGRectMake(0.0f + i*320/3 + i *0.5 , self.headHeight, 320/3, 30)];
                     [btn1 setTitle:@"附近的人在吃" forState:UIControlStateNormal];
                     if (iType == 2) {
                         [btn1 setTitleColor:ColorTextYellow forState:UIControlStateNormal];
@@ -129,9 +123,15 @@
             [btn1 setTag:10 + i];
             [self.view addSubview:btn1];
             RELEASE(btn1);
+            
+//            116.354583,39.982453
+            
+          
+            
         }
         
-
+        MagicRequest *request = [DYBHttpMethod wosMapList_userIndex:SHARED.userId gps:@"116.354583,39.982453" radius:@"10000" type:@"2" sAlert:YES receive:self];
+        [request setTag:3];
     }
     
     
@@ -166,8 +166,97 @@
 - (void)customMKMapViewDidSelectedWithInfo:(id)info
 {
     NSLog(@"%@",info);
+    
+    WOShopDetailViewController *detail = [[WOShopDetailViewController alloc]init];
+    [self.drNavigationController pushViewController:detail animated:YES];
+    RELEASE(detail);
+    
 }
 
+
+
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    
+    if ([request succeed])
+    {
+        //        JsonResponse *response = (JsonResponse *)receiveObj;
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    NSArray *gpsList = [dict objectForKey:@"kitchenList"];
+//                    NSMutableArray *arryResult = [[NSMutableArray alloc]init];
+//                    
+//                    for (int i = 0; i < gpsList.count; i++) {
+//                        
+//                        NSString *strJINWEI = [[gpsList objectAtIndex:i] objectForKey:@"gps"];
+//                        NSArray *arrayStr = [strJINWEI componentsSeparatedByString:@","];
+//                        NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:[arrayStr objectAtIndex:0],@"latitude",[arrayStr objectAtIndex:1],@"longitude",nil];
+//                        [arryResult addObject:dict1];
+//                    }
+                    
+                    
+                    MapViewController*   _mapViewController = [[MapViewController alloc] init];
+                    _mapViewController.delegate = self;
+                    [self.view addSubview:_mapViewController.view];
+                    [_mapViewController.view setFrame:CGRectMake(0.0f, self.headHeight - 34 , 320.0f, self.view.bounds.size.height - self.headHeight)];
+                    [_mapViewController resetAnnitations:gpsList];
+                    
+//                    _mapViewController.dic;
+//                    [self doChange:btn];
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
+
+
+- (void)handleViewSignal_MapViewController:(MagicViewSignal *)signal{
+
+
+
+}
 
 
 - (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
