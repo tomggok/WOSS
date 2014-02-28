@@ -2751,7 +2751,7 @@
                   symbolName = "-[SDWebImageManager imageDownloader:didUpdatePartialImage:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
-                  timestampString = "415251100.444876"
+                  timestampString = "415251470.445169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "330"
@@ -2765,7 +2765,7 @@
                   symbolName = "-[SDWebImageManager imageDownloader:didUpdatePartialImage:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
-                  timestampString = "415251100.445065"
+                  timestampString = "415251470.445448"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "330"
@@ -6827,7 +6827,7 @@
                   symbolName = "-[DYBDataBankShareViewController handleViewSignal_DYBDtaBankSearchView:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
-                  timestampString = "415251100.453966"
+                  timestampString = "415251470.459585"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
@@ -6841,7 +6841,7 @@
                   symbolName = "-[DYBDataBankShareViewController handleViewSignal_DYBDtaBankSearchView:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
-                  timestampString = "415251100.454135"
+                  timestampString = "415251470.459861"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
@@ -10644,7 +10644,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
@@ -10653,7 +10653,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "520"
             endingLineNumber = "520"
-            landmarkName = "-handleRequest:receiveObj:"
+            landmarkName = "-handleViewSignal_DYBBaseViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10686,6 +10686,22 @@
             startingLineNumber = "153"
             endingLineNumber = "153"
             landmarkName = "-addOK"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
+            timestampString = "415251322.264763"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
+            landmarkName = "-creatPicBar:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
