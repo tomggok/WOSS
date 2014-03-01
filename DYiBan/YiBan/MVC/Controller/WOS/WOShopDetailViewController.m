@@ -17,7 +17,7 @@
 #import "JSONKit.h"
 #import "JSON.h"
 #import "WOSActivityDetailViewController.h"
-
+#import "UIImageView+WebCache.h"
 @interface WOShopDetailViewController (){
 
     UIScrollView *viewBG;
@@ -213,7 +213,7 @@ DEF_SIGNAL(BTNTWO);
     [self creatCell:1 info:[dict objectForKey:@"contactNumber"]];
     [self creatCell:2 info:@"now,推荐给好友咖啡！"];
     
-    [self creatPicBar:3];
+    [self creatPicBar:[dict objectForKey:@"hotFoodList"]];
     
     
     
@@ -445,7 +445,7 @@ DEF_SIGNAL(BTNTWO);
 
 }
 
--(void)creatPicBar:(int)num{
+-(void)creatPicBar:(NSArray *)foodList{
 
     UIView *viewBg = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 70 + 3 * 40 + 10 - self.headHeight, 300, self.headHeight)];
     [viewBG addSubview:viewBg];
@@ -459,10 +459,14 @@ DEF_SIGNAL(BTNTWO);
     [viewBg addSubview:imageVIewIcon];
     RELEASE(imageVIewIcon);
     UIImage *image1 = [UIImage imageNamed:@"food3"];
-    for (int i = 0; i<num; i++) {
+    for (int i = 0; i<foodList.count; i++) {
+        
+        NSDictionary *dict = [foodList objectAtIndex:i];
         
         UIImageView *imageVIewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(5.0f+ image.size.width/2  + i * 60  + 30, 0, 50 , 40)];
         [imageVIewIcon setImage:image1];
+        NSURL *url = [NSURL URLWithString:[DYBShareinstaceDelegate addIPImage:[dict objectForKey:@"imgUrl"]]];
+        [imageVIewIcon setImageWithURL:url];
         [imageVIewIcon setBackgroundColor:[UIColor clearColor]];
         [viewBg addSubview:imageVIewIcon];
         RELEASE(imageVIewIcon);

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18BB95C918BF7716009A0DC2 /* WOSFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */; };
 		B513F81A18B73C33005F85C0 /* WOSActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */; };
 		B5143ED9186BC552007677E3 /* WOSGoodPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5143ED8186BC552007677E3 /* WOSGoodPriceCell.m */; };
 		B51A12241855BC85006D8F71 /* WOSGoodFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A12231855BC85006D8F71 /* WOSGoodFoodListCell.m */; };
@@ -1268,6 +1269,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18BB95C718BF7715009A0DC2 /* WOSFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSFoodDetailViewController.h; sourceTree = "<group>"; };
+		18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSFoodDetailViewController.m; sourceTree = "<group>"; };
 		B513F81818B73C33005F85C0 /* WOSActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSActivityDetailViewController.h; sourceTree = "<group>"; };
 		B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSActivityDetailViewController.m; sourceTree = "<group>"; };
 		B5143ED7186BC552007677E3 /* WOSGoodPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSGoodPriceCell.h; sourceTree = "<group>"; };
@@ -3212,6 +3215,8 @@
 				B5F7FF2D18B20E9800BBA6B7 /* WOSSandMSGViewController.m */,
 				B513F81818B73C33005F85C0 /* WOSActivityDetailViewController.h */,
 				B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */,
+				18BB95C718BF7715009A0DC2 /* WOSFoodDetailViewController.h */,
+				18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */,
 			);
 			path = WOS;
 			sourceTree = "<group>";
@@ -7175,6 +7180,7 @@
 				B5D94F1B186966D00014B0E1 /* WOSOrderListCell.m in Sources */,
 				B5D94F1E186969A50014B0E1 /* WOSOrderDetailViewController.m in Sources */,
 				B5C662BA18A89BFF00C5A26C /* SDWebImageManager.m in Sources */,
+				18BB95C918BF7716009A0DC2 /* WOSFoodDetailViewController.m in Sources */,
 				B5C662DF18A89BFF00C5A26C /* Magic_Runtime.m in Sources */,
 				B5D94F21186979D50014B0E1 /* WOSGoodPriceViewController.m in Sources */,
 				B5C6630418A89BFF00C5A26C /* Magic_UITabBarController.m in Sources */,
