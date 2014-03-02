@@ -11,5 +11,5 @@
 @interface WOSGoodPriceCell : UITableViewCell
 
 @property (nonatomic,retain)DYBBaseViewController *targetObj;
-
+-(void)creatView:(NSDictionary *)dcit;
 @end

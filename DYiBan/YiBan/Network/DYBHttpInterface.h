@@ -483,4 +483,10 @@
 //map/list.do
 
 + (NSMutableDictionary *)wosMapList_userIndex:(NSString *)userIndex gps:(NSString *)gps radius :(NSString *)radius type :(NSString *)type ;
+//food/info.do
+
++ (NSMutableDictionary *)wosFoodInfo_foodIndex:(NSString *)foodIndex   ;
+//food/discount.do
++ (NSMutableDictionary *)wosFoodInfo_foodDiscount_kitchenIndex :(NSString *)kitchenIndex discountDay  :(NSString *)discountDay  page  :(NSString *)page  count  :(NSString *)count    ;
+
 @end

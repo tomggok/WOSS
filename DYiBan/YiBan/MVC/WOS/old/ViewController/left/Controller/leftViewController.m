@@ -139,7 +139,7 @@ static leftViewController *share = nil;
         DYBUITabbarViewController *tabBatC = [DYBUITabbarViewController sharedInstace];
         
         [tabBatC hideTabBar:YES animated:NO];
-        
+        [self.leftButton setHidden:YES];
         
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {

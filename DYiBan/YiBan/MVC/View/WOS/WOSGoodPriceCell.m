@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self creatView];
+//        [self creatView];
     }
     return self;
 }
@@ -31,7 +31,7 @@
     // Configure the view for the selected state
 }
 
--(void)creatView{
+-(void)creatView:(NSDictionary *)dcit{
 
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 70)];
     [self addSubview:view];

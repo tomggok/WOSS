@@ -18,6 +18,9 @@
 #import "JSON.h"
 #import "WOSActivityDetailViewController.h"
 #import "UIImageView+WebCache.h"
+#import "WOSFoodDetailViewController.h"
+
+
 @interface WOShopDetailViewController (){
 
     UIScrollView *viewBG;
@@ -409,6 +412,11 @@ DEF_SIGNAL(BTNTWO);
         case 101:
         {
         
+            MagicUIPopAlertView *pop = [[MagicUIPopAlertView alloc] init];
+//            [pop setDelegate:receiver];
+            [pop setMode:MagicPOPALERTVIEWNOINDICATOR];
+            [pop setText:@"拨打电话"];
+            [pop alertViewAutoHidden:.5f isRelease:YES];
         
         }
             break;
@@ -437,7 +445,9 @@ DEF_SIGNAL(BTNTWO);
 
     WOSMapViewController *map = [[WOSMapViewController alloc]init];
     map.iType = 3;
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"30.425622",@"latitude",@"120.299605",@"longitude",nil];
+    NSString *pgs = [dictResult objectForKey:@"gps"];
+    NSArray *arrayGPS = [pgs componentsSeparatedByString:@","];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[arrayGPS objectAtIndex:1],@"latitude",[arrayGPS objectAtIndex:0],@"longitude",nil];
     map.dictMap = dict;
     [self.drNavigationController pushViewController:map animated:YES];
     RELEASE(map);
@@ -463,18 +473,41 @@ DEF_SIGNAL(BTNTWO);
         
         NSDictionary *dict = [foodList objectAtIndex:i];
         
-        UIImageView *imageVIewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(5.0f+ image.size.width/2  + i * 60  + 30, 0, 50 , 40)];
-        [imageVIewIcon setImage:image1];
+        UIImageView *imageVIewIcon = [[UIImageView alloc]initWithFrame:CGRectMake( image.size.width/2 + i* 60  + 30, 0, 50 , 40)];
+        [imageVIewIcon setBackgroundColor:[UIColor yellowColor]];
+//        [imageVIewIcon setImage:image1];
         NSURL *url = [NSURL URLWithString:[DYBShareinstaceDelegate addIPImage:[dict objectForKey:@"imgUrl"]]];
         [imageVIewIcon setImageWithURL:url];
-        [imageVIewIcon setBackgroundColor:[UIColor clearColor]];
+        [imageVIewIcon setFrame:CGRectMake( image.size.width/2 + i* 60  + 30, 0, 50 , 40)];
+//        [imageVIewIcon setBackgroundColor:[UIColor clearColor]];
         [viewBg addSubview:imageVIewIcon];
         RELEASE(imageVIewIcon);
+        
+        
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake( image.size.width/2 + i* 60  + 30, 0, 50 , 40)];
+        [btn addTarget:self action:@selector(doTouchFood:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setBackgroundColor:[UIColor clearColor]];
+        [btn setTag:[[dict objectForKey:@"foodIndex"] integerValue]];
+        [viewBg addSubview:btn];
+        RELEASE(btn);
+        
     }
     
     
 
 }
+
+-(void)doTouchFood:(id)sender{
+
+    UIButton *btn = (UIButton *)sender;
+    
+    WOSFoodDetailViewController *foodDetail = [[WOSFoodDetailViewController alloc]init];
+    [foodDetail setDictInfo:[NSString stringWithFormat:@"%d",btn.tag]];
+    [self.drNavigationController pushViewController:foodDetail animated:YES];
+    RELEASE(foodDetail);
+
+}
+
 
 -(void)addlabel_title:(NSString *)title frame:(CGRect)frame view:(UIView *)view{
     

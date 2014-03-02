@@ -9,5 +9,5 @@
 #import "DYBBaseViewController.h"
 
 @interface WOSFoodDetailViewController : DYBBaseViewController
-@property(nonatomic,retain)NSDictionary *dictInfo;
+@property(nonatomic,retain)NSString *dictInfo;
 @end

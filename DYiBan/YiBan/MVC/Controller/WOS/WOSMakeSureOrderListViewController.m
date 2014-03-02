@@ -57,7 +57,7 @@
     if ([signal is:[MagicViewController LAYOUT_VIEWS]])
     {
         //        [self.rightButton setHidden:YES];
-        [self.headview setTitle:@"确认订单"];
+        [self.headview setTitle:@"购物车"];
         [self.headview setTitleColor:[UIColor colorWithRed:203.0f/255 green:203.0f/255 blue:203.0f/255 alpha:1.0f]];
 //
 //        [self setButtonImage:self.rightButton setImage:@"btn_more_def"];

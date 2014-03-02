@@ -2083,4 +2083,29 @@
     return dict;
 
 }
+
+
++ (NSMutableDictionary *)wosFoodInfo_foodIndex:(NSString *)foodIndex {
+
+    
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+   
+    [dict setValue:foodIndex   forKey:@"foodIndex"];
+    [dict setValue:@"food/info.do" forKey:INTERFACEDOACTION];
+    return dict;
+}
+
+
++ (NSMutableDictionary *)wosFoodInfo_foodDiscount_kitchenIndex :(NSString *)kitchenIndex discountDay  :(NSString *)discountDay  page  :(NSString *)page  count  :(NSString *)count {
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:kitchenIndex        forKey:@"kitchenIndex"];
+    [dict setValue:discountDay         forKey:@"discountDay"];
+    [dict setValue:page                forKey:@"page"];
+    [dict setValue:count               forKey:@"count"];
+    [dict setValue:@"food/discount.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+
+}
 @end

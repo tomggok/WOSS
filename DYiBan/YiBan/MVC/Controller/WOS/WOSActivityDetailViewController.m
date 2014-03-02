@@ -194,5 +194,13 @@
 }
 
 
+- (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
+{
+    if ([signal is:[DYBBaseViewController BACKBUTTON]])
+    {
+        [self.drNavigationController popViewControllerAnimated:YES];
+    }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
+    }
+}
 
 @end

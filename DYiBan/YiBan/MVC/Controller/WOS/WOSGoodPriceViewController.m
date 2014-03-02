@@ -10,9 +10,14 @@
 #import "WOSGoodFoodListCell.h"
 #import "WOSALLOrderViewController.h"
 #import "WOSGoodPriceCell.h"
+#import "JSONKit.h"
+#import "JSON.h"
 
+@interface WOSGoodPriceViewController (){
 
-@interface WOSGoodPriceViewController ()
+    MagicUITableView *tableView1;
+    NSMutableArray *arrayRestlut;
+}
 
 @end
 
@@ -56,11 +61,16 @@
         
         [self.view setBackgroundColor:[UIColor clearColor]];
         
-        MagicUITableView *tableView = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 , 320,self.view.frame.size.height - 44)];
-        [tableView setBackgroundColor:ColorBG];
-        [tableView setSeparatorColor:[UIColor clearColor]];
-        [self.view addSubview:tableView];
-        RELEASE(tableView);
+        
+        MagicRequest *request = [DYBHttpMethod wosFoodInfo_foodDiscount_kitchenIndex:@"" discountDay:@"1" page:@"0" count:@"3" sAlert:YES receive:self];
+        [request setTag:3];
+        
+        
+        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 , 320,self.view.frame.size.height - 44)];
+        [tableView1 setBackgroundColor:ColorBG];
+        [tableView1 setSeparatorColor:[UIColor clearColor]];
+        [self.view addSubview:tableView1];
+        RELEASE(tableView1);
     }
     
     
@@ -79,7 +89,7 @@
     
     if ([signal is:[MagicUITableView TABLENUMROWINSEC]])//numberOfRowsInSection
     {
-        NSNumber *s = [NSNumber numberWithInteger:5];
+        NSNumber *s = [NSNumber numberWithInteger:arrayRestlut.count];
         [signal setReturnValue:s];
         
     }else if ([signal is:[MagicUITableView TABLENUMOFSEC]])//numberOfSectionsInTableView
@@ -117,6 +127,7 @@
         
         WOSGoodPriceCell *cell = [[WOSGoodPriceCell alloc]init];
         cell.targetObj = self;
+        [cell creatView:[arrayRestlut objectAtIndex:indexPath.row]];
         [cell setBackgroundColor:ColorBG];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [signal setReturnValue:cell];
@@ -167,6 +178,66 @@
     }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
     }
 }
+
+
+
+#pragma mark- 只接受HTTP信号
+- (void)handleRequest:(MagicRequest *)request receiveObj:(id)receiveObj
+{
+    if ([request succeed])
+    {
+        //        JsonResponse *response = (JsonResponse *)receiveObj;
+        if (request.tag == 2) {
+            
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+                    
+                    //                    _dictInfo = dict;
+                    //                    [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    //
+                }else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+        }else if(request.tag == 3){
+            
+            NSDictionary *dict = [request.responseString JSONValue];
+            
+            if (dict) {
+                
+                BOOL result = [[dict objectForKey:@"result"] boolValue];
+                if (!result) {
+
+                }
+                else{
+                    NSString *strMSG = [dict objectForKey:@"message"];
+                    
+                    [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    
+                }
+            }
+            
+        } else{
+            NSDictionary *dict = [request.responseString JSONValue];
+            NSString *strMSG = [dict objectForKey:@"message"];
+            
+            [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+            
+            
+        }
+    }
+}
+
+
 
 - (void)dealloc
 {

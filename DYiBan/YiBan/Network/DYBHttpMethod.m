@@ -1674,11 +1674,24 @@
 
 
 
++ (MagicRequest *)wosFoodInfo_foodIndex:(NSString *)foodIndex sAlert:(BOOL)isAlert receive:(id)receive{
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosFoodInfo_foodIndex:foodIndex];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+    
+}
 
 
 
++ (MagicRequest *)wosFoodInfo_foodDiscount_kitchenIndex :(NSString *)kitchenIndex discountDay  :(NSString *)discountDay  page  :(NSString *)page  count  :(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive{
 
-
+    NSMutableDictionary *dict = [DYBHttpInterface wosFoodInfo_foodDiscount_kitchenIndex:kitchenIndex discountDay:discountDay page:page count:count];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+}
 
 
 @end

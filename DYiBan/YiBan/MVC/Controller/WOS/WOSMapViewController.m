@@ -12,7 +12,12 @@
 #import "JSON.h"
 #import "WOShopDetailViewController.h"
 
-@interface WOSMapViewController ()
+@interface WOSMapViewController (){
+
+    NSString *strStye; //1-已吃；2-附近；3-附近人在吃；4-猜你喜欢
+
+
+}
 
 @end
 
@@ -53,11 +58,13 @@
     
         [self.headview setTitleColor:[UIColor colorWithRed:203.0f/255 green:203.0f/255 blue:203.0f/255 alpha:1.0f]];
         
-        [self.view setBackgroundColor:[UIColor redColor]];
+        [self.view setBackgroundColor:[UIColor whiteColor]];
         [self setButtonImage:self.leftButton setImage:@"back"];
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
+        
+        strStye = [[NSString alloc]init];
 //        
 //        if (iType == 3) {
 //            
@@ -124,13 +131,17 @@
             [self.view addSubview:btn1];
             RELEASE(btn1);
             
+            
+            if (iType == 3) {
+                [btn1 setHidden:YES];
+            }
 //            116.354583,39.982453
             
           
             
         }
         
-        MagicRequest *request = [DYBHttpMethod wosMapList_userIndex:SHARED.userId gps:@"116.354583,39.982453" radius:@"10000" type:@"2" sAlert:YES receive:self];
+        MagicRequest *request = [DYBHttpMethod wosMapList_userIndex:SHARED.userId gps:@"116.354583,39.982453" radius:@"10000" type:[NSString stringWithFormat:@"%d",iType + 1] sAlert:YES receive:self];
         [request setTag:3];
     }
     
@@ -159,6 +170,10 @@
             [btn1 setTitleColor:ColorGryWhite forState:UIControlStateNormal];
         }
     }
+    
+    
+    MagicRequest *request = [DYBHttpMethod wosMapList_userIndex:SHARED.userId gps:@"116.354583,39.982453" radius:@"10000" type:[NSString stringWithFormat:@"%d",btn.tag + 1 - 10] sAlert:YES receive:self];
+    [request setTag:3];
 }
 
 
@@ -168,6 +183,7 @@
     NSLog(@"%@",info);
     
     WOShopDetailViewController *detail = [[WOShopDetailViewController alloc]init];
+    detail.dictInfo = info;
     [self.drNavigationController pushViewController:detail animated:YES];
     RELEASE(detail);
     
@@ -221,10 +237,9 @@
 //                    }
                     
                     
-                    MapViewController*   _mapViewController = [[MapViewController alloc] init];
+                    MapViewController*   _mapViewController = [[MapViewController alloc] initWithFrame:CGRectMake(0.0f, self.headHeight + 30 , 320.0f, self.view.bounds.size.height - self.headHeight)];
                     _mapViewController.delegate = self;
-                    [self.view addSubview:_mapViewController.view];
-                    [_mapViewController.view setFrame:CGRectMake(0.0f, self.headHeight - 34 , 320.0f, self.view.bounds.size.height - self.headHeight)];
+                    [self.view addSubview:_mapViewController];
                     [_mapViewController resetAnnitations:gpsList];
                     
 //                    _mapViewController.dic;

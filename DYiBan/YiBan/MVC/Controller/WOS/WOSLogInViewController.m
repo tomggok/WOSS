@@ -62,10 +62,15 @@
         
         [self.headview setTitleColor:[UIColor colorWithRed:193.0f/255 green:193.0f/255 blue:193.0f/255 alpha:1.0f]];
         [self.headview setBackgroundColor:[UIColor colorWithRed:78.0f/255 green:78.0f/255 blue:78.0f/255 alpha:1.0f]];
-        
 //        [self.view setBackgroundColor:[UIColor colorWithRed:97.0f/255 green:97.0f/255 blue:97.0f/255 alpha:1.0f]];
+        
+        [self.leftButton setHidden:YES];
+        [self.rightButton setHidden:YES];
+        
+
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
+
         
         [self.view setBackgroundColor:[UIColor clearColor]];
         

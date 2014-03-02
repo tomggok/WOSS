@@ -3493,8 +3493,8 @@
 		B58CAB811829CF6700F73D66 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B529F066187B8C6D00F9060D /* WOSMapViewController.m */,
 				B529F067187B8C6D00F9060D /* WOSMapViewController.h */,
+				B529F066187B8C6D00F9060D /* WOSMapViewController.m */,
 				B52549EC184724A000F5B645 /* WOS */,
 				B5D9DC851834AC5F002B1C74 /* DYBListSelViewController.h */,
 				B5D9DC861834AC5F002B1C74 /* DYBListSelViewController.m */,

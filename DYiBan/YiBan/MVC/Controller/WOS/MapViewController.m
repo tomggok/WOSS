@@ -37,28 +37,37 @@
     [super dealloc];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id)initWithFrame:(CGRect)frame{
+
+    self = [super initWithFrame:frame];
     if (self) {
-        // Custom initialization
+        [self viewDidLoad];
     }
     return self;
 }
+
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
     _annotationList = [[NSMutableArray alloc] init];
     
     
-    _mapView = [[MKMapView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f,CGRectGetHeight(self.view.frame))];
+    _mapView = [[MKMapView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f,CGRectGetHeight(self.frame))];
     _mapView.mapType=MKMapTypeStandard;
     _mapView.delegate=self;
     _mapView.showsUserLocation=YES;
-    [self.view addSubview:_mapView];
+    [self addSubview:_mapView];
     RELEASE(_mapView);
 
-    [super viewDidLoad];
+//    [super viewDidLoad];
 }
 
 -(void)setAnnotionsWithList:(NSArray *)list
@@ -76,7 +85,7 @@
         CLLocationDegrees longitude=[[arrayStr objectAtIndex:1] doubleValue];
         CLLocationCoordinate2D location=CLLocationCoordinate2DMake(longitude, latitude);
         
-        MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(location,span ,span );
+        MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(location,1000 ,1000 );
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:region];
         [_mapView setRegion:adjustedRegion animated:YES];
         
@@ -102,6 +111,7 @@
         _calloutAnnotation = [[[CalloutMapAnnotation alloc] 
                                initWithLatitude:view.annotation.coordinate.latitude
                                andLongitude:view.annotation.coordinate.longitude] autorelease];
+        _calloutAnnotation.dictInfo = ((BasicMapAnnotation *)view.annotation).dictInfo;
         [mapView addAnnotation:_calloutAnnotation];
         
         [mapView setCenterCoordinate:_calloutAnnotation.coordinate animated:YES];
@@ -111,7 +121,9 @@
 //        view.annotation
         
         if([delegate respondsToSelector:@selector(customMKMapViewDidSelectedWithInfo:)]){
-            [delegate customMKMapViewDidSelectedWithInfo:@"点击至之后你要在这干点啥"];
+            CallOutAnnotationVifew * callView = (CallOutAnnotationVifew *)view;
+            NSDictionary *dict = callView.dictInfo;
+            [delegate customMKMapViewDidSelectedWithInfo:dict];
         }
     }
 }
@@ -167,13 +179,13 @@
 
 
 #pragma mark - back button signal
-- (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
-{
-    if ([signal is:[DYBBaseViewController BACKBUTTON]])
-    {
-        [self.drNavigationController popViewControllerAnimated:YES];
-    }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
-    }
-}
+//- (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
+//{
+//    if ([signal is:[DYBBaseViewController BACKBUTTON]])
+//    {
+//        [self.drNavigationController popViewControllerAnimated:YES];
+//    }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
+//    }
+//}
 
 @end

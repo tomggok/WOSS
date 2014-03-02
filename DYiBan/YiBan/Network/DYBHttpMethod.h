@@ -464,4 +464,10 @@
 
 
 + (MagicRequest *)wosMapList_userIndex:(NSString *)userIndex gps:(NSString *)gps radius :(NSString *)radius type :(NSString *)type sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosFoodInfo_foodIndex:(NSString *)foodIndex sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosFoodInfo_foodDiscount_kitchenIndex :(NSString *)kitchenIndex discountDay  :(NSString *)discountDay  page  :(NSString *)page  count  :(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
+
+
 @end
