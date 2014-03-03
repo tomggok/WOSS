@@ -27,11 +27,11 @@
 #import "WOSPreferentialCardViewController.h"
 
 #import "WOSMoreInfoViewController.h"
-
+#import "WOSFindFoodViewController.h"
 #import "Cell2.h"
 #import "WOSLogInViewController.h"
 #import "WOSOrderLostViewController.h"
-
+#import "WOSFindMIMAViewController.h"
 @interface WOSPersonInfoViewController (){
     
     
@@ -314,9 +314,14 @@
         }
         
         cell.textLabel.text = [arrayTitle objectAtIndex:indexPath.row];
+        [cell.textLabel setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:ColorGryWhite];
         [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        [cell setBackgroundColor:[UIColor clearColor]];
+        
+        
         UIImageView *imageViewSep = [[UIImageView alloc]initWithFrame:CGRectMake(0.0f, 39, 280, 1)];
         [imageViewSep setImage:[UIImage imageNamed:@"个人中心_line"]];
         [cell addSubview:imageViewSep];
@@ -402,7 +407,9 @@
                 
             {
                 
-                
+                WOSFindMIMAViewController *find = [[WOSFindMIMAViewController alloc]init];
+                [self.drNavigationController pushViewController:find animated:YES];
+                RELEASE(find);
                 
             }
                 

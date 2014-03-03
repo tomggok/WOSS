@@ -8,7 +8,7 @@
 
 #import "WOSGoodPriceCell.h"
 #import "WOSMakeSureOrderListViewController.h"
-
+#import "UIImageView+WebCache.h"
 
 @implementation WOSGoodPriceCell
 
@@ -37,22 +37,25 @@
     [self addSubview:view];
     RELEASE( view);
     
-    UIImageView *imageViewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(5.0f, 5.0f, 80, 70)];
+    UIImageView *imageViewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(5.0f, 5.0f, 93, 70)];
     [imageViewIcon setBackgroundColor:[UIColor redColor]];
-    [imageViewIcon setImage:[UIImage imageNamed:@"food1.png"]];
+    NSURL *url = [NSURL URLWithString:[DYBShareinstaceDelegate addIPImage:[dcit objectForKey:@"imgUrl"]]];
+//    [imageViewIcon setImage:[UIImage imageNamed:@"food1.png"]];
+    [imageViewIcon setImageWithURL:url];
+    [imageViewIcon setFrame:CGRectMake(5.0f, 5.0f, 93, 70)];
     [view addSubview:imageViewIcon];
     RELEASE(imageViewIcon);
     
     UILabel *labelNum = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetWidth(imageViewIcon.frame) + CGRectGetMinX(imageViewIcon.frame) + 3 + 3, 5, 100, 15)];
     [labelNum setBackgroundColor:[UIColor clearColor]];
     [labelNum setTextColor:[UIColor whiteColor]];
-    [labelNum setText:[NSString stringWithFormat:@"海底捞火锅"]];
+    [labelNum setText:[dcit objectForKey:@"kitchenName"]];
     [view addSubview:labelNum];
     RELEASE(labelNum);
     
     
     UILabel *star = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetWidth(imageViewIcon.frame) + CGRectGetMinX(imageViewIcon.frame) + 3, CGRectGetHeight(labelNum.frame) + 5 + 3,100, 30) ];
-    [star setText:@"三杯鸡"];
+    [star setText:[dcit objectForKey:@"foodName"]];
     [star setBackgroundColor:[UIColor clearColor]];
     [star setTextColor:[UIColor redColor]];
     [view addSubview:star];
@@ -60,7 +63,7 @@
     
     
     UILabel *labelPrice = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetWidth(imageViewIcon.frame) + CGRectGetMinX(imageViewIcon.frame) + 3 + 2,  CGRectGetMinY(star.frame) +CGRectGetHeight(star.frame) + 7 , 100, 15)];
-    [labelPrice setText:@"特价￥93"];
+    [labelPrice setText:[NSString stringWithFormat:@"特价￥%@",[dcit objectForKey:@"discountPrice"] ]];
     [labelPrice setTextColor:[UIColor colorWithRed:246/255.0f green:46/255.0f blue:9/255.0f alpha:1.0f]];
     [labelPrice setBackgroundColor:[UIColor clearColor]];
     [view addSubview:labelPrice];
@@ -69,7 +72,7 @@
     UILabel *labelAddr = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetWidth(labelPrice.frame) + CGRectGetMinX(labelPrice.frame) + 3 + 2,  CGRectGetMinY(star.frame) +CGRectGetHeight(star.frame) + 7 , 100, 15) ];
     [labelAddr setTextColor:[UIColor whiteColor]];
     [labelAddr setBackgroundColor:[UIColor clearColor]];
-    [labelAddr setText:@"原价￥113"];
+    [labelAddr setText:[NSString stringWithFormat:@"原价￥%@",[dcit objectForKey:@"foodPrice"]]];
     [view addSubview:labelAddr];
     RELEASE(labelAddr);
     

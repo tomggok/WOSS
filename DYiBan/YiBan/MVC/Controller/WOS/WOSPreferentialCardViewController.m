@@ -53,9 +53,14 @@
         
         [self.rightButton setHidden:YES];
         
-        [self.view setBackgroundColor:[UIColor clearColor]];
+        UIView *viewBG = [[UIView alloc]initWithFrame:self.view.frame];
+        [viewBG setBackgroundColor:ColorBG];
+        [self.view addSubview:viewBG];
+        RELEASE(viewBG);
         
-        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_medeals_userIndex:SHARED.userId kitchenIndex:@"1" sAlert:YES receive:self];
+//        [self.view setBackgroundColor:ColorBG];
+        
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_medeals_userIndex:SHARED.userId kitchenIndex:nil sAlert:YES receive:self];
         [request setTag:3];
         
         tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
@@ -118,8 +123,9 @@
         NSDictionary *dict = (NSDictionary *)[signal object];
         NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
         
-        WOSCardCell *cell = [[WOSCardCell alloc]init];
+        WOSCardCell *cell = [[[WOSCardCell alloc]init] autorelease];
         [cell setBackgroundColor:[UIColor colorWithRed:46/255 green:46/255 blue:46/255 alpha:1.0f]];
+        [cell setBackgroundColor:[UIColor clearColor]];
         [cell creatCell:[arrayAddrList objectAtIndex:indexPath.row]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         

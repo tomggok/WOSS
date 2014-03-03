@@ -140,6 +140,7 @@
         NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
         
         WOSALLOrderViewController *shop = [[WOSALLOrderViewController alloc]init];
+        shop.dictInfo = [arrayRestlut objectAtIndex:indexPath.row];
         [self.drNavigationController pushViewController:shop animated:YES];
         RELEASE(shop);
         
@@ -215,7 +216,8 @@
                 
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
-
+                    arrayRestlut = [[NSMutableArray alloc]initWithArray:[dict objectForKey:@"foodList"]];
+                    [tableView1 reloadData];
                 }
                 else{
                     NSString *strMSG = [dict objectForKey:@"message"];

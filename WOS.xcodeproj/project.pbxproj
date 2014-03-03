@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18BB95C918BF7716009A0DC2 /* WOSFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */; };
+		B50FBF0018C4352C00785145 /* WOSFindMIMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */; };
 		B513F81A18B73C33005F85C0 /* WOSActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */; };
 		B5143ED9186BC552007677E3 /* WOSGoodPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5143ED8186BC552007677E3 /* WOSGoodPriceCell.m */; };
 		B51A12241855BC85006D8F71 /* WOSGoodFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B51A12231855BC85006D8F71 /* WOSGoodFoodListCell.m */; };
@@ -1271,6 +1272,8 @@
 /* Begin PBXFileReference section */
 		18BB95C718BF7715009A0DC2 /* WOSFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSFoodDetailViewController.h; sourceTree = "<group>"; };
 		18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSFoodDetailViewController.m; sourceTree = "<group>"; };
+		B50FBEFE18C4352C00785145 /* WOSFindMIMAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WOSFindMIMAViewController.h; path = DYiBan/YiBan/MVC/Controller/WOSFindMIMAViewController.h; sourceTree = SOURCE_ROOT; };
+		B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WOSFindMIMAViewController.m; path = DYiBan/YiBan/MVC/Controller/WOSFindMIMAViewController.m; sourceTree = SOURCE_ROOT; };
 		B513F81818B73C33005F85C0 /* WOSActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSActivityDetailViewController.h; sourceTree = "<group>"; };
 		B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSActivityDetailViewController.m; sourceTree = "<group>"; };
 		B5143ED7186BC552007677E3 /* WOSGoodPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSGoodPriceCell.h; sourceTree = "<group>"; };
@@ -3163,6 +3166,8 @@
 		B52549EC184724A000F5B645 /* WOS */ = {
 			isa = PBXGroup;
 			children = (
+				B50FBEFE18C4352C00785145 /* WOSFindMIMAViewController.h */,
+				B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */,
 				B5A2B37D186AA61700774D94 /* MapViewController.m */,
 				B5A2B37E186AA61700774D94 /* CustomMapCalloutView */,
 				B5A2B388186AA61800774D94 /* MapViewController.xib */,
@@ -7082,6 +7087,7 @@
 				B5C662F218A89BFF00C5A26C /* Magic_UIPopView.m in Sources */,
 				B58CB1F61829CF6B00F73D66 /* DYBMapView.m in Sources */,
 				B5C6629C18A89BFF00C5A26C /* ASIInputStream.m in Sources */,
+				B50FBF0018C4352C00785145 /* WOSFindMIMAViewController.m in Sources */,
 				B58CB1F71829CF6B00F73D66 /* DYBMenuBLueView.m in Sources */,
 				B5C662DD18A89BFF00C5A26C /* UIViewController+MagicCategory.m in Sources */,
 				B5C662E118A89BFF00C5A26C /* NSObject+MagicRequestResponder.m in Sources */,

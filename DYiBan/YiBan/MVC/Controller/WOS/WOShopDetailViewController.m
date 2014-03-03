@@ -425,9 +425,18 @@ DEF_SIGNAL(BTNTWO);
         {
         
             WOSActivityDetailViewController *activity = [[WOSActivityDetailViewController alloc]init];
-            activity.dictInfo = dictResult;
-            [self.drNavigationController pushViewController:activity animated:YES];
-            RELEASE(activity);
+            
+            NSArray *arrayActivityList = [dictResult objectForKey:@"activityList"] ;
+            if (arrayActivityList.count > 0 ) {
+                NSDictionary *dict  = [arrayActivityList objectAtIndex:0];
+                activity.dictInfo = dict;
+                [self.drNavigationController pushViewController:activity animated:YES];
+                RELEASE(activity);
+
+            }else{
+            
+                return;
+            }
             
         }
             break;

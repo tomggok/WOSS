@@ -2751,12 +2751,12 @@
                   symbolName = "-[SDWebImageManager imageDownloader:didUpdatePartialImage:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
-                  timestampString = "415274634.888531"
+                  timestampString = "415532073.848077"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "330"
                   endingLineNumber = "330"
-                  offsetFromSymbolStart = "34">
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2765,12 +2765,12 @@
                   symbolName = "-[SDWebImageManager imageDownloader:didUpdatePartialImage:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/Framework/AppUtils/SDWebImage/SDWebImageManager.m"
-                  timestampString = "415274634.888712"
+                  timestampString = "415532073.848289"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "330"
                   endingLineNumber = "330"
-                  offsetFromSymbolStart = "654">
+                  offsetFromSymbolStart = "796">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -6827,12 +6827,12 @@
                   symbolName = "-[DYBDataBankShareViewController handleViewSignal_DYBDtaBankSearchView:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
-                  timestampString = "415274634.897271"
+                  timestampString = "415532073.859865"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
                   endingLineNumber = "391"
-                  offsetFromSymbolStart = "1398">
+                  offsetFromSymbolStart = "1896">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -6841,12 +6841,12 @@
                   symbolName = "-[DYBDataBankShareViewController handleViewSignal_DYBDtaBankSearchView:]"
                   moduleName = "WOS"
                   urlString = "file://localhost/Users/tomzeng/Pictures/WOS/DYiBan/YiBan/MVC/Controller/DATA-BANK/DYBDataBankShareViewController.m"
-                  timestampString = "415274634.897458"
+                  timestampString = "415532073.860125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "391"
                   endingLineNumber = "391"
-                  offsetFromSymbolStart = "1608">
+                  offsetFromSymbolStart = "2162">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -9871,7 +9871,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "-handleViewSignal_DragonViewController:"
+            landmarkName = "-handleViewSignal_MagicViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9887,7 +9887,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
             endingLineNumber = "124"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9903,7 +9903,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
             endingLineNumber = "88"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkName = "-handleViewSignal_MagicViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9919,7 +9919,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
             endingLineNumber = "94"
-            landmarkName = "-numberOfSectionsInTableView:"
+            landmarkName = "-handleViewSignal_MagicViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9935,7 +9935,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "-tableView:heightForRowAtIndexPath:"
+            landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9951,7 +9951,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10648,12 +10648,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
-            timestampString = "414667846.176401"
+            timestampString = "415518301.596994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "520"
-            endingLineNumber = "520"
-            landmarkName = "-handleViewSignal_DYBBaseViewController:"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
+            landmarkName = "-addlabel_title:frame:view:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10676,7 +10676,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSActivityDetailViewController.m"
@@ -10696,12 +10696,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
-            timestampString = "415251322.264763"
+            timestampString = "415518301.596994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
-            landmarkName = "-creatPicBar:"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
+            landmarkName = "-doTapMap"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10765,7 +10765,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "-mapView:didSelectAnnotationView:"
+            landmarkName = "-setAnnotionsWithList:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10781,7 +10781,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
             endingLineNumber = "170"
-            landmarkName = "-customMKMapViewDidSelectedWithInfo:"
+            landmarkName = "-doSelect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10829,7 +10829,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "-resetAnnitations:"
+            landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10861,7 +10861,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
             endingLineNumber = "134"
-            landmarkName = "-mapView:viewForAnnotation:"
+            landmarkName = "-mapView:didDeselectAnnotationView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10877,8 +10877,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkName = "@implementation MapViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -10926,6 +10926,134 @@
             startingLineNumber = "149"
             endingLineNumber = "149"
             landmarkName = "-mapView:viewForAnnotation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
+            timestampString = "415517236.184895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
+            landmarkName = "-doTapBtn:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOShopDetailViewController.m"
+            timestampString = "415518301.596994"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
+            landmarkName = "-handleRequest:receiveObj:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSGoodPriceViewController.m"
+            timestampString = "415520958.093936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "-handleRequest:receiveObj:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/View/WOS/WOSGoodPriceCell.m"
+            timestampString = "415520787.707924"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-creatView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOSFindMIMAViewController.m"
+            timestampString = "415525328.962961"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-addOK"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSPreferentialCardViewController.m"
+            timestampString = "415532073.645586"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-handleViewSignal_MagicUITableView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSPreferentialCardViewController.m"
+            timestampString = "415532073.645586"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-handleRequest:receiveObj:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DYiBan/YiBan/MVC/Controller/WOS/WOSPreferentialCardViewController.m"
+            timestampString = "415531976.330205"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-handleViewSignal_MagicViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

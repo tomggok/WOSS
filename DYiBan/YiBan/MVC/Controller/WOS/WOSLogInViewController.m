@@ -187,7 +187,7 @@
         
         _phoneInputName = [[DYBInputView alloc]initWithFrame:CGRectMake((320-INPUTWIDTH)/2, 0 + 20, INPUTWIDTH, INPUTHEIGHT) placeText:@"用户名" textType:0];
         [_phoneInputName.layer AddborderByIsMasksToBounds:YES cornerRadius:4 borderWidth:1 borderColor:[[UIColor clearColor] CGColor]];
-        [_phoneInputName.nameField setText:@"1"];
+        [_phoneInputName.nameField setText:@"zxw1"];
         [_phoneInputName.nameField setTextColor:[UIColor whiteColor]];
         [_phoneInputName setBackgroundColor:[UIColor clearColor]];
         [viewLogin addSubview:_phoneInputName];
@@ -201,7 +201,7 @@
         
         _phoneInputAddr = [[DYBInputView alloc]initWithFrame:CGRectMake((320-INPUTWIDTH)/2, 0 +INPUTHEIGHT  + 40, INPUTWIDTH, INPUTHEIGHT) placeText:@"密码" textType:0];
         [_phoneInputAddr.layer AddborderByIsMasksToBounds:YES cornerRadius:4 borderWidth:1 borderColor:[[UIColor clearColor] CGColor]];
-        [_phoneInputAddr.nameField setText:@"1"];
+        [_phoneInputAddr.nameField setText:@"zxw1"];
         [_phoneInputAddr.nameField setTextColor:[UIColor whiteColor]];
         [_phoneInputAddr setBackgroundColor:[UIColor clearColor]];
         [viewLogin addSubview:_phoneInputAddr];
