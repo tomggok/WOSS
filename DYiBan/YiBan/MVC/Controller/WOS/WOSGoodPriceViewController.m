@@ -17,6 +17,7 @@
 
     MagicUITableView *tableView1;
     NSMutableArray *arrayRestlut;
+    int iType;
 }
 
 @end
@@ -60,6 +61,49 @@
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         [self.view setBackgroundColor:[UIColor clearColor]];
+        
+        iType = 0;
+        
+        for (int i = 0; i< 2; i ++) {
+            
+            UIButton *btn1 = [[UIButton alloc]initWithFrame:CGRectMake(0.0f + i*320/2 + i*1, self.headHeight, 320/2, 30)];
+            //            [btn1 setTitle:@"处理中" forState:UIControlStateNormal];
+            [btn1.titleLabel setFont:[UIFont systemFontOfSize:14]];
+            [btn1 setTitleColor:ColorGryWhite forState:UIControlStateNormal];
+            switch (i) {
+                case 0:
+                    [btn1 setTitle:@"今日特价" forState:UIControlStateNormal];
+                    if (iType == 0) {
+                        [btn1 setTitleColor:ColorTextYellow forState:UIControlStateNormal];
+                    }
+                    
+                    break;
+                case 1:
+                    [btn1 setTitle:@"热门推荐" forState:UIControlStateNormal];
+                    if (iType == 1) {
+                        [btn1 setTitleColor:ColorTextYellow forState:UIControlStateNormal];
+                    }
+                    break;
+                case 2:
+                    [btn1 setFrame:CGRectMake(0.0f + i*320/3 + i *0.5 , self.headHeight, 320/3, 30)];
+                    [btn1 setTitle:@"附近的人在吃" forState:UIControlStateNormal];
+                    if (iType == 2) {
+                        [btn1 setTitleColor:ColorTextYellow forState:UIControlStateNormal];
+                    }
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            
+            [btn1 setBackgroundColor:[UIColor blackColor]];
+            [btn1 addTarget:self action:@selector(doSelect:) forControlEvents:UIControlEventTouchUpInside];
+            [btn1 setTag:10 + i];
+            [self.view addSubview:btn1];
+            RELEASE(btn1);
+            
+        }
         
         
         MagicRequest *request = [DYBHttpMethod wosFoodInfo_foodDiscount_kitchenIndex:@"" discountDay:@"1" page:@"0" count:@"3" sAlert:YES receive:self];
@@ -180,6 +224,39 @@
     }
 }
 
+-(void)doSelect:(id)sender{
+    
+    UIButton *btn = (UIButton *)sender;
+    for (int i = 10; i < 13; i++) {
+        
+        
+        UIButton *btn1 = (UIButton *)[self.view viewWithTag:i];
+        if (i == btn.tag) {
+            
+            [btn1 setTitleColor:ColorTextYellow forState:UIControlStateNormal];
+        }else{
+            
+            [btn1 setTitleColor:ColorGryWhite forState:UIControlStateNormal];
+        }
+    }
+    
+    if (btn.tag == 10) {
+        
+        MagicRequest *request = [DYBHttpMethod wosFoodInfo_foodDiscount_kitchenIndex:@"" discountDay:@"1" page:@"0" count:@"3" sAlert:YES receive:self];
+        [request setTag:3];
+        
+
+        
+    }else{
+    
+        MagicRequest *request = [DYBHttpMethod wosFoodInfo_foodDiscount_kitchenIndex:@"" discountDay:@"1" page:@"0" count:@"3" sAlert:YES receive:self];
+        [request setTag:3];
+        
+
+    }
+    
+    
+}
 
 
 #pragma mark- 只接受HTTP信号
