@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1802955118C8C373008BFAF8 /* WOSTellMSGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1802955018C8C373008BFAF8 /* WOSTellMSGViewController.m */; };
 		18BB95C918BF7716009A0DC2 /* WOSFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */; };
 		B50FBF0018C4352C00785145 /* WOSFindMIMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */; };
 		B513F81A18B73C33005F85C0 /* WOSActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */; };
@@ -1270,6 +1271,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1802954F18C8C373008BFAF8 /* WOSTellMSGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSTellMSGViewController.h; sourceTree = "<group>"; };
+		1802955018C8C373008BFAF8 /* WOSTellMSGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSTellMSGViewController.m; sourceTree = "<group>"; };
 		18BB95C718BF7715009A0DC2 /* WOSFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSFoodDetailViewController.h; sourceTree = "<group>"; };
 		18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSFoodDetailViewController.m; sourceTree = "<group>"; };
 		B50FBEFE18C4352C00785145 /* WOSFindMIMAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WOSFindMIMAViewController.h; path = DYiBan/YiBan/MVC/Controller/WOSFindMIMAViewController.h; sourceTree = SOURCE_ROOT; };
@@ -3166,6 +3169,8 @@
 		B52549EC184724A000F5B645 /* WOS */ = {
 			isa = PBXGroup;
 			children = (
+				1802954F18C8C373008BFAF8 /* WOSTellMSGViewController.h */,
+				1802955018C8C373008BFAF8 /* WOSTellMSGViewController.m */,
 				B50FBEFE18C4352C00785145 /* WOSFindMIMAViewController.h */,
 				B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */,
 				B5A2B37D186AA61700774D94 /* MapViewController.m */,
@@ -6918,6 +6923,7 @@
 				B5C6629D18A89BFF00C5A26C /* ASINetworkQueue.m in Sources */,
 				B58CB1821829CF6A00F73D66 /* mc.m in Sources */,
 				B5C662F718A89BFF00C5A26C /* Magic_UITabBar.m in Sources */,
+				1802955118C8C373008BFAF8 /* WOSTellMSGViewController.m in Sources */,
 				B5C662D218A89BFF00C5A26C /* UILabel+ReSize.m in Sources */,
 				B5C662CE18A89BFF00C5A26C /* UIImage+MagicCategory.m in Sources */,
 				B5C662E418A89BFF00C5A26C /* NSObject+MagicDatabase.m in Sources */,

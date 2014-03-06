@@ -127,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "460"
             endingLineNumber = "460"
-            landmarkName = "-creatPicBar:"
+            landmarkName = "-doTapMap"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,7 +335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "448"
             endingLineNumber = "448"
-            landmarkName = "-doTapMap"
+            landmarkName = "-doTapBtn:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

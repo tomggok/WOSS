@@ -8,6 +8,9 @@
 
 #import "WOSMoreInfoViewController.h"
 #import "Cell2.h"
+#import "WOSTellMSGViewController.h"
+
+
 
 @interface WOSMoreInfoViewController (){
 
@@ -142,7 +145,14 @@
             
             break;
         case 1:
+        {
+            WOSTellMSGViewController *more = [[WOSTellMSGViewController alloc]init];
+            [self.drNavigationController pushViewController:more animated:YES];
+            RELEASE(more);
             
+        
+        
+        }
             break;
         case 2:
             
