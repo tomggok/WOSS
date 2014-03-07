@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1802955118C8C373008BFAF8 /* WOSTellMSGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1802955018C8C373008BFAF8 /* WOSTellMSGViewController.m */; };
 		18BB95C918BF7716009A0DC2 /* WOSFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */; };
+		B50E718318C5C6DA00A68FB7 /* WOSComplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50E718118C5C6DA00A68FB7 /* WOSComplainViewController.m */; };
+		B50E718818C5C71F00A68FB7 /* WOSYIJIANViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50E718618C5C71F00A68FB7 /* WOSYIJIANViewController.m */; };
+		B50E718C18C5C73800A68FB7 /* WOSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50E718B18C5C73800A68FB7 /* WOSAboutViewController.m */; };
 		B50FBF0018C4352C00785145 /* WOSFindMIMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */; };
 		B513F81A18B73C33005F85C0 /* WOSActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */; };
 		B5143ED9186BC552007677E3 /* WOSGoodPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5143ED8186BC552007677E3 /* WOSGoodPriceCell.m */; };
@@ -1275,6 +1278,12 @@
 		1802955018C8C373008BFAF8 /* WOSTellMSGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSTellMSGViewController.m; sourceTree = "<group>"; };
 		18BB95C718BF7715009A0DC2 /* WOSFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSFoodDetailViewController.h; sourceTree = "<group>"; };
 		18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSFoodDetailViewController.m; sourceTree = "<group>"; };
+		B50E718018C5C6DA00A68FB7 /* WOSComplainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSComplainViewController.h; sourceTree = "<group>"; };
+		B50E718118C5C6DA00A68FB7 /* WOSComplainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSComplainViewController.m; sourceTree = "<group>"; };
+		B50E718518C5C71F00A68FB7 /* WOSYIJIANViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSYIJIANViewController.h; sourceTree = "<group>"; };
+		B50E718618C5C71F00A68FB7 /* WOSYIJIANViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOSYIJIANViewController.m; sourceTree = "<group>"; };
+		B50E718A18C5C73800A68FB7 /* WOSAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WOSAboutViewController.h; path = DYiBan/YiBan/MVC/Controller/WOSAboutViewController.h; sourceTree = SOURCE_ROOT; };
+		B50E718B18C5C73800A68FB7 /* WOSAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WOSAboutViewController.m; path = DYiBan/YiBan/MVC/Controller/WOSAboutViewController.m; sourceTree = SOURCE_ROOT; };
 		B50FBEFE18C4352C00785145 /* WOSFindMIMAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WOSFindMIMAViewController.h; path = DYiBan/YiBan/MVC/Controller/WOSFindMIMAViewController.h; sourceTree = SOURCE_ROOT; };
 		B50FBEFF18C4352C00785145 /* WOSFindMIMAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WOSFindMIMAViewController.m; path = DYiBan/YiBan/MVC/Controller/WOSFindMIMAViewController.m; sourceTree = SOURCE_ROOT; };
 		B513F81818B73C33005F85C0 /* WOSActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOSActivityDetailViewController.h; sourceTree = "<group>"; };
@@ -3227,6 +3236,12 @@
 				B513F81918B73C33005F85C0 /* WOSActivityDetailViewController.m */,
 				18BB95C718BF7715009A0DC2 /* WOSFoodDetailViewController.h */,
 				18BB95C818BF7715009A0DC2 /* WOSFoodDetailViewController.m */,
+				B50E718018C5C6DA00A68FB7 /* WOSComplainViewController.h */,
+				B50E718118C5C6DA00A68FB7 /* WOSComplainViewController.m */,
+				B50E718518C5C71F00A68FB7 /* WOSYIJIANViewController.h */,
+				B50E718618C5C71F00A68FB7 /* WOSYIJIANViewController.m */,
+				B50E718A18C5C73800A68FB7 /* WOSAboutViewController.h */,
+				B50E718B18C5C73800A68FB7 /* WOSAboutViewController.m */,
 			);
 			path = WOS;
 			sourceTree = "<group>";
@@ -6765,6 +6780,7 @@
 				B58CB0FA1829CF6A00F73D66 /* DYBDataBankSearchViewController.m in Sources */,
 				B5C662E518A89BFF00C5A26C /* Magic_Database.m in Sources */,
 				B58CB0FB1829CF6A00F73D66 /* DYBDataBankShareViewController.m in Sources */,
+				B50E718318C5C6DA00A68FB7 /* WOSComplainViewController.m in Sources */,
 				B58CB0FD1829CF6A00F73D66 /* DYBDataBnakSchoolAndCollegeViewController.m in Sources */,
 				B58CB1001829CF6A00F73D66 /* DYBForgetPassWordViewController.m in Sources */,
 				B5C662BB18A89BFF00C5A26C /* SDWebImagePrefetcher.m in Sources */,
@@ -7094,6 +7110,7 @@
 				B58CB1F61829CF6B00F73D66 /* DYBMapView.m in Sources */,
 				B5C6629C18A89BFF00C5A26C /* ASIInputStream.m in Sources */,
 				B50FBF0018C4352C00785145 /* WOSFindMIMAViewController.m in Sources */,
+				B50E718C18C5C73800A68FB7 /* WOSAboutViewController.m in Sources */,
 				B58CB1F71829CF6B00F73D66 /* DYBMenuBLueView.m in Sources */,
 				B5C662DD18A89BFF00C5A26C /* UIViewController+MagicCategory.m in Sources */,
 				B5C662E118A89BFF00C5A26C /* NSObject+MagicRequestResponder.m in Sources */,
@@ -7105,6 +7122,7 @@
 				B58CB1FB1829CF6B00F73D66 /* DYBPagePickerView.m in Sources */,
 				B58CB1FC1829CF6B00F73D66 /* DYBPhotoEditorView.m in Sources */,
 				B58CB1FD1829CF6B00F73D66 /* DYBPhotoView.m in Sources */,
+				B50E718818C5C71F00A68FB7 /* WOSYIJIANViewController.m in Sources */,
 				B58CB1FE1829CF6B00F73D66 /* DYBPointAnnotation.m in Sources */,
 				B58CB1FF1829CF6B00F73D66 /* drawing.m in Sources */,
 				B58CB2001829CF6B00F73D66 /* PDColoredProgressView.m in Sources */,

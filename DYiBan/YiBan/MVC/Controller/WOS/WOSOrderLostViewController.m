@@ -19,7 +19,8 @@
 @interface WOSOrderLostViewController (){
 
     DYBUITableView *tbDataBank1;
-
+    NSMutableArray *arrayResult;
+    int orderStatus;
 }
 
 @end
@@ -106,11 +107,12 @@
         
 //        wosKitchenInfo_orderList_userIndex
         
+        orderStatus = 0;
         
-        
-        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_orderList_userIndex:SHARED.userId page:@"0" count:@"2" status:@"1" sAlert:YES receive:self];
+        MagicRequest *request = [DYBHttpMethod wosKitchenInfo_orderList_userIndex:SHARED.userId page:@"0" count:[NSString stringWithFormat:@"%d",orderStatus] status:@"0" sAlert:YES receive:self];
         [request setTag:3];
         
+//        0/1/2/3：备餐中/送餐中/已收货/取消
         
         tbDataBank1 = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f,  self.headHeight + 30, 320.0f, self.view.frame.size.height - self.headHeight - 30) isNeedUpdate:YES];
         
@@ -149,6 +151,11 @@
             [btn1 setTitleColor:ColorGryWhite forState:UIControlStateNormal];
         }
     }
+    
+    MagicRequest *request = [DYBHttpMethod wosKitchenInfo_orderList_userIndex:SHARED.userId page:@"0" count:[NSString stringWithFormat:@"%d",btn.tag - 10] status:@"0" sAlert:YES receive:self];
+    [request setTag:3];
+    
+    //        0/1/2/3：备餐中/送餐中/已收货/取消
 }
 
 -(void)backMan{
@@ -170,7 +177,7 @@
         
     {
         
-        NSNumber *s = [NSNumber numberWithInteger:4];
+        NSNumber *s = [NSNumber numberWithInteger:arrayResult.count];
         
         [signal setReturnValue:s];
 
@@ -222,7 +229,7 @@
         //        UITableView *tableView = [dict objectForKey:@"tableView"];
         WOSOrderListCell *cell = [[WOSOrderListCell alloc]init];
         [cell setBackgroundColor:ColorBG];
-      
+        [cell creat:[arrayResult objectAtIndex:indexPath.row]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [signal setReturnValue:cell];
         
@@ -362,6 +369,9 @@
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
+//                    NSDictionary *dictResult = [dict objectForKey:@"orderList"];
+                    arrayResult = [[NSMutableArray alloc]initWithArray:[dict objectForKey:@"orderList"]];
+                    [tbDataBank1 reloadData];
 //                    UIButton *btn = (UIButton *)[UIButton buttonWithType:UIButtonTypeCustom];
 //                    [btn setTag:10];
 //                    [self doChange:btn];

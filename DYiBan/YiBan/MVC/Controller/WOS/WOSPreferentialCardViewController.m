@@ -63,7 +63,7 @@
         MagicRequest *request = [DYBHttpMethod wosKitchenInfo_medeals_userIndex:SHARED.userId kitchenIndex:nil sAlert:YES receive:self];
         [request setTag:3];
         
-        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
+        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight , 320,self.view.frame.size.height - self.headHeight)];
         [tableView1 setBackgroundColor:[UIColor clearColor]];
         [tableView1 setSeparatorColor:[UIColor clearColor]];
         [self.view addSubview:tableView1];
@@ -102,7 +102,7 @@
         
         
         
-        [signal setReturnValue:[NSNumber numberWithInteger:80]];
+        [signal setReturnValue:[NSNumber numberWithInteger:100]];
     }
     else if ([signal is:[MagicUITableView TABLETITLEFORHEADERINSECTION]])//titleForHeaderInSection
     {

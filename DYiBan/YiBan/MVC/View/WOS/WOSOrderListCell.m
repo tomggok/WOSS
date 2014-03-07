@@ -15,7 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self creat:nil];
+//        [self creat:nil];
     }
     return self;
 }
@@ -52,14 +52,14 @@
     [labelTime setFont:[UIFont systemFontOfSize:14]];
     [labelTime setTextColor:ColorGryWhite];
     [labelTime setBackgroundColor:[UIColor clearColor]];
-    [labelTime setText:@"订单时间：2013-12-10 13：10"];
+    [labelTime setText: [NSString stringWithFormat:@"订单时间：%@",[dict objectForKey:@"createTime"]]];
     [self addSubview:labelTime];
     RELEASE(labelTime);
     
     
     
     UILabel *labelPrice = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetWidth(imageViewIcon.frame) + CGRectGetMinX(imageViewIcon.frame) + 3 + 2,   CGRectGetMinY(labelTime.frame) +CGRectGetHeight(labelTime.frame) + 3 + 2 + 7, 100, 15)];
-    [labelPrice setText:@"总额：￥93"];
+    [labelPrice setText:[NSString stringWithFormat:@"总额：%@",[dict objectForKey:@"totalSum"]]];
     [labelPrice setTextColor:[UIColor colorWithRed:246/255.0f green:46/255.0f blue:9/255.0f alpha:1.0f]];
     [labelPrice setBackgroundColor:[UIColor clearColor]];
     [view addSubview:labelPrice];
@@ -68,7 +68,7 @@
     UILabel *labelAddr = [[UILabel alloc]initWithFrame:CGRectMake(100 + CGRectGetWidth(imageViewIcon.frame) + CGRectGetMinX(imageViewIcon.frame) + 3 + 2,   CGRectGetMinY(labelPrice.frame) +CGRectGetHeight(labelPrice.frame) - 15 , 100, 15) ];
     [labelAddr setTextColor:ColorGryWhite];
     [labelAddr setBackgroundColor:[UIColor clearColor]];
-    [labelAddr setText:@"未收货"];
+    [labelAddr setText:[self getStatus:[dict objectForKey:@"status"]]];
     [view addSubview:labelAddr];
     RELEASE(labelAddr);
     
@@ -86,4 +86,20 @@
     [self addSubview:imageFen];
     RELEASE(imageFen);
 }
+
+-(NSString *)getStatus:(NSString *)key{
+
+    if ([key isEqualToString:@"0"]) {
+        return @"处理中";
+    }
+   else if ([key isEqualToString:@"1"]) {
+        return @"配送中";
+    }
+   else if ([key isEqualToString:@"2"]) {
+        return @"已经送达";
+    }
+
+
+}
+
 @end

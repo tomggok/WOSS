@@ -10,4 +10,5 @@
 
 @interface WOSOrderListCell : UITableViewCell
 
+-(void)creat:(NSDictionary *)dict;
 @end
