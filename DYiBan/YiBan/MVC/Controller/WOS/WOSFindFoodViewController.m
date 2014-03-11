@@ -63,9 +63,8 @@
 //        
 //        [self creatRightTopView];
         
-        //        arrayInfoForCai = [[NSMutableArray alloc]init];
         strKey = [[NSString alloc]init];
-      MagicUISearchBar *_searchbar = [[MagicUISearchBar alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 320, 30) backgroundColor:[UIColor clearColor] placeholder:@"文件名" isHideOutBackImg:NO isHideLeftView:NO];
+        MagicUISearchBar *_searchbar = [[MagicUISearchBar alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320, 30) backgroundColor:[UIColor clearColor] placeholder:@"文件名" isHideOutBackImg:NO isHideLeftView:NO];
         for (UIView *subview in [_searchbar subviews]) {
             if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")])
             {
@@ -89,7 +88,7 @@
         
         
         
-        tbleView = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 + 30, 320,self.view.frame.size.height - 74 ) isNeedUpdate:YES];
+        tbleView = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight + 30, 320,self.view.frame.size.height - 74 ) isNeedUpdate:YES];
         //        tableView setTableViewType:
         [tbleView setTableViewType:DTableViewSlime];
         [tbleView setBackgroundColor:ColorBG];
@@ -130,7 +129,7 @@
 
 -(void)creatRightTopView{
     
-    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, 44.0f, 160.0f, 30)];
+    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 160.0f, 30)];
     [btnTop addTarget:self action:@selector(showORHideDownView) forControlEvents:UIControlEventTouchUpInside];
     [btnTop setBackgroundColor:[UIColor colorWithRed:26/255.0f green:26/255.0f blue:26/255.0f alpha:1.0f]];
     [self.view addSubview:btnTop];
@@ -285,7 +284,7 @@
 
 -(void)creatLeftTopView{
     
-    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(160.0f, 44.0f, 160.0f, 30)];
+    UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(160.0f, self.headHeight, 160.0f, 30)];
     [btnTop addTarget:self action:@selector(sortPrice) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnTop];
     [btnTop setBackgroundColor:[UIColor colorWithRed:26/255.0f green:26/255.0f blue:26/255.0f alpha:1.0f]];
