@@ -26,6 +26,9 @@
 @end
 
 @implementation WOSAddAddrViewController
+@synthesize addView = _addView;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -220,6 +223,9 @@
                 if (!result) {
                     
                     [self.drNavigationController popViewControllerAnimated:YES];
+                    
+                    [_addView reloadData];
+                    
                 }
                 else{
                     NSString *strMSG = [dict objectForKey:@"message"];
@@ -244,7 +250,7 @@
 
 - (void)dealloc
 {
-    
+    [_addView release];
     [super dealloc];
 }
 @end

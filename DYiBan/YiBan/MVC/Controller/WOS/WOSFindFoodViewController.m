@@ -64,7 +64,10 @@
 //        [self creatRightTopView];
         
         strKey = [[NSString alloc]init];
-        MagicUISearchBar *_searchbar = [[MagicUISearchBar alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320, 30) backgroundColor:[UIColor clearColor] placeholder:@"文件名" isHideOutBackImg:NO isHideLeftView:NO];
+        UISearchBar *_searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320, 30) ];
+        [_searchbar setDelegate:self];
+        [_searchbar setPlaceholder:@"餐馆名"];
+//                                                    backgroundColor:[UIColor clearColor] placeholder:@"文件名" isHideOutBackImg:NO isHideLeftView:NO];
         for (UIView *subview in [_searchbar subviews]) {
             if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")])
             {
@@ -83,9 +86,7 @@
         [self.view addSubview:_searchbar];
         RELEASE(_searchbar);
         
-//        MagicRequest *request = [DYBHttpMethod wosgoodFood_typeIndex:@"100" orderBy:@"1" page:@"0" count:@"4" orderType:@"1"  sAlert:YES receive:self];
-//        [request setTag:3];
-        
+               
         
         
         tbleView = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight + 30, 320,self.view.frame.size.height - 74 ) isNeedUpdate:YES];
@@ -121,8 +122,8 @@
     
     if (strCode) {
         
-//        MagicRequest *request = [DYBHttpMethod wosgoodFood_typeIndex:strCode orderBy:@"1" page:@"0" count:@"4" orderType:@"1"  sAlert:YES receive:self];
-//        [request setTag:3];
+        MagicRequest *request = [DYBHttpMethod wosgoodFood_typeIndex:strCode orderBy:@"1" page:@"0" count:@"4" orderType:@"1"  sAlert:YES receive:self];
+        [request setTag:3];
     }
     
 }
@@ -160,80 +161,135 @@
 }
 
 
--(void)handleViewSignal_MagicUISearchBar:(MagicViewSignal *)signal{
+
+#pragma mark- UISearchBarDelegate
+//输入搜索文字时隐藏搜索按钮，清空时显示
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     
     
-    if ([signal is:[MagicUISearchBar BEGINEDITING]]) {
-        
-        //        [arraySearchResult removeAllObjects]; //清除内容
-        
-//        [((DYBBaseViewController *)[self superCon]).rightButton setHidden:YES];
-//        UIButton *btnSearch = (UIButton *)[_searchbar viewWithTag:SEATCHBTN_TAG];
-//        
-//        if (btnSearch) {
-//            [btnSearch setHidden:NO];
-//        }
-        
-        MagicUISearchBar *obj = (MagicUISearchBar *)[signal object];
-        [obj setShowsCancelButton:YES];
-        
-        
-//        [self sendViewSignal:[DYBDtaBankSearchView FIRSTTOUCH] withObject:nil from:self];
-//        
-//        [tbDataBank setBackgroundColor:[UIColor clearColor]];
-        
-//        UIButton *view = (UIButton *)[self viewWithTag:BACKBG_TAG];
-//        if (view) {
-//            
-//            if (view.hidden) {
-//                
-//                [self setBackgroundColor:[UIColor whiteColor]];
-//            }
-//            
-//        }
-        
-    }else if([signal is:[MagicUISearchBar CANCEL]]){
-        
-        MagicUISearchBar *obj = (MagicUISearchBar *)[signal object];
-        [obj resignFirstResponder];
-        [obj setShowsCancelButton:YES];
-//        [self sendViewSignal:[DYBDtaBankSearchView RECOVERBAR] withObject:nil from:self];
-        
-        
-//        UIButton *viewBtn = (UIButton *)[self viewWithTag:BACKBG_TAG];
-//        if (!viewBtn) {
-//            
-//            [viewBtn removeFromSuperview];
-//            
-//        }
-        
-//        [((DYBBaseViewController *)[self superCon]).rightButton setHidden:NO];
-        
-    }else if([signal is:[MagicUISearchBar SEARCH]]){
-        
-        
-        
-        MagicUISearchBar *obj = (MagicUISearchBar *)[signal object];
-        [obj resignFirstResponder];
-        [obj setShowsCancelButton:YES];
-        //        [self addOBjToArray:obj.text];
-        
-        strKey = obj.text;
-        page = 1;
-        
-        [self resolutionRequest]; //根据搜索的文字，请求网络
-        
-        
-        
-    }else if ([signal is:[MagicUISearchBar CHANGEWORD]]){
-        
-        //        MagicUISearchBar *search=(MagicUISearchBar *)signal.source;
-        //        [self addOBjToArray:search.text];
-        
-    }
-    
+    [searchBar setShowsCancelButton:YES];
+    return YES;
     
 }
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    
+    searchBar.showsScopeBar = NO;
+    
+    //    [searchBar sizeToFit];
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
+    
+    return YES;
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar                    // called when cancel button pressed
+{
+
+    
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton:YES];
+    
+    
+    
+    
+    //    self.text=self.placeholder;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar                  // called when keyboard search button pressed
+{
+
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton:YES];
+    //        [self addOBjToArray:obj.text];
+    
+    strKey = searchBar.text;
+    page = 1;
+    
+    [self resolutionRequest]; //根据搜索的文字，请求网络
+    
+
+
+}
+
+
+//
+//
+//-(void)handleViewSignal_MagicUISearchBar:(MagicViewSignal *)signal{
+//    
+//    
+//    if ([signal is:[MagicUISearchBar BEGINEDITING]]) {
+//        
+//        //        [arraySearchResult removeAllObjects]; //清除内容
+//        
+////        [((DYBBaseViewController *)[self superCon]).rightButton setHidden:YES];
+////        UIButton *btnSearch = (UIButton *)[_searchbar viewWithTag:SEATCHBTN_TAG];
+////        
+////        if (btnSearch) {
+////            [btnSearch setHidden:NO];
+////        }
+//        
+//        MagicUISearchBar *obj = (MagicUISearchBar *)[signal object];
+//        [obj setShowsCancelButton:YES];
+//        
+//        
+////        [self sendViewSignal:[DYBDtaBankSearchView FIRSTTOUCH] withObject:nil from:self];
+////        
+////        [tbDataBank setBackgroundColor:[UIColor clearColor]];
+//        
+////        UIButton *view = (UIButton *)[self viewWithTag:BACKBG_TAG];
+////        if (view) {
+////            
+////            if (view.hidden) {
+////                
+////                [self setBackgroundColor:[UIColor whiteColor]];
+////            }
+////            
+////        }
+//        
+//    }else if([signal is:[MagicUISearchBar CANCEL]]){
+//        
+//        MagicUISearchBar *obj = (MagicUISearchBar *)[signal object];
+//        [obj resignFirstResponder];
+//        [obj setShowsCancelButton:YES];
+////        [self sendViewSignal:[DYBDtaBankSearchView RECOVERBAR] withObject:nil from:self];
+//        
+//        
+////        UIButton *viewBtn = (UIButton *)[self viewWithTag:BACKBG_TAG];
+////        if (!viewBtn) {
+////            
+////            [viewBtn removeFromSuperview];
+////            
+////        }
+//        
+////        [((DYBBaseViewController *)[self superCon]).rightButton setHidden:NO];
+//        
+//    }else if([signal is:[MagicUISearchBar SEARCH]]){
+//        
+//        
+//        
+//        MagicUISearchBar *obj = (MagicUISearchBar *)[signal object];
+//        [obj resignFirstResponder];
+//        [obj setShowsCancelButton:YES];
+//        //        [self addOBjToArray:obj.text];
+//        
+//        strKey = obj.text;
+//        page = 1;
+//        
+//        [self resolutionRequest]; //根据搜索的文字，请求网络
+//        
+//        
+//        
+//    }else if ([signal is:[MagicUISearchBar CHANGEWORD]]){
+//        
+//        //        MagicUISearchBar *search=(MagicUISearchBar *)signal.source;
+//        //        [self addOBjToArray:search.text];
+//        
+//    }
+//    
+//    
+//}
 
 
 

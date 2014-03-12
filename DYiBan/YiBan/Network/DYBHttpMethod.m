@@ -1693,6 +1693,35 @@
     return dre;
 }
 
++ (MagicRequest *)wosFoodInfo_guessList_userIndex :(NSString *)userIndex  page  :(NSString *)page  count  :(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive{
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosFoodInfo_guessList_userIndex:userIndex page:page count:count];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+
+}
+
++ (MagicRequest *)wosFoodInfo_allInfo_userIndex :(NSString *)userIndex sAlert:(BOOL)isAlert receive:(id)receive{
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosFoodInfo_allInfo_userIndex:userIndex];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+
+}
+
+
++ (MagicRequest *)wosFoodInfo_addressDel_userIndex :(NSString *)userIndex addrIndex :(NSString *)addrIndex
+                                             sAlert:(BOOL)isAlert receive:(id)receive{
+
+
+    NSMutableDictionary *dict = [DYBHttpInterface wosFoodInfo_addressDel_userIndex:userIndex addrIndex:addrIndex];
+    DYBRequest *request = AUTORELEASE([[DYBRequest alloc] init]);
+    MagicRequest *dre = [request DYBGET:dict isAlert:isAlert receive:receive];
+    return dre;
+
+}
 
 @end
 

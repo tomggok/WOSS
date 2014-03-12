@@ -15,7 +15,9 @@
 @interface WOSAddrViewController ()
 {
     NSMutableArray *arrayAddrList;
-    MagicUITableView *tableView1;
+    UITableView *tableView1;
+    
+    int delIndex;
 
 }
 @end
@@ -55,7 +57,7 @@
         NSLog(@"useid -- %@",SHARED.userId);
         
 //        arrayAddrList = [[NSMutableArray alloc]init];
-        
+        delIndex = 0;
         MagicRequest *request = [DYBHttpMethod wosKitchenInfo_addrList_userIndex:SHARED.userId page:@"0" count:@"3" sAlert:YES receive:self];
         [request setTag:3];
         
@@ -68,8 +70,10 @@
         
        
         
-        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
+        tableView1 = [[UITableView alloc]initWithFrame:CGRectMake(20.0f, 44 + 20 , 280,self.view.frame.size.height - 44 - 100 - 80)];
         [tableView1 setBackgroundColor:[UIColor clearColor]];
+        [tableView1 setDelegate:self];
+        [tableView1 setDataSource:self];
         [tableView1 setSeparatorColor:[UIColor clearColor]];
         [self.view addSubview:tableView1];
         RELEASE(tableView1);
@@ -110,90 +114,180 @@
 -(void)addNewAddr{
     
     WOSAddAddrViewController *addAddr = [[WOSAddAddrViewController alloc]init];
+    
+    addAddr.addView = self;
     [self.drNavigationController pushViewController:addAddr animated:YES];
     RELEASE(addAddr);
 
 }
 
-- (void)handleViewSignal_MagicUITableView:(MagicViewSignal *)signal{
+-(void)reloadData{
+
+
+
+
+}
+
+
+//- (void)handleViewSignal_MagicUITableView:(MagicViewSignal *)signal{
+//    
+//    
+//    if ([signal is:[MagicUITableView TABLENUMROWINSEC]])//numberOfRowsInSection
+//    {
+//        NSNumber *s = [NSNumber numberWithInteger:arrayAddrList.count];
+//        [signal setReturnValue:s];
+//        
+//    }else if ([signal is:[MagicUITableView TABLENUMOFSEC]])//numberOfSectionsInTableView
+//    {
+//        NSNumber *s = [NSNumber numberWithInteger:1];
+//        [signal setReturnValue:s];
+//        
+//    }
+//    else if ([signal is:[MagicUITableView TABLEHEIGHTFORROW]])//heightForRowAtIndexPath
+//    {
+//        
+//        
+//        
+//        [signal setReturnValue:[NSNumber numberWithInteger:80]];
+//    }
+//    else if ([signal is:[MagicUITableView TABLETITLEFORHEADERINSECTION]])//titleForHeaderInSection
+//    {
+//        [signal setReturnValue:nil];
+//        
+//    }
+//    else if ([signal is:[MagicUITableView TABLEVIEWFORHEADERINSECTION]])//viewForHeaderInSection
+//    {
+//        [signal setReturnValue:nil];
+//        
+//    }
+//    else if ([signal is:[MagicUITableView TABLETHEIGHTFORHEADERINSECTION]])//heightForHeaderInSection
+//    {
+//        [signal setReturnValue:[NSNumber numberWithFloat:0.0]];
+//    }
+//    else if ([signal is:[MagicUITableView TABLECELLFORROW]])//cell
+//    {
+//        NSDictionary *dict = (NSDictionary *)[signal object];
+//        NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
+//        
+//        WOSAddrCell *cell = [[WOSAddrCell alloc]init];
+//        [cell setBackgroundColor:[UIColor colorWithRed:46/255 green:46/255 blue:46/255 alpha:1.0f]];
+//        [cell creatCell:[arrayAddrList objectAtIndex:indexPath.row]];
+//        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//        
+//        [signal setReturnValue:cell];
+//        
+//        
+//    }else if ([signal is:[MagicUITableView TABLEDIDSELECT]])//选中cell
+//    {
+//        
+//        return;
+//        
+//    }else if([signal is:[MagicUITableView TABLESCROLLVIEWDIDENDDRAGGING]])/*滚动停止*/{
+//        
+//        
+//    }else if([signal is:[MagicUITableView TABLESCROLLVIEWDIDSCROLL]])/*滚动*/{
+//        
+//    }else if ([signal is:[MagicUITableView TABLEVIEWUPDATA]]) //刷新
+//    {
+//        //        MagicUIUpdateView *uptableview = (MagicUIUpdateView *)[signal object];
+//        
+//        
+//    }else if([signal is:[MagicUITableView TAbLEVIEWLODATA]]) //加载更多
+//    {
+//        
+//        
+//    }else if ([signal is:[MagicUITableView TAbLEVIEWSCROLLUP]]){ //上滑动
+//        
+//        //        [tbDataBank StretchingUpOrDown:0];
+//        //        [DYBShareinstaceDelegate opeartionTabBarShow:YES];
+//        
+//    }else if ([signal is:[MagicUITableView TAbLEVIEWSCROLLDOWN]]){ //下滑动
+//        
+//        //        [tbDataBank StretchingUpOrDown:1];
+//        //        [DYBShareinstaceDelegate opeartionTabBarShow:NO];
+//    }
+//    
+//}
+
+
+#pragma mark - tableviewdelete
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section/*第一次回调时系统传的section是数据源里section数量的最大值-1*/
+{
     
     
-    if ([signal is:[MagicUITableView TABLENUMROWINSEC]])//numberOfRowsInSection
-    {
-        NSNumber *s = [NSNumber numberWithInteger:arrayAddrList.count];
-        [signal setReturnValue:s];
-        
-    }else if ([signal is:[MagicUITableView TABLENUMOFSEC]])//numberOfSectionsInTableView
-    {
-        NSNumber *s = [NSNumber numberWithInteger:1];
-        [signal setReturnValue:s];
-        
-    }
-    else if ([signal is:[MagicUITableView TABLEHEIGHTFORROW]])//heightForRowAtIndexPath
-    {
-        
-        
-        
-        [signal setReturnValue:[NSNumber numberWithInteger:80]];
-    }
-    else if ([signal is:[MagicUITableView TABLETITLEFORHEADERINSECTION]])//titleForHeaderInSection
-    {
-        [signal setReturnValue:nil];
-        
-    }
-    else if ([signal is:[MagicUITableView TABLEVIEWFORHEADERINSECTION]])//viewForHeaderInSection
-    {
-        [signal setReturnValue:nil];
-        
-    }
-    else if ([signal is:[MagicUITableView TABLETHEIGHTFORHEADERINSECTION]])//heightForHeaderInSection
-    {
-        [signal setReturnValue:[NSNumber numberWithFloat:0.0]];
-    }
-    else if ([signal is:[MagicUITableView TABLECELLFORROW]])//cell
-    {
-        NSDictionary *dict = (NSDictionary *)[signal object];
-        NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
-        
-        WOSAddrCell *cell = [[WOSAddrCell alloc]init];
-        [cell setBackgroundColor:[UIColor colorWithRed:46/255 green:46/255 blue:46/255 alpha:1.0f]];
-        [cell creatCell:[arrayAddrList objectAtIndex:indexPath.row]];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        [signal setReturnValue:cell];
-        
-        
-    }else if ([signal is:[MagicUITableView TABLEDIDSELECT]])//选中cell
-    {
-        
-        return;
-        
-    }else if([signal is:[MagicUITableView TABLESCROLLVIEWDIDENDDRAGGING]])/*滚动停止*/{
-        
-        
-    }else if([signal is:[MagicUITableView TABLESCROLLVIEWDIDSCROLL]])/*滚动*/{
-        
-    }else if ([signal is:[MagicUITableView TABLEVIEWUPDATA]]) //刷新
-    {
-        //        MagicUIUpdateView *uptableview = (MagicUIUpdateView *)[signal object];
-        
-        
-    }else if([signal is:[MagicUITableView TAbLEVIEWLODATA]]) //加载更多
-    {
-        
-        
-    }else if ([signal is:[MagicUITableView TAbLEVIEWSCROLLUP]]){ //上滑动
-        
-        //        [tbDataBank StretchingUpOrDown:0];
-        //        [DYBShareinstaceDelegate opeartionTabBarShow:YES];
-        
-    }else if ([signal is:[MagicUITableView TAbLEVIEWSCROLLDOWN]]){ //下滑动
-        
-        //        [tbDataBank StretchingUpOrDown:1];
-        //        [DYBShareinstaceDelegate opeartionTabBarShow:NO];
-    }
+    
+    return arrayAddrList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    return 80;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+
+    
+    WOSAddrCell *cell = [[WOSAddrCell alloc]init];
+    [cell setBackgroundColor:[UIColor colorWithRed:46/255 green:46/255 blue:46/255 alpha:1.0f]];
+    [cell creatCell:[arrayAddrList objectAtIndex:indexPath.row]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:tableView, @"tableView", indexPath, @"indexPath", nil];
+//    [self sendViewSignal:[MagicUITableView TABLEDIDSELECT] withObject:dict];
+}
+
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView setEditing:YES animated:YES];
+    return UITableViewCellEditingStyleDelete;
+}
+
+//进入编辑模式，按下出现的编辑按钮后
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView setEditing:NO animated:YES];
+    
+    delIndex = indexPath.row;
+    
+    MagicRequest *request = [DYBHttpMethod wosFoodInfo_addressDel_userIndex:SHARED.userId addrIndex:[[arrayAddrList objectAtIndex:indexPath.row] objectForKey:@"addrIndex"] sAlert:YES receive:self];
+    [request setTag:4];
+    
+    
+    
     
 }
+
+//以下方法可以不是必须要实现，添加如下方法可实现特定效果：
+
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+
 
 - (void)handleViewSignal_DYBBaseViewController:(MagicViewSignal *)signal
 {
@@ -222,8 +316,7 @@
 {
     if ([request succeed])
     {
-        //        JsonResponse *response = (JsonResponse *)receiveObj;
-        if (request.tag == 2) {
+        if (request.tag == 4) {
             
             
             NSDictionary *dict = [request.responseString JSONValue];
@@ -232,8 +325,10 @@
                 BOOL result = [[dict objectForKey:@"result"] boolValue];
                 if (!result) {
                     
-//                    _dictInfo = dict;
-//                    [DYBShareinstaceDelegate popViewText:@"收藏成功！" target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
+                    
+                    [arrayAddrList removeObjectAtIndex:delIndex];
+                    [tableView1 reloadData];
+
                     
                 }else{
                     NSString *strMSG = [dict objectForKey:@"message"];

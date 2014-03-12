@@ -2108,4 +2108,36 @@
 
 
 }
+
+
++ (NSMutableDictionary *)wosFoodInfo_guessList_userIndex :(NSString *)userIndex  page  :(NSString *)page  count  :(NSString *)count{
+
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:userIndex        forKey:@"userIndex"];
+    [dict setValue:page                forKey:@"page"];
+    [dict setValue:count               forKey:@"count"];
+    [dict setValue:@"guess/list.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+}
+
++ (NSMutableDictionary *)wosFoodInfo_allInfo_userIndex :(NSString *)userIndex{
+
+    
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:userIndex        forKey:@"userIndex"];
+    [dict setValue:@"me/more.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+}
+
++ (NSMutableDictionary *)wosFoodInfo_addressDel_userIndex :(NSString *)userIndex addrIndex :(NSString *)addrIndex {
+    
+    NSMutableDictionary * dict = AUTORELEASE([[NSMutableDictionary alloc] init]);
+    [dict setValue:userIndex        forKey:@"userIndex"];
+    [dict setValue:addrIndex        forKey:@"addrIndex"];
+    [dict setValue:@"address/del.do" forKey:INTERFACEDOACTION];
+    return dict;
+
+}
 @end

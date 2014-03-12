@@ -469,5 +469,11 @@
 
 + (MagicRequest *)wosFoodInfo_foodDiscount_kitchenIndex :(NSString *)kitchenIndex discountDay  :(NSString *)discountDay  page  :(NSString *)page  count  :(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
 
++ (MagicRequest *)wosFoodInfo_guessList_userIndex :(NSString *)userIndex  page  :(NSString *)page  count  :(NSString *)count sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosFoodInfo_allInfo_userIndex :(NSString *)userIndex sAlert:(BOOL)isAlert receive:(id)receive;
+
++ (MagicRequest *)wosFoodInfo_addressDel_userIndex :(NSString *)userIndex addrIndex :(NSString *)addrIndex
+                                             sAlert:(BOOL)isAlert receive:(id)receive;
 
 @end

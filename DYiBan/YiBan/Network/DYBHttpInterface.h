@@ -489,4 +489,17 @@
 //food/discount.do
 + (NSMutableDictionary *)wosFoodInfo_foodDiscount_kitchenIndex :(NSString *)kitchenIndex discountDay  :(NSString *)discountDay  page  :(NSString *)page  count  :(NSString *)count    ;
 
+
+//guess/list.do
+
++ (NSMutableDictionary *)wosFoodInfo_guessList_userIndex :(NSString *)userIndex  page  :(NSString *)page  count  :(NSString *)count;
+
+///me/allInfo.do
++ (NSMutableDictionary *)wosFoodInfo_allInfo_userIndex :(NSString *)userIndex ;
+
+
+//address/del.do
++ (NSMutableDictionary *)wosFoodInfo_addressDel_userIndex :(NSString *)userIndex addrIndex :(NSString *)addrIndex ;
+
+
 @end

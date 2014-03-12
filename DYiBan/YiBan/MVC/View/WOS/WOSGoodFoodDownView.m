@@ -40,13 +40,13 @@ DEF_SIGNAL(SELECTCELLCAIXI)
 */
 
 -(void)creatView{
-
+//（1-价格；2-人气；3-新品；4-评分）
     arrayXi = [[NSMutableArray alloc]init];
-    [arrayXi addObject:@"全部分类"];
-    [arrayXi addObject:@"中餐"];
-    [arrayXi addObject:@"西餐"];
-    [arrayXi addObject:@"甜品"];
-    [arrayXi addObject:@"饮料"];
+    [arrayXi addObject:@"价格"];
+    [arrayXi addObject:@"人气"];
+    [arrayXi addObject:@"新品"];
+    [arrayXi addObject:@"评分"];
+//    [arrayXi addObject:@"饮料"];
     
     arrayCai = [[NSMutableArray alloc]init];
     [arrayCai addObject:@"全部菜系"];
@@ -56,7 +56,7 @@ DEF_SIGNAL(SELECTCELLCAIXI)
     [arrayCai addObject:@"豫菜"];
     
     
-    tableViewXi = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f/2, self.frame.size.height)];
+    tableViewXi = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, self.frame.size.height)];
     [tableViewXi setTag:3];
     [tableViewXi setShowsHorizontalScrollIndicator:NO];
     [tableViewXi setShowsVerticalScrollIndicator:NO];
@@ -65,8 +65,8 @@ DEF_SIGNAL(SELECTCELLCAIXI)
     
     tableViewCai = [[MagicUITableView alloc]initWithFrame:CGRectMake(160.0f, 0.0f, 320.0/2, self.frame.size.height)];
     [tableViewCai setTag:4];
-    [self addSubview:tableViewCai];
-    RELEASE(tableViewCai);
+//    [self addSubview:tableViewCai];
+//    RELEASE(tableViewCai);
     [tableViewCai setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [tableViewCai setBackgroundColor:[UIColor colorWithRed:59.0f/255 green:59.0f/255 blue:59.0f/255 alpha:1.0f]];
 

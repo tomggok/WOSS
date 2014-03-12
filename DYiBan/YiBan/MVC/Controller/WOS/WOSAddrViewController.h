@@ -8,6 +8,6 @@
 
 #import "DYBBaseViewController.h"
 
-@interface WOSAddrViewController : DYBBaseViewController
+@interface WOSAddrViewController : DYBBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

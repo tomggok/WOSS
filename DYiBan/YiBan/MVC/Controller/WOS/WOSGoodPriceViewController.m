@@ -110,7 +110,7 @@
         [request setTag:3];
         
         
-        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 44 , 320,self.view.frame.size.height - 44)];
+        tableView1 = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, 30 + self.headHeight , 320,self.view.frame.size.height - 30 - self.headHeight)];
         [tableView1 setBackgroundColor:ColorBG];
         [tableView1 setSeparatorColor:[UIColor clearColor]];
         [self.view addSubview:tableView1];
@@ -220,6 +220,7 @@
     if ([signal is:[DYBBaseViewController BACKBUTTON]])
     {
         [self.drNavigationController popViewControllerAnimated:YES];
+        
     }else if ([signal is:[DYBBaseViewController NEXTSTEPBUTTON]]){
     }
 }
@@ -244,7 +245,7 @@
         
         MagicRequest *request = [DYBHttpMethod wosFoodInfo_foodDiscount_kitchenIndex:@"" discountDay:@"1" page:@"0" count:@"3" sAlert:YES receive:self];
         [request setTag:3];
-        
+        [self.headview setTitle:@"今日特价"];
 
         
     }else{
@@ -252,7 +253,7 @@
         MagicRequest *request = [DYBHttpMethod wosFoodInfo_foodDiscount_kitchenIndex:@"" discountDay:@"1" page:@"0" count:@"3" sAlert:YES receive:self];
         [request setTag:3];
         
-
+        [self.headview setTitle:@"热门推荐"];
     }
     
     

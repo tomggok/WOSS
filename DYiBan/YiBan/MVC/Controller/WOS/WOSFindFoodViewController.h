@@ -8,6 +8,6 @@
 
 #import "DYBBaseViewController.h"
 
-@interface WOSFindFoodViewController : DYBBaseViewController
+@interface WOSFindFoodViewController : DYBBaseViewController<UISearchBarDelegate>
 
 @end

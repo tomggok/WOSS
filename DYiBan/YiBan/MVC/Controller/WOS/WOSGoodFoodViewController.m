@@ -22,6 +22,7 @@
     MagicUITableView *tbleView;
     WOSGoodFoodDownView *downView;
     UILabel *labelTopName;
+    UILabel *labelTopName1;
     NSMutableArray *arrayInfoForCai;
     
     int page;
@@ -157,7 +158,7 @@ static WOSGoodFoodViewController *shareStance = nil;
 
     UIImage *image = [UIImage imageNamed:@"arrow_down"];
     UIImageView *imageViewRight = [[UIImageView alloc]initWithFrame:CGRectMake(120.0f, (30 - image.size.height/2)/2, image.size.width/2, image.size.height/2)];
-    [imageViewRight setTag:91];
+    [imageViewRight setTag:910];
     [imageViewRight setImage:[UIImage imageNamed:@"arrow_down"]];
     [btnTop addSubview:imageViewRight];
     RELEASE(imageViewRight);
@@ -167,7 +168,7 @@ static WOSGoodFoodViewController *shareStance = nil;
 
 -(void)showORHideDownView{
 
-    return;
+//    return;
     
     if (!downView) {
         downView = [[WOSGoodFoodDownView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight + 30, 320.0, 200.0f)];
@@ -175,8 +176,8 @@ static WOSGoodFoodViewController *shareStance = nil;
         [self.view addSubview:downView];
         RELEASE(downView);
         
-        UILabel *lableName = (UILabel *)[self.view viewWithTag:90];
-        [lableName setTextColor:[UIColor colorWithRed:210.0f/255 green:91.0f/255 blue:61.0f/255 alpha:1.0f]];
+//        UILabel *lableName = (UILabel *)[self.view viewWithTag:90];
+//        [lableName setTextColor:[UIColor colorWithRed:210.0f/255 green:91.0f/255 blue:61.0f/255 alpha:1.0f]];
         
         UIImageView *imageViewDown = (UIImageView *)[self.view viewWithTag:91];
         [imageViewDown setImage:[UIImage imageNamed:@"arrowup"]];
@@ -187,8 +188,8 @@ static WOSGoodFoodViewController *shareStance = nil;
             
             [downView setHidden:NO];
             
-            UILabel *lableName = (UILabel *)[self.view viewWithTag:90];
-            [lableName setTextColor:[UIColor colorWithRed:210.0f/255 green:91.0f/255 blue:61.0f/255 alpha:1.0f]];
+//            UILabel *lableName = (UILabel *)[self.view viewWithTag:90];
+//            [lableName setTextColor:[UIColor colorWithRed:210.0f/255 green:91.0f/255 blue:61.0f/255 alpha:1.0f]];
             
             UIImageView *imageViewDown = (UIImageView *)[self.view viewWithTag:91];
             [imageViewDown setImage:[UIImage imageNamed:@"arrowup"]];
@@ -197,8 +198,8 @@ static WOSGoodFoodViewController *shareStance = nil;
         
             [downView setHidden:YES];
             
-            UILabel *lableName = (UILabel *)[self.view viewWithTag:90];
-            [lableName setTextColor:ColorGryWhite];
+//            UILabel *lableName = (UILabel *)[self.view viewWithTag:90];
+//            [lableName setTextColor:ColorGryWhite];
             
             UIImageView *imageViewDown = (UIImageView *)[self.view viewWithTag:91];
             [imageViewDown setImage:[UIImage imageNamed:@"arrow_down"]];
@@ -213,12 +214,12 @@ static WOSGoodFoodViewController *shareStance = nil;
 -(void)creatLeftTopView{
     
     UIButton *btnTop = [[UIButton alloc]initWithFrame:CGRectMake(160.0f, self.headHeight, 160.0f, 30)];
-    [btnTop addTarget:self action:@selector(sortPrice) forControlEvents:UIControlEventTouchUpInside];
+    [btnTop addTarget:self action:@selector(showORHideDownView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnTop];
     [btnTop setBackgroundColor:[UIColor colorWithRed:26/255.0f green:26/255.0f blue:26/255.0f alpha:1.0f]];
     RELEASE(btnTop);
     
-    UILabel *labelTopName1 = [[UILabel alloc]initWithFrame:CGRectMake(5.0f, 0.0f, 100.0f, 30.0f)];
+    labelTopName1 = [[UILabel alloc]initWithFrame:CGRectMake(5.0f, 0.0f, 100.0f, 30.0f)];
     [labelTopName1 setTextColor:ColorGryWhite];
     [labelTopName1 setTag:92];
     [labelTopName1 setText:@"按价格"];
@@ -228,7 +229,7 @@ static WOSGoodFoodViewController *shareStance = nil;
     
     UIImage *image = [UIImage imageNamed:@"arrow_down"];
     UIImageView *imageViewRight = [[UIImageView alloc]initWithFrame:CGRectMake(120.0f, (30 - image.size.height/2)/2,image.size.width/2, image.size.height/2)];
-    [imageViewRight setTag:93];
+    [imageViewRight setTag:91];
     [imageViewRight setImage:[UIImage imageNamed:@"arrow_down"]];
     [btnTop addSubview:imageViewRight];
     RELEASE(imageViewRight);
@@ -355,11 +356,16 @@ static WOSGoodFoodViewController *shareStance = nil;
         
         NSString *title = (NSString *)[signal object];
         
-        [self.headview setTitle:title];
+        [labelTopName1 setText:title];
+        
+        UIView *view = [signal source];
+        [view setHidden:YES];
+        
+        
     }else if ( [signal is:[WOSGoodFoodDownView SELECTCELLCAIXI]]){
     
         NSString *title = (NSString *)[signal object];
-        [labelTopName setText:title];
+        [labelTopName1 setText:title];
     }
 
 }

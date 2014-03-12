@@ -7,7 +7,8 @@
 //
 
 #import "DYBBaseViewController.h"
+#import "WOSAddrViewController.h"
 
 @interface WOSAddAddrViewController : DYBBaseViewController
-
+@property (nonatomic,retain) WOSAddrViewController *addView;
 @end
