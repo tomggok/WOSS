@@ -67,7 +67,7 @@
         [labelTouchStar setText:@"点击小星星来打分吧:"];
         [labelTouchStar setTextColor:[UIColor whiteColor]];
         [labelTouchStar setBackgroundColor:[UIColor clearColor]];
-//        [scrollView addSubview:labelTouchStar];
+        [scrollView addSubview:labelTouchStar];
         RELEASE(labelTouchStar);
         
         
@@ -100,7 +100,6 @@
         UIButton *btnBack = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(textView.frame) + CGRectGetMinY(textView.frame)  + 30, 300, 44)];
         
         [scrollView addSubview:btnBack];
-        [btnBack setTitle:@"提交评论" forState:UIControlStateNormal];
         [btnBack setBackgroundColor:[UIColor clearColor]];
         [btnBack setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         [btnBack release];
