@@ -80,7 +80,7 @@ DEF_SIGNAL(TOUCHBUTTON)
                 
         if ([MagicDevice sysVersion] >= 7)
         {
-            [self.view setFrame:CGRectMake(0,20 , 320.0f, 1000)];
+//            [self.view setFrame:CGRectMake(0,20 , 320.0f, 1000)];
             
             //       self.view.frame.origin.y = 20.0f;
         }

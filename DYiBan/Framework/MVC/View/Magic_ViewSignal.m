@@ -90,7 +90,6 @@ DEF_STATIC_PROPERTY(NO_VALUE);
 {
     return (self.source == source) ? YES:NO;
 }
-
 - (BOOL)send
 {
     if (_dead) {
