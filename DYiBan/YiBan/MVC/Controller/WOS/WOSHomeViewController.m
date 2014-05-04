@@ -58,7 +58,7 @@ DEF_SIGNAL(TOUCHBUTTON)
 
 -(void)handleViewSignal_MagicViewController:(MagicViewSignal *)signal{
     
-    DLogInfo(@"name -- %@",signal.name);
+//    DLogInfo(@"name -- %@",signal.name);
     
     if ([signal is:[MagicViewController LAYOUT_VIEWS]])
     {
