@@ -33,10 +33,13 @@
 #import "DYBTabViewController.h"
 #import "DYBShareInNotesViewController.h"
 #import "DYBNoteDetailViewController.h"
+#import "WOSPreferentialCardViewController.h"
 
+#import "WOSAddrViewController.h"
+#import "WOSCollectViewController.h"
 
 #import "WOSHomeViewController.h"
-
+#import "WOSOrderLostViewController.h"
 #import "WOSPersonInfoViewController.h"
 @interface DYBUITabbarViewController ()
 {
@@ -118,7 +121,7 @@ static DYBUITabbarViewController *sharedInstace = nil;
 - (id)initWithViewControllers:(NSArray *)vcs imageArray:(NSArray *)arr reduceHeight:(CGFloat)reduceHeight barHeight:(CGFloat)barHeight withClass:(Class)clazz
 {
     
-    leftViewWidth = 266;
+    leftViewWidth = 230;
     
     [self initMagicUITabBarView:vcs imageArray:arr reduceHeight:reduceHeight barHeight:barHeight withClass:clazz];
     
@@ -184,24 +187,24 @@ MagicUIButton *hiddenView;
 - (NSArray *)initDataBankParams{
 
     
-        DYBDataBankDownloadManageViewController *download = [[DYBDataBankDownloadManageViewController shareDownLoadInstance] autorelease];
+        WOSOrderLostViewController *download = [[[WOSOrderLostViewController alloc] init] autorelease];
 
         [download setVc:_vc];
 
-        DYBDataBankListController *list = [[DYBDataBankListController creatShareInstance] autorelease];
+//        DYBDataBankListController *list = [[DYBDataBankListController creatShareInstance] autorelease];
+//
+//        [list setVc:_vc];
+//
+//
+//        DYBDataBankSearchViewController *search = [[DYBDataBankSearchViewController creatShare] autorelease];
+//        [search setVc:_vc];
+//
+//
+//       DYBDataBankShareViewController *share = [[[DYBDataBankShareViewController alloc]init] autorelease];
+//        [share setVc:_vc];
 
-        [list setVc:_vc];
 
-
-        DYBDataBankSearchViewController *search = [[DYBDataBankSearchViewController creatShare] autorelease];
-        [search setVc:_vc];
-
-
-       DYBDataBankShareViewController *share = [[[DYBDataBankShareViewController alloc]init] autorelease];
-        [share setVc:_vc];
-
-
-        NSArray *arrayVC = [NSArray arrayWithObjects:list,search,share,download, nil];
+        NSArray *arrayVC = [NSArray arrayWithObjects:download, nil];
 
         CGFloat tabBarY = 0;
         if (![self.drNavigationController isNavigationBarHidden])
@@ -227,7 +230,7 @@ MagicUIButton *hiddenView;
         [imgDic4 setObject:[UIImage imageNamed:@"tab_trans_high.png"] forKey:TABBARBUTHIGHLIGHT];
         [imgDic4 setObject:[UIImage imageNamed:@"tab_trans_sel.png"] forKey:TABBARBUTSELETED];
 
-        NSArray *imgArr = [NSArray arrayWithObjects:imgDic,imgDic2,imgDic3,imgDic4,nil];
+        NSArray *imgArr = [NSArray arrayWithObjects:imgDic,nil];
 
         NSArray *VCIMGArr = [NSArray arrayWithObjects:arrayVC, imgArr, nil];
         return VCIMGArr;
@@ -407,16 +410,16 @@ MagicUIButton *hiddenView;
     
     [self hideBarAndNumber:NO vcImgArr:vcimgArr];
     
-    self.selectedIndex = 3;
-    self.selectedIndex = 0;
+//    self.selectedIndex = 3;
+//    self.selectedIndex = 0;
     
     [DYBShareinstaceDelegate opeartionTabBarShow:NO animated:NO];
     
     
-    self.DB.FROM(KDATABANKDOWNLIST).WHERE(@"type", @"1").WHERE(@"userid", SHARED.userId).GET(); 
+//    self.DB.FROM(KDATABANKDOWNLIST).WHERE(@"type", @"1").WHERE(@"userid", SHARED.userId).GET(); 
 //    [self addAndRefreshTotalMsgView: self.DB.resultArray.count];
     
-    [self changeMsgTotalFrame];
+//    [self changeMsgTotalFrame];
     
 }
 //添加动态页
@@ -440,6 +443,67 @@ MagicUIButton *hiddenView;
 
 }
 
+-(void)addCardView{
+
+    
+    NSArray *vcimgArr = [self initSavePaper];
+    [_containerView removeAllVCView];
+    
+    [self hideBarAndNumber:NO vcImgArr:vcimgArr];
+    [DYBShareinstaceDelegate opeartionTabBarShow:NO animated:NO];
+
+    
+    [self handleNoVerity];
+
+}
+
+-(void)addColView{
+    
+    
+    NSArray *vcimgArr = [self initCal];
+    [_containerView removeAllVCView];
+    
+    [self hideBarAndNumber:NO vcImgArr:vcimgArr];
+    [DYBShareinstaceDelegate opeartionTabBarShow:NO animated:NO];
+    
+    
+    [self handleNoVerity];
+    
+}
+
+-(NSArray *)initCal{
+    WOSCollectViewController *clo = [[[WOSCollectViewController alloc]init] autorelease];
+
+    [clo setVc:_vc];
+    
+    
+    
+    NSArray *arrayVC = [NSArray arrayWithObjects:clo,  nil];
+    
+    
+    NSMutableDictionary *imgDic = [NSMutableDictionary dictionaryWithCapacity:3];
+    [imgDic setObject:[UIImage imageNamed:@"tab_note_def"] forKey:TABBARBUTDEFAULT];
+    [imgDic setObject:[UIImage imageNamed:@"tab_note_sel"] forKey:TABBARBUTHIGHLIGHT];
+    [imgDic setObject:[UIImage imageNamed:@"tab_note_sel"] forKey:TABBARBUTSELETED];
+    
+    NSMutableDictionary *imgDic2 = [NSMutableDictionary dictionaryWithCapacity:3];
+    [imgDic2 setObject:[UIImage imageNamed:@"tab_tag_def"] forKey:TABBARBUTDEFAULT];
+    [imgDic2 setObject:[UIImage imageNamed:@"tab_tag_sel"] forKey:TABBARBUTHIGHLIGHT];
+    [imgDic2 setObject:[UIImage imageNamed:@"tab_tag_sel"] forKey:TABBARBUTSELETED];
+    
+    NSMutableDictionary *imgDic3 = [NSMutableDictionary dictionaryWithCapacity:3];
+    [imgDic3 setObject:[UIImage imageNamed:@"tab_share_def_note"] forKey:TABBARBUTDEFAULT];
+    [imgDic3 setObject:[UIImage imageNamed:@"tab_share_sel_note"] forKey:TABBARBUTHIGHLIGHT];
+    [imgDic3 setObject:[UIImage imageNamed:@"tab_share_sel_note"] forKey:TABBARBUTSELETED];
+    
+    NSArray *imgArr = [NSArray arrayWithObjects:imgDic,nil];
+    
+    
+    NSArray *VCIMGArr = [NSArray arrayWithObjects:arrayVC, imgArr, nil];
+    return VCIMGArr;
+
+}
+
 #pragma mark-添加笔记页一级页面的3个con
 - (void)addNotesCon
 {
@@ -458,16 +522,12 @@ MagicUIButton *hiddenView;
 #pragma mark-初始化笔记页一级页面的3个con
 - (NSArray *)initNotesCon
 {
-    DYBMyNotesViewController *myNotesVc = [[[DYBMyNotesViewController alloc] init] autorelease];
+    WOSAddrViewController *myNotesVc = [[[WOSAddrViewController alloc] init] autorelease];
     [myNotesVc setVc:_vc];
     
-    DYBTabViewController *tabVc = [[[DYBTabViewController alloc]init] autorelease];
-    [tabVc setVc:_vc];
+   
     
-    DYBShareInNotesViewController *shareVc = [[[DYBShareInNotesViewController alloc]init] autorelease];
-    [shareVc setVc:_vc];
-    
-    NSArray *arrayVC = [NSArray arrayWithObjects:myNotesVc, tabVc, shareVc, nil];
+    NSArray *arrayVC = [NSArray arrayWithObjects:myNotesVc,  nil];
     
     
     NSMutableDictionary *imgDic = [NSMutableDictionary dictionaryWithCapacity:3];
@@ -485,7 +545,7 @@ MagicUIButton *hiddenView;
     [imgDic3 setObject:[UIImage imageNamed:@"tab_share_sel_note"] forKey:TABBARBUTHIGHLIGHT];
     [imgDic3 setObject:[UIImage imageNamed:@"tab_share_sel_note"] forKey:TABBARBUTSELETED];
     
-    NSArray *imgArr = [NSArray arrayWithObjects:imgDic, imgDic2, imgDic3,nil];
+    NSArray *imgArr = [NSArray arrayWithObjects:imgDic,nil];
     
     
     NSArray *VCIMGArr = [NSArray arrayWithObjects:arrayVC, imgArr, nil];
@@ -588,18 +648,18 @@ MagicUIButton *hiddenView;
 #pragma mark - DYBBaseViewLeftView
 - (void)handleViewSignal_DYBBaseViewLeftView:(MagicViewSignal *)signal
 {
-    MagicUIButton *button = signal.source;
+    MagicUIButton *button = (MagicUIButton *)[signal object];
     if ([signal is:[DYBBaseViewLeftView SELECTBUTTON]])
     {
         
         NSIndexPath *indexPath = (NSIndexPath *)[signal object];
         
-        WOSPersonInfoViewController *person = [[WOSPersonInfoViewController alloc]init];
-        
-        [self.drNavigationController pushViewController:person animated:YES];
-        RELEASE(person);
+//        WOSPersonInfoViewController *person = [[WOSPersonInfoViewController alloc]init];
+//        
+//        [self.drNavigationController pushViewController:person animated:YES];
+//        RELEASE(person);
 
-        return;
+//        return;
         
         if (selectBtIndex == button.tag)
         {
@@ -618,21 +678,28 @@ MagicUIButton *hiddenView;
         
 
         selectBtIndex = button.tag;
-        if (button.tag == 0) {
+        if (button.tag == 10) {
             //社区
-            [self addDynView];
+            [self addCardView];
         }
-        else if (button.tag == 3) {
-            //资料库
+        else if (button.tag == 11) {
+            //订单管理
             [self addBankView];
-        }else if (button.tag == 4) {
-            //应用
-            [self addApplicationView];
-        }else if (button.tag==5){
+        }else if (button.tag == 12) {
+            //地址管理
+            [self initNotesCon];
+        }else if (button.tag==13){
+            
+            [self addCardView];
             //设置
-            [self addSettingView];
-        }
+//            [self addSettingView];
+        }else if (button.tag == 14){
         
+            [self addSettingView];
+        
+        
+        }
+        // 收藏进
         [threeview endMoveViewWithX:0];
     }else if ([signal is:[DYBBaseViewLeftView MAPBUTTON]]){
         [self addCheckinView];
@@ -641,6 +708,41 @@ MagicUIButton *hiddenView;
     }
 
 }
+
+
+-(NSArray *)initSavePaper{
+
+    WOSPreferentialCardViewController *card = [[WOSPreferentialCardViewController alloc]init];
+    
+    [card setVc:_vc];
+    
+    NSArray *arrayVC = [NSArray arrayWithObjects:card,  nil];
+    
+    
+    NSMutableDictionary *imgDic = [NSMutableDictionary dictionaryWithCapacity:3];
+    [imgDic setObject:[UIImage imageNamed:@"tab_note_def"] forKey:TABBARBUTDEFAULT];
+    [imgDic setObject:[UIImage imageNamed:@"tab_note_sel"] forKey:TABBARBUTHIGHLIGHT];
+    [imgDic setObject:[UIImage imageNamed:@"tab_note_sel"] forKey:TABBARBUTSELETED];
+    
+    NSMutableDictionary *imgDic2 = [NSMutableDictionary dictionaryWithCapacity:3];
+    [imgDic2 setObject:[UIImage imageNamed:@"tab_tag_def"] forKey:TABBARBUTDEFAULT];
+    [imgDic2 setObject:[UIImage imageNamed:@"tab_tag_sel"] forKey:TABBARBUTHIGHLIGHT];
+    [imgDic2 setObject:[UIImage imageNamed:@"tab_tag_sel"] forKey:TABBARBUTSELETED];
+    
+    NSMutableDictionary *imgDic3 = [NSMutableDictionary dictionaryWithCapacity:3];
+    [imgDic3 setObject:[UIImage imageNamed:@"tab_share_def_note"] forKey:TABBARBUTDEFAULT];
+    [imgDic3 setObject:[UIImage imageNamed:@"tab_share_sel_note"] forKey:TABBARBUTHIGHLIGHT];
+    [imgDic3 setObject:[UIImage imageNamed:@"tab_share_sel_note"] forKey:TABBARBUTSELETED];
+    
+    NSArray *imgArr = [NSArray arrayWithObjects:imgDic, imgDic2, imgDic3,nil];
+    
+    
+    NSArray *VCIMGArr = [NSArray arrayWithObjects:arrayVC, imgArr, nil];
+    return VCIMGArr;
+}
+
+
+
 
 #pragma mark -
 #pragma mark - handleButton

@@ -69,43 +69,47 @@ DEF_SIGNAL(SELECTBUTTON)//选择按钮
         RELEASE(imageViewBG);
         
 
-        UIImageView *imageViewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(50.0f, 100.0f, 60.0f, 60.0f)];
-        [imageViewIcon setImage:[UIImage imageNamed:@""]];
+        UIImageView *imageViewIcon = [[UIImageView alloc]initWithFrame:CGRectMake((320 - 40 - 60)/2 - 20, 70.0f, 60.0f, 60.0f)];
+        [imageViewIcon setImage:[UIImage imageNamed:@"log"]];
         [self addSubview:imageViewIcon];
         [imageViewIcon release];
         
-        UIImage *image1 = [UIImage imageNamed:@""];
-        UIButton *btnSaveMenoy = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(imageViewIcon.frame) + CGRectGetMinY(imageViewIcon.frame) + 40, image1.size.width, image1.size.height)];
-        [btnSaveMenoy setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        [btnSaveMenoy addTarget:self action:@selector(doSave) forControlEvents:UIControlEventTouchUpInside];
+        UIImage *image1 = [UIImage imageNamed:@"vip"];
+        UIButton *btnSaveMenoy = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(imageViewIcon.frame) + CGRectGetMinY(imageViewIcon.frame) + 40, image1.size.width/2, image1.size.height/2)];
+        [btnSaveMenoy setTag:10];
+        [btnSaveMenoy setImage:[UIImage imageNamed:@"vip"] forState:UIControlStateNormal];
+        [btnSaveMenoy addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnSaveMenoy];
         RELEASE(btnSaveMenoy)
         
         
-        UIButton *btnMammageOrder = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnSaveMenoy.frame) + CGRectGetMinY(btnSaveMenoy.frame) + 40, image1.size.width, image1.size.height)];
-        [btnMammageOrder setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        UIButton *btnMammageOrder = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnSaveMenoy.frame) + CGRectGetMinY(btnSaveMenoy.frame) + 40, image1.size.width/2, image1.size.height/2)];
+        [btnMammageOrder setImage:[UIImage imageNamed:@"订单管理"] forState:UIControlStateNormal];
+        [btnMammageOrder setTag:11];
         [btnMammageOrder addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnMammageOrder];
         RELEASE(btnMammageOrder)
         
         
-        UIButton *btnMammageAddr = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageOrder.frame) + CGRectGetMinY(btnMammageOrder.frame) + 40, image1.size.width, image1.size.height)];
-        [btnMammageOrder setTitle:@"地址管理" forState:UIControlStateNormal];
+        UIButton *btnMammageAddr = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageOrder.frame) + CGRectGetMinY(btnMammageOrder.frame)  , image1.size.width/2, image1.size.height/2)];
+        [btnMammageAddr setTag:12];
+        [btnMammageAddr setTitle:@"地址管理" forState:UIControlStateNormal];
 //        [btnMammageAddr setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [btnMammageAddr addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnMammageAddr];
         RELEASE(btnMammageAddr)
         
         
-        UIButton *btnMammageCol = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageAddr.frame) + CGRectGetMinY(btnMammageAddr.frame) + 40, image1.size.width, image1.size.height)];
-        [btnMammageCol setTitle:@"地址管理" forState:UIControlStateNormal];
+        UIButton *btnMammageCol = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageAddr.frame) + CGRectGetMinY(btnMammageAddr.frame) +0, image1.size.width/2, image1.size.height/2)];
+        [btnMammageCol setTitle:@"收藏夹" forState:UIControlStateNormal];
         //        [btnMammageAddr setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [btnMammageCol addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnMammageCol];
         RELEASE(btnMammageCol)
         
-        UIButton *btnMammageSetting = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageCol.frame) + CGRectGetMinY(btnMammageCol.frame) + 40, image1.size.width, image1.size.height)];
-        [btnMammageSetting setTitle:@"地址管理" forState:UIControlStateNormal];
+        UIButton *btnMammageSetting = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageCol.frame) + CGRectGetMinY(btnMammageCol.frame) + 0, image1.size.width/2, image1.size.height/2)];
+        [btnMammageSetting setTag:13];
+        [btnMammageSetting setTitle:@"设置" forState:UIControlStateNormal];
         //        [btnMammageAddr setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [btnMammageSetting addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnMammageSetting];
@@ -116,6 +120,40 @@ DEF_SIGNAL(SELECTBUTTON)//选择按钮
 //    [self changStatus:0];
     
     return self;
+}
+
+-(void)goOrder:(id)sender{
+    UIButton *btn = (UIButton *)sender;
+    switch (btn.tag) {
+        case 10:
+        {
+         [self sendViewSignal:[DYBBaseViewLeftView SELECTBUTTON] withObject:btn from:self];
+        
+        }
+            break;
+        case 11:
+        {
+             [self sendViewSignal:[DYBBaseViewLeftView SELECTBUTTON] withObject:btn from:self];
+            
+        }
+            break;
+        case 12:
+        {
+             [self sendViewSignal:[DYBBaseViewLeftView SELECTBUTTON] withObject:btn from:self];
+            
+        }
+            break;
+        case 13:
+        {
+             [self sendViewSignal:[DYBBaseViewLeftView SELECTBUTTON] withObject:btn from:self];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+
 }
 
 - (void)handleNoVerify
@@ -173,14 +211,14 @@ DEF_SIGNAL(SELECTBUTTON)//选择按钮
     
     for (int i = 0; i < 6; i++) {
         
-        labelText[i].textColor = [MagicCommentMethod colorWithHex:@"333333"];
-        SelectBtn[i].backgroundColor = [MagicCommentMethod colorWithHex:@"f8f8f8"];
+//        labelText[i].textColor = [MagicCommentMethod colorWithHex:@"333333"];
+//        SelectBtn[i].backgroundColor = [MagicCommentMethod colorWithHex:@"f8f8f8"];
     }
     
     [self handleNoVerify];
     
-    labelText[tag].textColor = [MagicCommentMethod colorWithHex:@"009cd5"];
-    SelectBtn[tag].backgroundColor = [UIColor whiteColor];
+//    labelText[tag].textColor = [MagicCommentMethod colorWithHex:@"009cd5"];
+//    SelectBtn[tag].backgroundColor = [UIColor whiteColor];
     
 }
 

@@ -196,7 +196,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     }
 
     NSLog(@"page --- %d",_page);
-    [_scrollView setContentOffset:CGPointMake(ITEM_WIDTH*_page, 0) animated:YES];
+//    [_scrollView setContentOffset:CGPointMake(ITEM_WIDTH*_page, 0) animated:YES];
     
     
     
@@ -275,10 +275,10 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     }
     if (page!= _pageControl.currentPage)
     {
-        if ([self.delegate respondsToSelector:@selector(foucusImageFrame:currentItem:)])
-        {
-//            [self.delegate foucusImageFrame:self currentItem:page];
-        }
+//        if ([self.delegate respondsToSelector:@selector(foucusImageFrame:currentItem:)])
+//        {
+////            [self.delegate foucusImageFrame:self currentItem:page];
+//        }
     }
     _pageControl.currentPage = page;
     
