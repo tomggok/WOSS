@@ -84,6 +84,13 @@ DEF_SIGNAL(NoInternetConnection)//无网
     [self setVCBackAnimation:SWIPELASTIMAGEBACKTYPE canBackPageNumber:2];
 
     [self observeNotification:[DYBBaseViewController NoInternetConnection]];
+    
+    if ([MagicDevice sysVersion] >= 7)
+    {
+        [self.view setFrame:CGRectMake(CGRectGetMinX(self.view.frame),20 , 320.0f, CGRectGetHeight(self.view.frame))];
+        
+//       self.view.frame.origin.y = 20.0f;
+    }
 }
 
 - (DYBBaseView *)baseView
