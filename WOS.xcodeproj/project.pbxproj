@@ -7309,8 +7309,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhe (GNB5T4K9X8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhou zhe (GNB5T4K9X8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qingtao Ren (FS8C526MC5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qingtao Ren (FS8C526MC5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DYiBan/WOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = /System/Library/Frameworks/CoreTelephony.framework/Headers;
@@ -7325,8 +7325,8 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = WOS;
-				PROVISIONING_PROFILE = "29F8AA77-E3CA-4DA7-B916-33A65E855196";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29F8AA77-E3CA-4DA7-B916-33A65E855196";
+				PROVISIONING_PROFILE = "DEDC6F6C-4003-4149-884C-4733F4AF0DC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DEDC6F6C-4003-4149-884C-4733F4AF0DC1";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -7336,8 +7336,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhe (GNB5T4K9X8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhou zhe (GNB5T4K9X8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qingtao Ren (FS8C526MC5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qingtao Ren (FS8C526MC5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DYiBan/WOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = /System/Library/Frameworks/CoreTelephony.framework/Headers;
@@ -7352,8 +7352,8 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = WOS;
-				PROVISIONING_PROFILE = "29F8AA77-E3CA-4DA7-B916-33A65E855196";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29F8AA77-E3CA-4DA7-B916-33A65E855196";
+				PROVISIONING_PROFILE = "DEDC6F6C-4003-4149-884C-4733F4AF0DC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DEDC6F6C-4003-4149-884C-4733F4AF0DC1";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
