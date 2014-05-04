@@ -48,23 +48,68 @@ DEF_SIGNAL(SELECTBUTTON)//选择按钮
         _oldTag = -1;
         
 
-        NSString *path  = [[NSBundle mainBundle] pathForResource:@"ExpansionTableTestData" ofType:@"plist"];
-        _dataList = [[NSMutableArray alloc] initWithContentsOfFile:path];
-        NSLog(@"%@",path);
+//        NSString *path  = [[NSBundle mainBundle] pathForResource:@"ExpansionTableTestData" ofType:@"plist"];
+//        _dataList = [[NSMutableArray alloc] initWithContentsOfFile:path];
+//        NSLog(@"%@",path);
+//        
+//        tbDataBank.sectionFooterHeight = 0;
+//        tbDataBank.sectionHeaderHeight = 0;
+//        self.isOpen = NO;
+//
+//        tbDataBank = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, 100.0f, 320.0f, CGRectGetHeight(self.frame) - 100)];
+//        [self addSubview:tbDataBank];
+//        
+//        [tbDataBank setSeparatorColor:[UIColor clearColor]];
+//        RELEASE(tbDataBank);
         
-        tbDataBank.sectionFooterHeight = 0;
-        tbDataBank.sectionHeaderHeight = 0;
-        self.isOpen = NO;
+        UIImageView *imageViewBG = [[UIImageView alloc]initWithFrame:self.frame];
+        [imageViewBG setImage:[UIImage imageNamed:@"huidi"]];
+        [imageViewBG setUserInteractionEnabled:YES];
+        [self addSubview:imageViewBG];
+        RELEASE(imageViewBG);
+        
 
-        tbDataBank = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, 100.0f, 320.0f, CGRectGetHeight(self.frame) - 100)];
-        [self addSubview:tbDataBank];
+        UIImageView *imageViewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(50.0f, 100.0f, 60.0f, 60.0f)];
+        [imageViewIcon setImage:[UIImage imageNamed:@""]];
+        [self addSubview:imageViewIcon];
+        [imageViewIcon release];
         
-        [tbDataBank setSeparatorColor:[UIColor clearColor]];
-        RELEASE(tbDataBank);
+        UIImage *image1 = [UIImage imageNamed:@""];
+        UIButton *btnSaveMenoy = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(imageViewIcon.frame) + CGRectGetMinY(imageViewIcon.frame) + 40, image1.size.width, image1.size.height)];
+        [btnSaveMenoy setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [btnSaveMenoy addTarget:self action:@selector(doSave) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnSaveMenoy];
+        RELEASE(btnSaveMenoy)
         
         
+        UIButton *btnMammageOrder = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnSaveMenoy.frame) + CGRectGetMinY(btnSaveMenoy.frame) + 40, image1.size.width, image1.size.height)];
+        [btnMammageOrder setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [btnMammageOrder addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnMammageOrder];
+        RELEASE(btnMammageOrder)
         
         
+        UIButton *btnMammageAddr = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageOrder.frame) + CGRectGetMinY(btnMammageOrder.frame) + 40, image1.size.width, image1.size.height)];
+        [btnMammageOrder setTitle:@"地址管理" forState:UIControlStateNormal];
+//        [btnMammageAddr setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [btnMammageAddr addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnMammageAddr];
+        RELEASE(btnMammageAddr)
+        
+        
+        UIButton *btnMammageCol = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageAddr.frame) + CGRectGetMinY(btnMammageAddr.frame) + 40, image1.size.width, image1.size.height)];
+        [btnMammageCol setTitle:@"地址管理" forState:UIControlStateNormal];
+        //        [btnMammageAddr setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [btnMammageCol addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnMammageCol];
+        RELEASE(btnMammageCol)
+        
+        UIButton *btnMammageSetting = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, CGRectGetHeight(btnMammageCol.frame) + CGRectGetMinY(btnMammageCol.frame) + 40, image1.size.width, image1.size.height)];
+        [btnMammageSetting setTitle:@"地址管理" forState:UIControlStateNormal];
+        //        [btnMammageAddr setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [btnMammageSetting addTarget:self action:@selector(goOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnMammageSetting];
+        RELEASE(btnMammageSetting)
         
         
     }
