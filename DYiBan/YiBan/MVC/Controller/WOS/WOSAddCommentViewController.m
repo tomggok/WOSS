@@ -216,7 +216,6 @@
                     
                     [DYBShareinstaceDelegate popViewText:strMSG target:self hideTime:.5f isRelease:YES mode:MagicPOPALERTVIEWINDICATOR];
                     
-                    
                 }
             }
             
