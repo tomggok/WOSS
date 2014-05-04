@@ -18,6 +18,9 @@
 #import "WOSActivityDetailViewController.h"
 #import "JSONKit.h"
 #import "JSON.h"
+#import "Magic_Device.h"
+#import "WOSShopsListTableViewCell.h"
+#import "WOSShopDetail1ViewController.h"
 
 @interface WOSHomeViewController (){
     SGFocusImageFrame *bannerView;
@@ -28,6 +31,9 @@
 @end
 
 @implementation WOSHomeViewController
+
+
+DEF_SIGNAL(TOUCHBUTTON)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,8 +64,8 @@
     {
         //        [self.rightButton setHidden:YES];
         [self.headview setTitle:@"极食客"];
-        
-        [self.leftButton setHidden:YES];
+//        [self.headview setHidden:YES];
+//        [self.leftButton setHidden:YES];
         [self setButtonImage:self.rightButton setImage:@"account"];
 //        [self.imageViewHead setImage:[UIImage imageNamed:@"top"]];
 //        [self.headview setBackgroundColor:[UIColor grayColor]];
@@ -67,110 +73,137 @@
         [self.headview setTitleColor:[UIColor colorWithRed:193.0f/255 green:193.0f/255 blue:193.0f/255 alpha:1.0f]];
         
         [self.view setBackgroundColor:[UIColor colorWithRed:61.0f/255 green:61.0f/255  blue:61.0f/255  alpha:1.0f]];
+        [self.view setBackgroundColor:[UIColor blackColor]];
         DYBUITabbarViewController *tabBatC = [DYBUITabbarViewController sharedInstace];
         
         [tabBatC hideTabBar:YES animated:NO];
                 
+        if ([MagicDevice sysVersion] >= 7)
+        {
+            [self.view setFrame:CGRectMake(0,20 , 320.0f, 1000)];
+            
+            //       self.view.frame.origin.y = 20.0f;
+        }
 
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
-        [self.view setFrame:CGRectMake(0.0f, 0.0f, 320.0f, self.view.frame.size.height + 120)];
+//        [self.view setFrame:CGRectMake(0.0f, 120.0f + 40, 320.0f, self.view.frame.size.height + 120)];
+        
+        
         
         MagicRequest *request = [DYBHttpMethod wosKitchenInfo_activityList_count:@"4" sAlert:YES receive:self];
         [request setTag:3];
         
        scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight- 44, 320, self.view.frame.size.height+ 44 - self.headHeight + 44)];
         [scrollView setBackgroundColor:[UIColor colorWithRed:61.0f/255 green:61.0f/255  blue:61.0f/255  alpha:1.0f]];
+        [scrollView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:scrollView];
         RELEASE(scrollView);
         
         [self.rightButton setHidden:YES];
         
-        [self.view setBackgroundColor:[UIColor clearColor]];
+        
+        MagicUITableView *tabelViewList = [[MagicUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, self.view.frame.size.height - self.headHeight)];
+        
+        [self.view addSubview:tabelViewList];
+        RELEASE(tabelViewList)
+        
+        
+//        [self.view setBackgroundColor:[UIColor clearColor]];
         
 //        [self creatBanner];
         
-         UIImage *image = [UIImage imageNamed:@"flash.png"];
+//         UIImage *image = [UIImage imageNamed:@"flash.png"];
+//        
+//        UIImage *imageGoodFood = [UIImage imageNamed:@"list.png"];
+//        UIButton *btnGoodFood = [[UIButton alloc]initWithFrame:CGRectMake((320 - imageGoodFood.size.width/2)/2, 45 + image.size.height/2 , imageGoodFood.size.width/2, imageGoodFood.size.height/2)];
+////        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnGoodFood addTarget:self action:@selector(goodFood) forControlEvents:UIControlEventTouchUpInside];
+//        [btnGoodFood setImage:imageGoodFood forState:UIControlStateNormal];
+//        [btnGoodFood setImage:imageGoodFood forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnGoodFood];
+//        RELEASE(btnGoodFood);
+//                
+//        
+//        UIImage *imageGoodPrice = [UIImage imageNamed:@"discount"];
+//        UIButton *btnGoodPrice = [[UIButton alloc]initWithFrame:CGRectMake(8, CGRectGetHeight(btnGoodFood.frame) + CGRectGetMinY(btnGoodFood.frame) + 5 , imageGoodPrice.size.width/2, imageGoodPrice.size.height/2)];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnGoodPrice setImage:imageGoodPrice forState:UIControlStateNormal];
+//        [btnGoodPrice setImage:imageGoodPrice forState:UIControlStateHighlighted];
+//        [btnGoodPrice addTarget:self action:@selector(goodPrice) forControlEvents:UIControlEventTouchUpInside];
+//        [scrollView addSubview:btnGoodPrice];
+//        RELEASE(btnGoodPrice);
+//        
+//        
+//        UIImage *imageGoodMap = [UIImage imageNamed:@"map"];
+//        UIButton *btnGoodMap = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7, CGRectGetHeight(btnGoodFood.frame) + CGRectGetMinY(btnGoodFood.frame) + 5 , imageGoodMap.size.width/2, imageGoodMap.size.height/2)];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnGoodMap addTarget:self action:@selector(mapViewController) forControlEvents:UIControlEventTouchUpInside];
+//
+//        [btnGoodMap setImage:imageGoodMap forState:UIControlStateNormal];
+//        [btnGoodMap setImage:imageGoodMap forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnGoodMap];
+//        RELEASE(btnGoodMap);
+//        
+//        UIImage *imageGoodTuiJian = [UIImage imageNamed:@"recommend"];
+//        UIButton *btnGoodTuiJian = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7, CGRectGetHeight(btnGoodMap.frame) + CGRectGetMinY(btnGoodMap.frame) + 5 , imageGoodTuiJian.size.width/2, imageGoodTuiJian.size.height/2)];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnGoodTuiJian setImage:imageGoodTuiJian forState:UIControlStateNormal];
+//        [btnGoodTuiJian setImage:imageGoodTuiJian forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnGoodTuiJian];
+//        RELEASE(btnGoodTuiJian);
+//        
+//        
+//        UIImage *imageGoodSearch = [UIImage imageNamed:@"search"];
+//        UIButton *btnGoodSearch = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7 + CGRectGetWidth(btnGoodTuiJian.frame) + 5 + 3  , CGRectGetHeight(btnGoodMap.frame) + CGRectGetMinY(btnGoodMap.frame) + 5 , imageGoodSearch.size.width/2, imageGoodSearch.size.height/2)];
+//        [btnGoodSearch addTarget:self action:@selector(searchFood) forControlEvents:UIControlEventTouchUpInside];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnGoodSearch setImage:imageGoodSearch forState:UIControlStateNormal];
+//        [btnGoodSearch setImage:imageGoodSearch forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnGoodSearch];
+//        RELEASE(btnGoodSearch);
+//        
+//        
+//        UIImage *imageYouLike = [UIImage imageNamed:@"guess"];
+//        UIButton *btnYouLike = [[UIButton alloc]initWithFrame:CGRectMake( 8 , CGRectGetHeight(btnGoodPrice.frame) + CGRectGetMinY(btnGoodPrice.frame) + 5 , imageYouLike.size.width/2, imageYouLike.size.height/2)];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnYouLike addTarget:self action:@selector(youlike) forControlEvents:UIControlEventTouchUpInside];
+//        [btnYouLike setImage:imageYouLike forState:UIControlStateNormal];
+//        [btnYouLike setImage:imageYouLike forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnYouLike];
+//        RELEASE(btnYouLike);
+//        
+//        UIImage *imageNear = [UIImage imageNamed:@"nearby"];
+//        UIButton *btnNear = [[UIButton alloc]initWithFrame:CGRectMake( 8  , CGRectGetHeight(btnYouLike.frame) + CGRectGetMinY(btnYouLike.frame) + 5 , imageNear.size.width/2, imageNear.size.height/2)];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnNear addTarget:self action:@selector(nearby) forControlEvents:UIControlEventTouchUpInside];
+//
+//        [btnNear setImage:imageNear forState:UIControlStateNormal];
+//        [btnNear setImage:imageNear forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnNear];
+//        RELEASE(btnNear);
+//        
+//        UIImage *imagePeople = [UIImage imageNamed:@"nearbypeople"];
+//        UIButton *btnPeople = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7  , CGRectGetHeight(btnGoodSearch.frame) + CGRectGetMinY(btnGoodSearch.frame) + 5 , imagePeople.size.width/2, imagePeople.size.height/2)];
+//        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
+//        [btnPeople addTarget:self action:@selector(nearbyPeople) forControlEvents:UIControlEventTouchUpInside];
+//        [btnPeople setImage:imagePeople forState:UIControlStateNormal];
+//        [btnPeople setImage:imagePeople forState:UIControlStateHighlighted];
+//        [scrollView addSubview:btnPeople];
+//        RELEASE(btnPeople);
+//        
+//        
+//        [scrollView setContentSize:CGSizeMake(320.0f, CGRectGetHeight(btnPeople.frame) + CGRectGetMinY(btnPeople.frame) + 20 )];
         
-        UIImage *imageGoodFood = [UIImage imageNamed:@"list.png"];
-        UIButton *btnGoodFood = [[UIButton alloc]initWithFrame:CGRectMake((320 - imageGoodFood.size.width/2)/2, 45 + image.size.height/2 , imageGoodFood.size.width/2, imageGoodFood.size.height/2)];
-//        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnGoodFood addTarget:self action:@selector(goodFood) forControlEvents:UIControlEventTouchUpInside];
-        [btnGoodFood setImage:imageGoodFood forState:UIControlStateNormal];
-        [btnGoodFood setImage:imageGoodFood forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnGoodFood];
-        RELEASE(btnGoodFood);
-                
+        [self creatTopBatView];
         
-        UIImage *imageGoodPrice = [UIImage imageNamed:@"discount"];
-        UIButton *btnGoodPrice = [[UIButton alloc]initWithFrame:CGRectMake(8, CGRectGetHeight(btnGoodFood.frame) + CGRectGetMinY(btnGoodFood.frame) + 5 , imageGoodPrice.size.width/2, imageGoodPrice.size.height/2)];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnGoodPrice setImage:imageGoodPrice forState:UIControlStateNormal];
-        [btnGoodPrice setImage:imageGoodPrice forState:UIControlStateHighlighted];
-        [btnGoodPrice addTarget:self action:@selector(goodPrice) forControlEvents:UIControlEventTouchUpInside];
-        [scrollView addSubview:btnGoodPrice];
-        RELEASE(btnGoodPrice);
+        [self creatBowwon2];
+        [self creatBowwonView];
         
+//        UIView *view11 = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height - 210, 320.0f, 40)];
+//        [view11 setBackgroundColor:[UIColor redColor]];
+//        [self.view addSubview:view11];
         
-        UIImage *imageGoodMap = [UIImage imageNamed:@"map"];
-        UIButton *btnGoodMap = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7, CGRectGetHeight(btnGoodFood.frame) + CGRectGetMinY(btnGoodFood.frame) + 5 , imageGoodMap.size.width/2, imageGoodMap.size.height/2)];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnGoodMap addTarget:self action:@selector(mapViewController) forControlEvents:UIControlEventTouchUpInside];
-
-        [btnGoodMap setImage:imageGoodMap forState:UIControlStateNormal];
-        [btnGoodMap setImage:imageGoodMap forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnGoodMap];
-        RELEASE(btnGoodMap);
-        
-        UIImage *imageGoodTuiJian = [UIImage imageNamed:@"recommend"];
-        UIButton *btnGoodTuiJian = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7, CGRectGetHeight(btnGoodMap.frame) + CGRectGetMinY(btnGoodMap.frame) + 5 , imageGoodTuiJian.size.width/2, imageGoodTuiJian.size.height/2)];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnGoodTuiJian setImage:imageGoodTuiJian forState:UIControlStateNormal];
-        [btnGoodTuiJian setImage:imageGoodTuiJian forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnGoodTuiJian];
-        RELEASE(btnGoodTuiJian);
-        
-        
-        UIImage *imageGoodSearch = [UIImage imageNamed:@"search"];
-        UIButton *btnGoodSearch = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7 + CGRectGetWidth(btnGoodTuiJian.frame) + 5 + 3  , CGRectGetHeight(btnGoodMap.frame) + CGRectGetMinY(btnGoodMap.frame) + 5 , imageGoodSearch.size.width/2, imageGoodSearch.size.height/2)];
-        [btnGoodSearch addTarget:self action:@selector(searchFood) forControlEvents:UIControlEventTouchUpInside];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnGoodSearch setImage:imageGoodSearch forState:UIControlStateNormal];
-        [btnGoodSearch setImage:imageGoodSearch forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnGoodSearch];
-        RELEASE(btnGoodSearch);
-        
-        
-        UIImage *imageYouLike = [UIImage imageNamed:@"guess"];
-        UIButton *btnYouLike = [[UIButton alloc]initWithFrame:CGRectMake( 8 , CGRectGetHeight(btnGoodPrice.frame) + CGRectGetMinY(btnGoodPrice.frame) + 5 , imageYouLike.size.width/2, imageYouLike.size.height/2)];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnYouLike addTarget:self action:@selector(youlike) forControlEvents:UIControlEventTouchUpInside];
-        [btnYouLike setImage:imageYouLike forState:UIControlStateNormal];
-        [btnYouLike setImage:imageYouLike forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnYouLike];
-        RELEASE(btnYouLike);
-        
-        UIImage *imageNear = [UIImage imageNamed:@"nearby"];
-        UIButton *btnNear = [[UIButton alloc]initWithFrame:CGRectMake( 8  , CGRectGetHeight(btnYouLike.frame) + CGRectGetMinY(btnYouLike.frame) + 5 , imageNear.size.width/2, imageNear.size.height/2)];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnNear addTarget:self action:@selector(nearby) forControlEvents:UIControlEventTouchUpInside];
-
-        [btnNear setImage:imageNear forState:UIControlStateNormal];
-        [btnNear setImage:imageNear forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnNear];
-        RELEASE(btnNear);
-        
-        UIImage *imagePeople = [UIImage imageNamed:@"nearbypeople"];
-        UIButton *btnPeople = [[UIButton alloc]initWithFrame:CGRectMake( CGRectGetWidth(btnGoodPrice.frame) + 8 + 7  , CGRectGetHeight(btnGoodSearch.frame) + CGRectGetMinY(btnGoodSearch.frame) + 5 , imagePeople.size.width/2, imagePeople.size.height/2)];
-        //        [btnGoodFood setTitle:@"美食大全" forState:UIControlStateNormal];
-        [btnPeople addTarget:self action:@selector(nearbyPeople) forControlEvents:UIControlEventTouchUpInside];
-        [btnPeople setImage:imagePeople forState:UIControlStateNormal];
-        [btnPeople setImage:imagePeople forState:UIControlStateHighlighted];
-        [scrollView addSubview:btnPeople];
-        RELEASE(btnPeople);
-        
-        
-        [scrollView setContentSize:CGSizeMake(320.0f, CGRectGetHeight(btnPeople.frame) + CGRectGetMinY(btnPeople.frame) + 20 )];
     }
     
     
@@ -179,6 +212,392 @@
         DLogInfo(@"rrr");
     } else if ([signal is:[MagicViewController DID_DISAPPEAR]]){
         
+        
+    }
+}
+
+
+#pragma mark- 接受tbv信号
+
+static NSString *cellName = @"cellName";//
+
+- (void)handleViewSignal_MagicUITableView:(MagicViewSignal *)signal
+{
+    if ([signal is:[MagicUITableView TABLENUMROWINSEC]])//numberOfRowsInSection
+    {
+        NSDictionary *dict = (NSDictionary *)[signal object];
+        UITableView *tableView = [dict objectForKey:@"tableView"];
+        NSInteger section = [[dict objectForKey:@"section"] integerValue];
+        
+                    NSNumber *s = [NSNumber numberWithInteger:10];
+            [signal setReturnValue:s];
+        
+    }else if ([signal is:[MagicUITableView TABLENUMOFSEC]])//numberOfSectionsInTableView
+    {
+          NSNumber *s = [NSNumber numberWithInteger:1];
+        [signal setReturnValue:s];
+        
+    }
+    else if ([signal is:[MagicUITableView TABLEHEIGHTFORROW]])//heightForRowAtIndexPath  暂时把每个cell保存,后期有时间优化为只保存高度,返回cell时再异步计算cell的视图,目前刷新后所有cell的view都要重新创建
+    {
+        NSDictionary *dict = (NSDictionary *)[signal object];
+        NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
+        UITableView *tableView = [dict objectForKey:@"tableView"];
+        
+        NSMutableArray *arr_curSectionForCell=nil;
+        NSMutableArray *arr_curSectionForModel=nil;
+        
+       
+        NSNumber *s = [NSNumber numberWithInteger:70];
+
+        
+            [signal setReturnValue:s];
+        
+    }
+    else if ([signal is:[MagicUITableView TABLETITLEFORHEADERINSECTION]])//titleForHeaderInSection
+    {
+        
+    }
+    else if ([signal is:[MagicUITableView TABLEVIEWFORHEADERINSECTION]])//viewForHeaderInSection
+    {
+        
+    }//
+    else if ([signal is:[MagicUITableView TABLETHEIGHTFORHEADERINSECTION]])//heightForHeaderInSection
+    {
+        
+        [signal setReturnValue:[NSNumber numberWithFloat:0]];
+        
+    }
+    else if ([signal is:[MagicUITableView TABLECELLFORROW]])//cell  只返回显示的cell
+    {
+        NSDictionary *dict = (NSDictionary *)[signal object];
+        UITableView *tableView = [dict objectForKey:@"tableView"];
+        NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
+        
+//        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellName];
+        
+        WOSShopsListTableViewCell *cell = [[WOSShopsListTableViewCell alloc]init];
+        [cell creatCell:nil];
+        [signal setReturnValue:cell];
+        
+    }else if ([signal is:[MagicUITableView TABLEDIDSELECT]])//选中cell
+    {
+        NSDictionary *dict = (NSDictionary *)[signal object];
+        UITableView *tableview = [dict objectForKey:@"tableView"];
+        NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
+        
+        
+        WOSShopDetail1ViewController *detail = [[WOSShopDetail1ViewController alloc]init];
+        [self.drNavigationController pushViewController:detail animated:YES];
+        RELEASE(detail);
+    }
+    else if ([signal is:[MagicUITableView TABLESCROLLVIEWDIDSCROLL]])//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+    {
+     
+        
+    }
+    else if ([signal is:[MagicUITableView TABLESECTIONINDEXTITLESFORTABLEVIEW]])//右侧索引列表
+    {
+       
+    }
+    else if ([signal is:[MagicUITableView TAbLEVIEWLODATA]])//加载更多
+    {
+      
+    
+    }
+    else if ([signal is:[MagicUITableView TABLEVIEWUPDATA]])//刷新
+    {
+        
+        
+    }
+    
+    else if ([signal is:[MagicUITableView TAbLEVIEWSCROLLUP]]){//上滑
+        
+//        [_tbv StretchingUpOrDown:0];
+//        [[DYBUITabbarViewController sharedInstace] hideTabBar:YES animated:YES];
+        
+    }else if ([signal is:[MagicUITableView TAbLEVIEWSCROLLDOWN]]){//下滑
+//        [_tbv StretchingUpOrDown:1];
+//        [[DYBUITabbarViewController sharedInstace] hideTabBar:NO animated:YES];
+        
+    }
+    else if ([signal is:[MagicUITableView TAbLEVIERELOADOVER]])//reload完毕
+    {
+        //        NSDictionary *dict = (NSDictionary *)[signal object];
+        //        NSIndexPath *indexPath = [dict objectForKey:@"indexPath"];
+        //        UITableView *tableView = [dict objectForKey:@"tableView"];
+        
+        //        [_v_inputV.textV becomeFirstResponder];
+    }
+}
+
+
+
+-(void)creatTopBatView{
+    UIView *viewBar = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, 40.0f)];
+    [viewBar setTag:1000];
+    [viewBar setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:viewBar];
+    
+    float offset = 320/3;
+    for (int i = 0; i < 3; i++) {
+        
+        UIButton *btnTouch = [[UIButton alloc]initWithFrame:CGRectMake(i * offset, 0.0f, offset, 40)];
+        [btnTouch setTag:i + 10];
+        [btnTouch setTitle:[self getTitle:i] forState:UIControlStateNormal];
+        [btnTouch addTarget:self action:@selector(doSelect:) forControlEvents:UIControlEventTouchUpInside];
+        [viewBar addSubview:btnTouch];
+        RELEASE(btnTouch);
+    }
+    
+
+
+}
+
+-(NSString *)getTitle:(int)index{
+
+    switch (index) {
+        case 0:
+        {
+        
+            return @"地址";
+        
+        }
+            break;
+        case 1:
+        {
+            
+            return @"美食";
+            
+        }
+            break;
+        case 2:
+        {
+            
+            return @"店铺";
+            
+        }
+            break;
+    
+
+        default:
+            break;
+    }
+    return nil;
+}
+
+
+-(void)creatBowwon2{
+
+    UIView *viewBar = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height - 20 -40 - 40, 320.0f, 40.0f)];
+    [viewBar setTag:10001];
+    [viewBar setBackgroundColor:[UIColor grayColor]];
+    [self.view addSubview:viewBar];
+    
+    float offset = 320/3;
+    for (int i = 0; i < 3; i++) {
+        
+        UIButton *btnTouch = [[UIButton alloc]initWithFrame:CGRectMake(i * offset, 0.0f, offset, 40)];
+        [btnTouch setTag:i + 10];
+        [btnTouch setTitle:[self gettitle2:i] forState:UIControlStateNormal];
+        [btnTouch addTarget:self action:@selector(doSelect1:) forControlEvents:UIControlEventTouchUpInside];
+        [viewBar addSubview:btnTouch];
+        RELEASE(btnTouch);
+    }
+    
+
+}
+
+-(void)doSelect1:(id)sender{
+
+    UIView *viewBar = [self.view viewWithTag:10001];
+    UIButton *btn = (UIButton *)sender;
+    if (viewBar) {
+        
+        
+        
+        for (int i = 10; i < 13; i++) {
+            
+            UIButton *btn1 = (UIButton *)[viewBar viewWithTag:i];
+            if ([btn1 isEqual:btn]) {
+                [btn1 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            }else{
+                [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+            
+            
+        }
+        
+    }
+
+
+}
+
+-(NSString *)gettitle2:(int)index{
+
+    switch (index) {
+        case 0:
+        {
+            
+            return @"免运费";
+            
+        }
+            break;
+        case 1:
+        {
+            
+            return @"折扣";
+            
+        }
+            break;
+        case 2:
+        {
+            
+            return @"限时";
+            
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+    return nil;
+
+
+}
+
+-(void)doSelect:(id)sender{
+
+    UIView *viewBar = [self.view viewWithTag:1000];
+   UIButton *btn = (UIButton *)sender;
+    if (viewBar) {
+        
+      
+        
+        for (int i = 10; i < 13; i++) {
+            
+            UIButton *btn1 = (UIButton *)[viewBar viewWithTag:i];
+            if ([btn1 isEqual:btn]) {
+                [btn1 setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            }else{
+            [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+            
+            
+        }
+        
+    }
+
+
+}
+
+-(void)creatBowwonView{
+
+
+    UIView *viewBowwonView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, self.view.frame.size.height - 40 - 20, 320.0f, 40)];
+    [viewBowwonView setTag:100101];
+    [viewBowwonView setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:viewBowwonView];
+    [viewBowwonView release];
+    
+    float offset = 320/4;
+    for (int i = 0; i < 4; i++) {
+        
+        MagicUIButton *btnTouch = [[MagicUIButton alloc]initWithFrame:CGRectMake(i * offset, 0.0f, offset, 40)];
+        [btnTouch setTag:i + 100];
+        [btnTouch setTitle:[self getTitle1:i] forState:UIControlStateNormal];
+        [btnTouch addTarget:self action:@selector(doSelectBowwon:) forControlEvents:UIControlEventTouchUpInside];
+//        [btnTouch addSignal:[WOSHomeViewController TOUCHBUTTON] forControlEvents:UIControlEventTouchUpInside];
+        [viewBowwonView addSubview:btnTouch];
+        [btnTouch setBackgroundColor:[UIColor brownColor]];
+        RELEASE(btnTouch);
+    }
+    
+    
+}
+-(void)handleViewSignal_MagicUIButton:(MagicViewSignal *)signal{
+
+
+    if ([signal is:[WOSHomeViewController TOUCHBUTTON]]) {
+        
+        UIView *viewBar = [self.view viewWithTag:100101];
+        UIButton *btn = (UIButton *)[signal source];
+        if (viewBar) {
+            
+            for (int i = 100; i < 104; i++) {
+                
+                UIButton *btn1 = (UIButton *)[viewBar viewWithTag:i];
+                if ([btn1 isEqual:btn]) {
+                    [btn1 setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                }else{
+                    [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                }
+                
+                
+            }
+            
+        }
+    }
+    
+}
+
+-(NSString *)getTitle1:(int)index{
+
+    switch (index) {
+        case 0:
+        {
+        
+        return @"排序";
+        }
+            break;
+        case 1:
+        {
+            
+            return @"分类";
+        }
+            break;
+
+        case 2:
+        {
+            
+            return @"热门";
+        }
+            break;
+
+        case 3:
+        {
+            
+            return @"优惠";
+        }
+            break;
+
+            
+        default:
+            break;
+    }
+
+}
+
+-(void)doSelectBowwon:(id)sender{
+
+    UIView *viewBar = [self.view viewWithTag:100101];
+    UIButton *btn = (UIButton *)sender;
+    if (viewBar) {
+        
+        
+        
+        for (int i = 100; i < 104; i++) {
+            
+            UIButton *btn1 = (UIButton *)[viewBar viewWithTag:i];
+            if ([btn1 isEqual:btn]) {
+                [btn1 setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            }else{
+                [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+            
+            
+        }
         
     }
 }

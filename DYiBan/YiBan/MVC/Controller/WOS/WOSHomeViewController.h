@@ -11,4 +11,5 @@
 #import "SGFocusImageFrame.h"
 @interface WOSHomeViewController : DYBBaseViewController<SGFocusImageFrameDelegate>
 
+AS_SIGNAL(TOUCHBUTTON)
 @end
