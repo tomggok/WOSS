@@ -141,29 +141,38 @@ static leftViewController *share = nil;
         [tabBatC hideTabBar:YES animated:NO];
         [self.leftButton setHidden:YES];
         
+        
+        
+        
     }
     else if ([signal is:[MagicViewController CREATE_VIEWS]]) {
         
         
+        UIImageView *imageViewBG = [[UIImageView alloc]initWithFrame:self.view.frame];
+        [imageViewBG setImage:[UIImage imageNamed:@"huidi"]];
+        [imageViewBG setUserInteractionEnabled:YES];
+        [self.view addSubview:imageViewBG];
+        RELEASE(imageViewBG);
         
-        NSString *path  = [[NSBundle mainBundle] pathForResource:@"ExpansionTableTestData" ofType:@"plist"];
-        _dataList = [[NSMutableArray alloc] initWithContentsOfFile:path];
-        NSLog(@"%@",path);
         
-        
-        NSString *path1  = [[NSBundle mainBundle] pathForResource:@"FoodList" ofType:@"plist"];
-      NSMutableDictionary *idataList = [[NSMutableDictionary alloc] initWithContentsOfFile:path1];
-        NSLog(@"%@",path1);
-        
-        tbDataBank.sectionFooterHeight = 0;
-        tbDataBank.sectionHeaderHeight = 0;
-        isOpen = NO;
-        
-        tbDataBank = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, CGRectGetHeight(self.view.frame) - 100)];
-        [self.view addSubview:tbDataBank];
-        [tbDataBank setBackgroundColor:ColorBG];
-        [tbDataBank setSeparatorColor:[UIColor clearColor]];
-        RELEASE(tbDataBank);
+//        NSString *path  = [[NSBundle mainBundle] pathForResource:@"ExpansionTableTestData" ofType:@"plist"];
+//        _dataList = [[NSMutableArray alloc] initWithContentsOfFile:path];
+//        NSLog(@"%@",path);
+//        
+//        
+//        NSString *path1  = [[NSBundle mainBundle] pathForResource:@"FoodList" ofType:@"plist"];
+//      NSMutableDictionary *idataList = [[NSMutableDictionary alloc] initWithContentsOfFile:path1];
+//        NSLog(@"%@",path1);
+//        
+//        tbDataBank.sectionFooterHeight = 0;
+//        tbDataBank.sectionHeaderHeight = 0;
+//        isOpen = NO;
+//        
+//        tbDataBank = [[DYBUITableView alloc]initWithFrame:CGRectMake(0.0f, self.headHeight, 320.0f, CGRectGetHeight(self.view.frame) - 100)];
+//        [self.view addSubview:tbDataBank];
+//        [tbDataBank setBackgroundColor:ColorBG];
+//        [tbDataBank setSeparatorColor:[UIColor clearColor]];
+//        RELEASE(tbDataBank);
         
 
         
